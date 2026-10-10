@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编程 Agent 上下文压缩机制全景 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#24406b;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f4f7fa;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#24406b;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>编程 Agent 都怎么压缩上下文？8 家实现全景调研 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」专题横评。正文外链被微信剥除，可点击版全部在本页；数据口径截至 2026-10-10。</div>
+    <div class="note"><b>数据口径与可靠性说明：</b>① Claude Code 默认触发百分比为社区反推，官方只给 token 锚点（200K 边界 / 1M 约 967K）；② Claude Code「9 段式」提示词为社区<b>行为学重建</b>，非官方泄露；③ ZCode 压缩提示词来自第三方泄露档案（2026-08），<b>未经官方证实</b>；④ Aider 经多版本源码核对<b>不存在 /compact 命令</b>，历史压缩为后台全自动；⑤ hermes 摘要骨架以源码为准（官方文档滞后）；⑥ dots 闭源，本文仅产品层描述；⑦ OpenClaw 压缩细节以官方文档为准，非官方镜像 wiki 的阈值数字不可信。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、8 家正主：官方文档与源码</h2>
+    <div class="ref"><span class="tag src">官方</span>Claude Code 上下文窗口文档（含压缩量化口径）<br><a href="https://code.claude.com/docs/en/context-window.md">code.claude.com/docs/en/context-window.md</a></div>
+    <div class="ref"><span class="tag src">官方</span>anthropics/claude-code CHANGELOG（压缩演进时间线）<br><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">github.com/anthropics/claude-code · CHANGELOG.md</a></div>
+    <div class="ref"><span class="tag warn">重建</span>Claude Code 压缩提示词 · 社区行为学重建版（noelzappy）<br><a href="https://github.com/noelzappy/claude-code-system-prompts">github.com/noelzappy/claude-code-system-prompts</a></div>
+    <div class="ref"><span class="tag src">官方</span>Codex 压缩核心实现 compact.rs（90% 阈值 / 20K 用户消息预算）<br><a href="https://github.com/openai/codex/blob/main/codex-rs/core/src/compact.rs">github.com/openai/codex · codex-rs/core/src/compact.rs</a></div>
+    <div class="ref"><span class="tag src">官方</span>Codex 压缩提示词模板（CONTEXT CHECKPOINT / SUMMARY_PREFIX）<br><a href="https://github.com/openai/codex/tree/main/codex-rs/prompts/templates/compact">github.com/openai/codex · prompts/templates/compact</a></div>
+    <div class="ref"><span class="tag src">官方</span>OpenCode 压缩文档（V2 滚动摘要 / keep.tokens / prune）<br><a href="https://opencode.ai/v2/docs/compaction">opencode.ai/v2/docs/compaction</a></div>
+    <div class="ref"><span class="tag src">官方</span>OpenCode 摘要模板源码（SUMMARY_TEMPLATE 五段）<br><a href="https://github.com/sst/opencode/blob/dev/packages/core/src/session/compaction.ts">github.com/sst/opencode · core/src/session/compaction.ts</a></div>
+    <div class="ref"><span class="tag src">官方</span>ZCode 官方文档：自动压缩触发点与「不可配置」声明<br><a href="https://zcode.z.ai/cn/docs/configuration">zcode.z.ai/cn/docs/configuration</a> · <a href="https://zcode.z.ai/cn/docs/memory">/docs/memory（Memory 机制）</a></div>
+    <div class="ref"><span class="tag warn">泄露</span>ZCode 压缩提示词 · 第三方泄露档案（elder-plinius/CL4R1T4S，未经官方证实）<br><a href="https://github.com/elder-plinius/CL4R1T4S">github.com/elder-plinius/CL4R1T4S</a></div>
+    <div class="ref"><span class="tag src">官方</span>Trae 官方文档《上下文压缩》（全页仅定性描述）<br><a href="https://docs.trae.cn/ide_context-compaction">docs.trae.cn/ide_context-compaction</a> · <a href="https://github.com/Trae-AI/TRAE/issues">GitHub issues（压缩开关诉求）</a></div>
+    <div class="ref"><span class="tag src">官方</span>hermes-agent 压缩文档（双层阈值 / 四阶段 / lean 尾部）<br><a href="https://hermes-agent.nousresearch.com/docs/developer-guide/context-compression-and-caching">hermes-agent.nousresearch.com · context-compression-and-caching</a> · <a href="https://hermes-agent.nousresearch.com/docs/developer-guide/micro-compaction">micro-compaction</a></div>
+    <div class="ref"><span class="tag src">官方</span>OpenClaw Compaction / Pruning / Memory 三篇（伪转录配方出处）<br><a href="https://docs.openclaw.ai/concepts/compaction">docs.openclaw.ai/concepts/compaction</a> · <a href="https://docs.openclaw.ai/concepts/session-pruning">session-pruning</a> · <a href="https://docs.openclaw.ai/concepts/memory">memory</a></div>
+    <div class="ref"><span class="tag src">官方</span>Amp《Handoff (No More Compaction)》公告原文<br><a href="https://ampcode.com/news/handoff">ampcode.com/news/handoff</a></div>
+    <div class="ref"><span class="tag src">官方</span>OpenAI DevDay 2026 Recap（dots 发布）<br><a href="https://openai.com/index/devday-2026-recap">openai.com/index/devday-2026-recap</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、生态参照</h2>
+    <div class="ref"><span class="tag src">官方</span>Gemini CLI 配置文档（compressionThreshold 默认 0.5）<br><a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/configuration.md">github.com/google-gemini/gemini-cli · configuration.md</a></div>
+    <div class="ref"><span class="tag src">官方</span>Cursor 1.6 Changelog（自动摘要 + /summarize）<br><a href="https://cursor.com/en/changelog/1-6">cursor.com/en/changelog/1-6</a></div>
+    <div class="ref"><span class="tag src">官方</span>Cline Auto Compact 文档（先截断省 30% 再摘要）<br><a href="https://docs.cline.bot/features/auto-compact">docs.cline.bot/features/auto-compact</a></div>
+    <div class="ref"><span class="tag src">官方</span>OpenHands Condenser 指南（可插拔压缩框架）<br><a href="https://docs.openhands.dev/sdk/guides/context-condenser">docs.openhands.dev/sdk/guides/context-condenser</a></div>
+    <div class="ref"><span class="tag src">官方</span>Aider repo map 机制博文（tree-sitter + PageRank）<br><a href="https://aider.chat/2023/10/22/repomap.html">aider.chat/2023/10/22/repomap.html</a></div>
+    <div class="ref"><span class="tag src">官方</span>Goose 仓库（goose-context-management 含 compaction 提示词模板）<br><a href="https://github.com/block/goose">github.com/block/goose</a></div>
+    <div class="ref"><span class="tag src">官方</span>Letta Memory Blocks（窗口内自编辑记忆）<br><a href="https://www.letta.com/blog/memory-blocks">letta.com/blog/memory-blocks</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、框架级工程博客</h2>
+    <div class="ref"><span class="tag src">官方</span>Anthropic《Effective context engineering for AI agents》<br><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">anthropic.com/engineering/effective-context-engineering-for-ai-agents</a></div>
+    <div class="ref"><span class="tag src">官方</span>Anthropic《Managing context on the Claude Developer Platform》（context editing + memory tool）<br><a href="https://claude.com/blog/context-management">claude.com/blog/context-management</a></div>
+    <div class="ref"><span class="tag src">官方</span>Anthropic《How we built our multi-agent research system》<br><a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">anthropic.com/engineering/built-multi-agent-research-system</a></div>
+    <div class="ref"><span class="tag src">官方</span>Manus《Context Engineering for AI Agents: Lessons from Building Manus》<br><a href="https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus">manus.im/blog/Context-Engineering-for-AI-Agents</a></div>
+    <div class="ref"><span class="tag src">官方</span>LangChain《Context Engineering for Agents》（write/select/compress/isolate）<br><a href="https://blog.langchain.dev/context-engineering-for-agents/">blog.langchain.dev/context-engineering-for-agents</a></div>
+    <div class="ref"><span class="tag src">官方</span>Chroma Research《Context Rot》（衰减实证，注意：无 arXiv 号）<br><a href="https://research.trychroma.com/context-rot">research.trychroma.com/context-rot</a></div>
+    <div class="ref"><span class="tag src">官方</span>HumanLayer《Advanced Context Engineering for Coding Agents》（frequent intentional compaction）<br><a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents">github.com/humanlayer/advanced-context-engineering-for-coding-agents</a></div>
+    <div class="ref"><span class="tag src">官方</span>Cognition《Don't Build Multi-Agents》（单线程 Agent 上下文原则）<br><a href="https://cognition.ai/blog/dont-build-multi-agents">cognition.ai/blog/dont-build-multi-agents</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、综述与论文（arXiv 编号均已核实）</h2>
+    <div class="ref"><span class="tag paper">综述</span>A Survey of Context Engineering for LLMs（总纲；压缩锚点 §4.3）<br><a href="https://arxiv.org/abs/2507.13334">arxiv.org/abs/2507.13334</a></div>
+    <div class="ref"><span class="tag paper">综述</span>Context Engineering 2.0: The Context of Context Engineering<br><a href="https://arxiv.org/abs/2510.26493">arxiv.org/abs/2510.26493</a></div>
+    <div class="ref"><span class="tag paper">综述</span>A Survey on Prompt Compression（剑桥；hard/soft 二分）<br><a href="https://arxiv.org/abs/2410.12388">arxiv.org/abs/2410.12388</a></div>
+    <div class="ref"><span class="tag paper">综述</span>KV Cache 压缩综述（TMLR 2025）<br><a href="https://arxiv.org/abs/2412.19442">arxiv.org/abs/2412.19442</a></div>
+    <div class="ref"><span class="tag paper">综述</span>A Survey on the Memory Mechanism of LLM-based Agents（人大高瓴）<br><a href="https://arxiv.org/abs/2404.13501">arxiv.org/abs/2404.13501</a></div>
+    <div class="ref"><span class="tag paper">奠基</span>MemGPT: Towards LLMs as Operating Systems<br><a href="https://arxiv.org/abs/2310.08560">arxiv.org/abs/2310.08560</a></div>
+    <div class="ref"><span class="tag paper">折叠</span>AgentFold: Long-Horizon Web Agents with Proactive Context Management<br><a href="https://arxiv.org/abs/2510.24699">arxiv.org/abs/2510.24699</a></div>
+    <div class="ref"><span class="tag paper">折叠</span>Context-Folding（FoldGRPO，活跃上下文小 10 倍）<br><a href="https://arxiv.org/abs/2510.11967">arxiv.org/abs/2510.11967</a></div>
+    <div class="ref"><span class="tag paper">RL摘要</span>ReSum: Unlocking Long-Horizon Search Intelligence via Context Summarization<br><a href="https://arxiv.org/abs/2509.13313">arxiv.org/abs/2509.13313</a></div>
+    <div class="ref"><span class="tag paper">统一视角</span>A Rate–Distortion View of Memory Compaction<br><a href="https://arxiv.org/abs/2607.08032">arxiv.org/abs/2607.08032</a></div>
+    <div class="ref"><span class="tag paper">实证</span>编程 Agent 的 context rot 白盒实证（299K 下 8/10→3/10）<br><a href="https://arxiv.org/abs/2607.17937">arxiv.org/abs/2607.17937</a></div>
+    <div class="ref"><span class="tag paper">递归</span>Recursive Language Models (RLMs) · MIT<br><a href="https://arxiv.org/abs/2512.24601">arxiv.org/abs/2512.24601</a></div>
+    <div class="ref"><span class="tag paper">离线</span>Sleep-time Compute: Beyond Inference Scaling at Test-time<br><a href="https://arxiv.org/abs/2504.13171">arxiv.org/abs/2504.13171</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、社区深读与横评（第三方，观点供参照）</h2>
+    <div class="ref"><span class="tag">三方</span>badlogic（Mario Zechner）《Context Compaction Research》对照 gist<br><a href="https://gist.github.com/badlogic/cd2ef65b0697c4dbe2d13fbecb0a0a5f">gist.github.com/badlogic · context-compaction-research</a></div>
+    <div class="ref"><span class="tag">三方</span>Siddhant Khare《The plumbing behind Claude Code》逆向拆解<br><a href="https://siddhantkhare.com/notes/the-plumbing-behind-claude-code/">siddhantkhare.com · the-plumbing-behind-claude-code</a></div>
+    <div class="ref"><span class="tag">三方</span>Victor Dibia《Inside Claude Code》编译指南<br><a href="https://victordibia.com/notes/inside-claude-code/">victordibia.com/notes/inside-claude-code</a></div>
+    <div class="ref"><span class="tag">三方</span>counter2015《LLM 上下文压缩漫谈》（中文 · 源码级横评）<br><a href="https://counter2015.github.io/2025/10/10/context-compression/">counter2015.github.io · context-compression</a></div>
+    <div class="ref"><span class="tag">三方</span>Steinberger《OpenClaw, OpenAI and the future》（作者亲述）<br><a href="https://steipete.me/posts/2026/openclaw/">steipete.me/posts/2026/openclaw</a></div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · 编程 Agent 压缩机制全景调研 · 2026-10</div>
+</div>
+</body>
+</html>
