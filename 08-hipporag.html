@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）八：HippoRAG 2</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #7a5aa0;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）八</h1>
+    <div class="sub">《HippoRAG 2 海马体的算法真身》 · 2026-10</div>
+    <div class="note">说明：4,054 星为 GitHub API 截至 2026-10-10；论文全部基准数字（QA F1 59.8、recall@5 78.2、成本表 12.55× 等）为论文官方自报（Llama-3.3-70B + NV-Embed-v2 统一口径）；LightRAG 6.6 为 HippoRAG 2 作者复现口径（Local 模式设置），LightRAG 方未见官方回应；掘金实测为第三方独立口径（200 篇文档 / gpt-4o-mini）。源码结论实测自 main 分支 2.0.0a5 快照（2026-10-10）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>官方资源 · 仓库 / 论文 / 数据</h2>
+    <ul>
+      <li><a href="https://github.com/OSU-NLP-Group/HippoRAG">GitHub 仓库 OSU-NLP-Group/HippoRAG</a><span class="d">main = HippoRAG 2（2.0.0a5）；v1 正身在 legacy 分支；唯一 tag v1.0.0（release 名就叫 HippoRAG 1）；仓库自带 MCP server 与 Claude Code 插件市场；outputs/musique 附 45MB 预计算 OpenIE 结果</span></li>
+      <li><a href="https://arxiv.org/abs/2502.14802">论文 · From RAG to Memory: Non-Parametric Continual Learning for Large Language Models（arXiv:2502.14802，ICML 2025）</a><span class="d">HippoRAG 2 本体：passage 节点进图、query-to-triple、再认过滤；Table 2/3 主表、Table 12 成本表、附录 D 图统计、附录 E 错误分析</span></li>
+      <li><a href="https://arxiv.org/abs/2405.14831">论文 · HippoRAG: Neurobiologically Inspired Long-Term Memory for LLMs（arXiv:2405.14831，NeurIPS 2024）</a><span class="d">v1 本体：海马体索引理论框架出处（摘要原话）；多跳最高 +20%、比 IRCoT 便宜 10-30 倍</span></li>
+      <li><a href="https://huggingface.co/datasets/osunlp/HippoRAG_2/tree/main">HuggingFace 数据集 osunlp/HippoRAG_2</a><span class="d">完整评测数据（仓库 reproduce/ 只放部分样本）</span></li>
+      <li><a href="https://pypi.org/project/hipporag/">PyPI · hipporag</a><span class="d">全版本线只有 2.0.0a2/a3/a4 三个 alpha（最新 2025-06-24，落后 main 一个小版本）；v1 从未上过 PyPI</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>理论与背景</h2>
+    <ul>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/3008780/">Teyler &amp; DiScenna (1986) · The hippocampal memory indexing theory</a><span class="d">海马体记忆索引理论原始文献（PubMed）：新皮层存内容、海马体存索引——HippoRAG 叙事的理论源头</span></li>
+      <li><a href="https://dblp.org/rec/conf/www/Haveliwala02">Haveliwala (WWW 2002) · Topic-Sensitive PageRank</a><span class="d">Personalized PageRank 的原始论文（论文 §2.2 引用口径为 Haveliwala, 2002）</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>第三方实测 · 独立口径</h2>
+    <ul>
+      <li><a href="https://juejin.cn/post/7687513063491616806">掘金 · HippoRAG2 实测：成本比 GraphRAG 低 12 倍到底靠不靠谱（2026-09-21）</a><span class="d">200 篇内部文档 / 3,000 chunk / gpt-4o-mini / 50 问：索引 token 12 倍差；多跳召回 76% vs GraphRAG 78%；单跳反低；中文实体抽取坑；作者自注「不能确认与官方是否同一口径」</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>对照锚点 · 系列内</h2>
+    <ul>
+      <li><a href="https://github.com/microsoft/graphrag">microsoft/graphrag（系列第六篇主角）</a><span class="d">七的成本账本直接对照：GraphRAG 社区摘要层是 115.5M token 的出处；六篇讲过 v3.3.0 maintenance mode</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/06-graphrag.html">六 GraphRAG 篇参考资料</a><span class="d">索引生意如何记账：本地/全局/DRIFT 查询、LazyGraphRAG 成本口径</span></li>
+      <li><a href="https://github.com/getzep/graphiti">getzep/graphiti（系列第五篇主角）</a><span class="d">图谱记忆侧的同源思想（图检索+失效边）；「图谱记忆 vs 图谱 RAG」分界的 RAG 端即本篇</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/">系列总索引</a><span class="d">全部十期的参考资料入口</span></li>
+    </ul>
+  </div>
+
+  <div class="foot">公众号「拉普拉斯大魔王」 · 深度解读系列（Agent Memory）<br>把 AI Agent 的记忆系统一个个拆开看：架构、原理、功能与用法，一次理清讲透。</div>
+</div>
+</body>
+</html>
