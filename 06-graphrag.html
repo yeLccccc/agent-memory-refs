@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）六：GraphRAG</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #26355e;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）六</h1>
+    <div class="sub">《GraphRAG 把全局提问变成一次索引生意》 · 2026-10</div>
+    <div class="note">说明：36,284 星（microsoft/graphrag）为 GitHub API 截至 2026-10-10；论文 win rate 为官方自报（gpt-4-turbo，2024-04 口径）；LazyGraphRAG 数字（0.1% 索引成本、1/700 查询成本）为官方博客自报（2024-11-25）；v3.3.0 维护模式声明为 README 原文引用。源码结论实测自 v3.3.0 快照（2026-10-10）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>官方资源 · 仓库 / 论文 / 文档</h2>
+    <ul>
+      <li><a href="https://github.com/microsoft/graphrag">GitHub 仓库 microsoft/graphrag</a><span class="d">「This project is largely in maintenance mode...」；monorepo 八子包；自带 LoCoMo 之外的评测演示与《Operation Dulce》示例语料</span></li>
+      <li><a href="https://arxiv.org/abs/2404.16130">论文 · From Local to Global: A Graph RAG Approach to Query-Focused Summarization（arXiv:2404.16130）</a><span class="d">六步管线、gleaning、Leiden 分层、map-reduce 全局搜索；六条件评测（C0-C3/TS/SS）与 win rate 出处</span></li>
+      <li><a href="https://microsoft.github.io/graphrag/">GraphRAG 官方文档站</a><span class="d">index / query（global/local/DRIFT）/ config / prompt tuning 四区</span></li>
+      <li><a href="https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/">起源博客 · GraphRAG: Unlocking LLM discovery on narrative private data（2024-02-13）</a><span class="d">Larson &amp; Truitt，社区摘要思想的起点</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>机制博客 · DRIFT / 动态社区选择 / LazyGraphRAG / v1.0</h2>
+    <ul>
+      <li><a href="https://www.microsoft.com/en-us/research/blog/introducing-drift-search-combining-global-and-local-search-methods-to-improve-quality-and-efficiency/">Introducing DRIFT Search（2024-10-31）</a><span class="d">全局广度+局部深挖的迭代混合</span></li>
+      <li><a href="https://www.microsoft.com/en-us/research/blog/graphrag-improving-global-search-via-dynamic-community-selection/">Improving global search via dynamic community selection（2024-11-15）</a><span class="d">LLM 先筛相关社区再 map，省全局搜索成本</span></li>
+      <li><a href="https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/">LazyGraphRAG: Setting a new standard for quality and cost（2024-11-25）</a><span class="d">0.1% 索引成本、1/700 查询成本、relevance test budget；2025-06-06 编者注：已并入 Microsoft Discovery 与 Azure Local public preview</span></li>
+      <li><a href="https://www.microsoft.com/en-us/research/blog/moving-to-graphrag-1-0-streamlining-ergonomics-for-developers-and-users">Moving to GraphRAG 1.0（2024-12-16）</a><span class="d">配置与 CLI 重构；此后 v2/v3 无官方博客，靠仓库 breaking-changes</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>对照锚点 · 系列内</h2>
+    <ul>
+      <li><a href="https://github.com/getzep/graphiti">Graphiti 仓库（系列第五篇主角）</a><span class="d">README 对照表「Data Handling: Batch-oriented processing vs Continuous, incremental updates」——本篇第八节的对照对象；其 Leiden→label propagation 的社区动态化与本篇形成互补</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/05-zep-graphiti.html">五 Zep/Graphiti 篇参考资料</a><span class="d">双时态模型与边失效的源码细节</span></li>
+    </ul>
+  </div>
+
+  <div class="foot">公众号「拉普拉斯大魔王」 · 深度解读系列（Agent Memory）<br>把 AI Agent 的记忆系统一个个拆开看：架构、原理、功能与用法，一次理清讲透。</div>
+</div>
+</body>
+</html>
