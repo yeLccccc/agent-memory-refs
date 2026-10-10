@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）一：OpenViking</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #2f6f4f;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）一</h1>
+    <div class="sub">《OpenViking 把 Agent 上下文做成一个文件系统》 · 2026-10</div>
+    <div class="note">说明：正文中官方基准数字（LoCoMo、tau2-bench 等）均为<b>官方自报</b>（v0.3.22 基准，embedding 与 VLM 为火山系模型），截至发文尚无独立第三方完整复测；文中机制细节均带版本口径（文档口径 v0.4.16，源码实测为主干 2026-10 快照）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>官方资源</h2>
+    <ul>
+      <li><a href="https://github.com/volcengine/OpenViking">GitHub 仓库 volcengine/OpenViking</a><span class="d">README（基准数字、论文、安装）、benchmark/locomo 复现目录、源码</span></li>
+      <li><a href="https://docs.openviking.ai/">官方文档站</a><span class="d">英文站 108 页 · docs.openviking.ai</span></li>
+      <li><a href="https://docs.openviking.ai/en/concepts/01-architecture">文档 · Architecture Overview（四层架构与四原则）</a></li>
+      <li><a href="https://docs.openviking.ai/en/concepts/02-context-types">文档 · Context Types（三类上下文与记忆类型）</a></li>
+      <li><a href="https://docs.openviking.ai/en/concepts/03-context-layers">文档 · Context Layers（L0/L1/L2 与 sidecar）</a></li>
+      <li><a href="https://docs.openviking.ai/en/concepts/06-extraction">文档 · Context Extraction（入库解析管线）</a></li>
+      <li><a href="https://docs.openviking.ai/en/concepts/07-retrieval">文档 · Retrieval Mechanism（检索机制，「已移除」声明出处）</a></li>
+      <li><a href="https://docs.openviking.ai/en/concepts/08-session">文档 · Session Management（commit 两阶段与 memory_diff）</a></li>
+      <li><a href="https://docs.openviking.ai/en/concepts/15-acl">文档 · Resource Access Control（ACL 三档权限与继承）</a></li>
+      <li><a href="https://docs.openviking.ai/en/guides/06-mcp-integration">文档 · MCP Integration（20 个 MCP 工具）</a></li>
+      <li><a href="https://docs.openviking.ai/en/context-compilation/01-overview">文档 · Context Compilation（ov compile 五种模式）</a></li>
+      <li><a href="https://arxiv.org/abs/2605.29640">论文 VikingMem（VLDB 2026，arXiv:2605.29640）</a><span class="d">编号出自官方 README</span></li>
+      <li><a href="https://openviking.ai/">官网 openviking.ai（含 context-engineering 学习页）</a></li>
+      <li><a href="https://www.volcengine.com/docs/84313/1804518">火山引擎产品页 · OpenViking Context</a></li>
+      <li><a href="https://developer.volcengine.com/articles/7602117247670157322">火山引擎开发者社区 · OpenViking：面向 Agent 的上下文数据库</a></li>
+      <li><a href="https://opensource.bytedance.com/projectDetail/4">字节跳动开源官网 · OpenViking</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>社区与第三方视角</h2>
+    <ul>
+      <li><a href="https://aiknowledge.cn/collection/1205-openviking-%E4%B8%AD%E6%96%87%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB%E6%95%99%E7%A8%8B">灏天文库 · OpenViking 中文源码精读教程（31 篇，基于 v0.4.9）</a><span class="d">四设计哲学、旧版目录递归检索、hotness 等实现侧细节的出处</span></li>
+      <li><a href="https://deepwiki.com/volcengine/OpenViking/11.1-locomo-long-term-memory-benchmark">DeepWiki · LoCoMo 基准复现导览</a></li>
+      <li><a href="https://dev.to/todoforai/947-on-locomo-and-why-most-of-the-gap-between-published-memory-numbers-isnt-the-memory-26bo">dev.to · 94.7% on LoCoMo（基准方法学批评）</a></li>
+      <li><a href="https://dev.to/_24569b2abcc8f3fa4c094/from-47-to-84-the-full-locomo-benchmark-record-of-the-nylonme-memory-engine-1nb6">dev.to · NylonME 的 LoCoMo 刷榜记录</a></li>
+      <li><a href="https://blog.gitcode.com/6bc6259f26a73b792f8bb62f39f5c17d.html">GitCode · Hermes 跨记忆评测指南（Native/E2E/Preingest）</a></li>
+      <li><a href="https://github.com/udjin-labs/mnemostack">mnemostack · 第三方记忆评测栈</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>本篇源码深读说明</h2>
+    <ul>
+      <li>第七、八章事实来自对仓库主干的实读（2026-10 快照），关键锚点如 freshness 决策树（storage/queuefs/semantic_ops/freshness_policy.py）、ExtractLoop（session/memory/extract_loop.py）、memory_diff 结构（session/compressor_v3.py）均可在仓库当前主干对照</li>
+      <li>文中「文档漂移」三处（tool-results 目录、记忆模板 11 类、HierarchicalRetriever 类名化石）以仓库主干代码为准</li>
+    </ul>
+  </div>
+
+  <div class="foot">深度解读系列（Agent Memory）· 参考资料站<br>系列目录：<a href="https://yelccccc.github.io/agent-memory-refs/">yelccccc.github.io/agent-memory-refs</a></div>
+</div>
+</body>
+</html>
