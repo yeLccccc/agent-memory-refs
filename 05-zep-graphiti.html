@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）五：Zep/Graphiti</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #1d3d52;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）五</h1>
+    <div class="sub">《Zep/Graphiti 给记忆装上双时钟》 · 2026-10</div>
+    <div class="note">说明：31,608 星（getzep/graphiti）为 GitHub API 截至 2026-10-10；LoCoMo 94.7%（Zep 研究页）与 92.5（Mem0 研究页）均为<b>官方自报</b>，且 reader/judge 模型口径不同（gpt-5.4），互相不可比；Konig 性能数字（p95&lt;100ms 等）为官方博客自报。源码结论实测自 graphiti main HEAD（pyproject 0.31.0，未发版）与 getzep/zep HEAD 快照（2026-10-10）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>官方资源 · Graphiti / Zep</h2>
+    <ul>
+      <li><a href="https://github.com/getzep/graphiti">GitHub 仓库 getzep/graphiti</a><span class="d">开源引擎：双时态知识图谱；README 对照表「Self-hosted only」vs Zep「Fully managed」；Kuzu 已标弃用</span></li>
+      <li><a href="https://arxiv.org/abs/2501.13956">论文 · Zep: A Temporal Knowledge Graph Architecture for Agent Memory（arXiv:2501.13956）</a><span class="d">双时态模型 T/T′、三层子图、边失效；附录含五段抽取 prompt 原文；DMR 94.8% vs MemGPT 93.4% 出处</span></li>
+      <li><a href="https://www.getzep.com/research">Zep 研究页（现行口径）</a><span class="d">LoCoMo 94.7%（1,459/1,540）· LongMemEval 90.2% · reader/judge gpt-5.4 · auto search 86.5%——全部官方自报</span></li>
+      <li><a href="https://github.com/getzep/graphiti/tree/main/mcp_server">Graphiti MCP server</a><span class="d">12 个 MCP 工具，自称 experimental，默认 FalkorDB</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>LoCoMo 罗生门 · 一手文件</h2>
+    <ul>
+      <li><a href="https://blog.getzep.com/lies-damn-lies-statistics-is-mem0-really-sota-in-agent-memory/">Zep 博客 · Lies, Damn Lies, &amp; Statistics: Is Mem0 Really SOTA in Agent Memory?</a><span class="d">2025-05-06 首发、2026-06 更新；指 Mem0 三处实现错误；更正声明（75.14% ± 0.17）在文首</span></li>
+      <li><a href="https://github.com/getzep/zep-papers/issues/5">zep-papers issue #5 · Revisiting Zep's 84% LoCoMo Claim</a><span class="d">Mem0 CTO Deshraj 2025-05-08 开：category-5 分子错算指控、重算 58.44% ± 0.20、created_at 时间线之争；Daniel Chalef 05-12 回帖认错+定稿 75.14，05-19 关闭</span></li>
+      <li><a href="https://blog.getzep.com/state-of-the-art-agent-memory/">Zep 博客 · Zep Is The New State of the Art In Agent Memory（2025-01-22）</a><span class="d">LongMemEval +18.5%、token &lt;2%、延迟 -90%；single-session-assistant 回退 17.7% 的表</span></li>
+      <li><a href="https://arxiv.org/abs/2504.19413">Mem0 论文（arXiv:2504.19413）</a><span class="d">罗生门起点：同表 full-context 基线约 73 压过所有记忆系统</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Konig 与工程博客</h2>
+    <ul>
+      <li><a href="https://blog.getzep.com/why-we-built-a-graph-database-service-for-agent-memory/">Why we built a graph database service for agent memory（2026-08-27）</a><span class="d">Konig=Context Graph Engine：百万张小图、三温层、无 Cypher、DiskANN 否决案、双时态原生；性能数字官方自报</span></li>
+      <li><a href="https://blog.getzep.com/markdown-is-not-agent-memory/">Markdown is not agent memory（2026-06-23）</a><span class="d">图谱派对文件系的正面进攻，点名 Manus / Claude Code / Letta MemFS；也承认单用户文件方案 proportionate</span></li>
+      <li><a href="https://github.com/getzep/zep">GitHub 仓库 getzep/zep</a><span class="d">「This repository is not Zep's product or service」；老 Go 社区版在 legacy/（弃用）；自带 benchmarks/locomo 评测 harness 与官方实测（accuracy.mean ≈ 0.803，2025-12 runs）</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>系列前情</h2>
+    <ul>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/">系列参考资料总目录</a><span class="d">一 OpenViking · 二 Mem0 · 三 Letta · 四 EverOS+memU · 本篇五 Zep/Graphiti</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/02-mem0.html">二 Mem0 篇参考资料</a><span class="d">9.2 节引用了 Zep rebuttal 的三处实现错误与本篇 8.1 全序列的关系</span></li>
+    </ul>
+  </div>
+
+  <div class="foot">公众号「拉普拉斯大魔王」 · 深度解读系列（Agent Memory）<br>把 AI Agent 的记忆系统一个个拆开看：架构、原理、功能与用法，一次理清讲透。</div>
+</div>
+</body>
+</html>
