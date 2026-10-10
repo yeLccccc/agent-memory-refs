@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）七：MemOS</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #2a6f6f;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）七</h1>
+    <div class="sub">《MemOS 一张记忆操作系统的施工进度表》 · 2026-10</div>
+    <div class="note">说明：11,792 星（MemTensor/MemOS）为 GitHub API 截至 2026-10-10；论文自报成绩（LoCoMo 75.80 / LongMemEval 77.8）出自 arXiv:2507.03724 v4 Table 3/4（GPT-4o-mini 骨干、单张 H800）；OmniMemEval 快照成绩（88.83 / 89.20）为其公开结果文档所载（gpt-4.1-mini 作答、gpt-4o-mini 判卷、LoCoMo 剔除 category 5、1,540 题）；云面板 92.34 / 93.40 为第三方评测文章转述（据报道）；OpenClaw 五域均值 50.07 与 README 50.87 的差异为本篇验算。源码结论实测自 main 快照 v2.0.33（2026-10-10）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>官方资源 · 仓库 / 论文 / 评测</h2>
+    <ul>
+      <li><a href="https://github.com/MemTensor/MemOS">GitHub 仓库 MemTensor/MemOS</a><span class="d">MemOS 2.0 Stardust；本篇版本时间线与 Performance 表出处；PyPI 发行名 MemoryOS</span></li>
+      <li><a href="https://arxiv.org/abs/2507.03724">论文 · MemOS: A Memory OS for AI System（arXiv:2507.03724，v4 2025-12-03）</a><span class="d">MemCube 元数据三组、三态转换、五态生命周期、KV 加速实验（§6.5：前提自述「assumes memory has already been preprocessed and cached on GPU」）</span></li>
+      <li><a href="https://github.com/MemTensor/OmniMemEval">OmniMemEval 仓库（统一评测 harness）</a><span class="d">五套用户记忆卷 + AgentBench agent 记忆赛道；14 产品 adapter；复现脚本公开</span></li>
+      <li><a href="https://github.com/MemTensor/OmniMemEval/blob/agent_mem_dev/docs/benchmark-results.md">OmniMemEval 公开结果快照（benchmark-results.md）</a><span class="d">复现成绩与官方自报同表并排；MemOS 88.83/89.20；HaluMem 上 EverOS 88.66 反超；效率指标=答题阶段平均上下文 token</span></li>
+      <li><a href="https://github.com/MemTensor/OmniMemEval/blob/agent_mem_dev/docs/agent_memory/eval_res.md">Agent 赛道结果（OpenClaw / Hermes 五域表）</a><span class="d">memory_train_backup_test 协议（清理→训练→沉淀→备份→恢复→测试）；OpenClaw 五域数据为本篇 50.07 验算出处</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>排雷与第三方视角</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2506.06326">MemoryOS 论文（arXiv:2506.06326，2025-05-30，北邮团队）</a><span class="d">与 MemOS 撞名的另一个项目：短期/中期/长期三层存储 + FIFO + 分页组织；比 MemOS 论文早一个月提交</span></li>
+      <li><a href="https://watcha.cn/discuss/10639">第三方横评 · 跑了 3500 道测试题（观猹/刀哥聊AI）</a><span class="d">OmniMemEval 五套卷白话解释、TF-IDF 土办法基线 45.98%、本地插件「向量模型下载失败静默降级关键词模式」实测坑</span></li>
+      <li><a href="https://cronfeed.work/zh/ai-china-memtensor-memos-governed-forgetting-2026">MemTensor 要让「遗忘」成为受治理的选择（cronfeed.work，2026-07-29）</a><span class="d">公司背景（2024-11 成立、鄂维南任首席科学顾问）、Pre-A 融资（据报道）、派生链撤销难题、三套信任安排分析</span></li>
+      <li><a href="https://memos-docs.openmem.net/">MemOS 官方文档站</a><span class="d">core_concepts（memory cartridge 比喻、三态循环宣称）与 MemOS Cloud 入口</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>对照锚点 · 系列内</h2>
+    <ul>
+      <li><a href="https://github.com/mem0ai/mem0">Mem0 仓库（系列第二篇主角）</a><span class="d">OmniMemEval 复现 LoCoMo 77.68 vs 自报 92.5；OpenClaw BrowseComp-Plus 13.33 低于基线 18.46——记忆插件不是万灵药</span></li>
+      <li><a href="https://github.com/getzep/graphiti">Graphiti 仓库（系列第五篇主角）</a><span class="d">OmniMemEval 复现 LoCoMo 63.83 vs 自报 94.7；LongMemEval 复现 79.80 但上下文 117,106 tokens</span></li>
+      <li><a href="https://github.com/EverMind-AI/EverOS">EverOS（系列第四篇主角）</a><span class="d">OmniMemEval HaluMem 复现第一 88.66（MemOS 80.91）；agent 赛道数据集 EvoAgentBench 即其母公司 EverMind 出品</span></li>
+      <li><a href="https://github.com/letta-ai/letta">Letta（系列第三篇主角）</a><span class="d">sleep-time compute 与 MemOS Dream 插件同思路；OmniMemEval HaluMem 85.43 / LongMemEval 77.67</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/">系列总索引</a><span class="d">已发布：一 OpenViking · 二 Mem0 · 三 Letta · 四 EverOS/memU · 五 Zep/Graphiti · 六 GraphRAG · 七 MemOS</span></li>
+    </ul>
+  </div>
+
+  <div class="foot">公众号「拉普拉斯大魔王」 · 深度解读系列（Agent Memory）<br>把 AI Agent 的记忆系统一个个拆开看：架构、原理、功能与用法，一次理清讲透。</div>
+</div>
+</body>
+</html>
