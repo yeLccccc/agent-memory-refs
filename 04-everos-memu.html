@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）四：EverOS + memU</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #2f6f4f;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）四</h1>
+    <div class="sub">《EverOS + memU 把记忆写成会演化的 wiki》 · 2026-10</div>
+    <div class="note">说明：星标 13,395（EverMind-AI/EverOS）与 14,520（NevaMind-AI/memU）为 GitHub API 截至 2026-10-10；两家基准数字（EverMemOS 四基准、memU LoCoMo 92.09%）均为<b>官方自报</b>口径；EverMind 公司背景出自钛媒体/新浪财经报道。源码结论实测自两仓 HEAD 快照（2026-10-10）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>官方资源 · EverOS / EverMind</h2>
+    <ul>
+      <li><a href="https://github.com/EverMind-AI/EverOS">GitHub 仓库 EverMind-AI/EverOS</a><span class="d">「One portable memory layer for every AI agent: local-first, Markdown-native」；含 benchmarks/ 与中文 README</span></li>
+      <li><a href="https://docs.evermind.ai">EverOS 文档站</a><span class="d">docs.evermind.ai</span></li>
+      <li><a href="https://arxiv.org/abs/2601.02163">论文 · EverMemOS: A Self-Organizing Memory Operating System for Structured Long-Horizon Reasoning（arXiv:2601.02163）</a><span class="d">engram 启发生命周期：MemCells → MemScenes → 重建式回忆；四基准数字出处</span></li>
+      <li><a href="https://evermind.ai/activities">Memory Genesis Competition 2026</a><span class="d">总奖金 8 万美元，Memory+Agent / Plugin / Infra 三赛道</span></li>
+      <li><a href="https://console.evermind.ai">EverMemOS Cloud 内测入口</a><span class="d">论文机制的云服务化（waitlist）</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>官方资源 · memU / NevaMind</h2>
+    <ul>
+      <li><a href="https://github.com/NevaMind-AI/memU">GitHub 仓库 NevaMind-AI/memU</a><span class="d">「Personal memory, stored as Wiki」；「core memory logic is only 500 lines」</span></li>
+      <li><a href="https://memu.pro">memU 官网</a><span class="d">跨 agent 共享记忆层；页面样例含 Source 溯源与 Related 链接</span></li>
+      <li><a href="https://memu.pro/SKILL.md">memU 安装 SKILL.md</a><span class="d">路由式接入：agent 读此文件自装；record / inject 两缝模型与各 host 二进制清单</span></li>
+      <li><a href="https://memu.so">memU 云端入口</a><span class="d">API key 获取；跨设备同步</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>公司史与第三方分析</h2>
+    <ul>
+      <li><a href="https://c.m.163.com/news/a/KL150NHH05118O92.html">钛媒体 · 陈天桥联手邓亚峰，为 AI 装上「不失忆大脑」</a><span class="d">EverMind=盛大全资孵化；EverMemOS 论文机制与四基准自报数字；8 万美元大赛（2026-02）</span></li>
+      <li><a href="https://finance.sina.com.cn/stock/t/2026-05-14/doc-inhxvpqq8818759.shtml">新浪财经 · 陈天桥旗下 EverMind 推出 AI 寻亲平台 ReUnite</a><span class="d">公司方向的侧面佐证</span></li>
+      <li><a href="https://zylos.ai/zh/research/2026-01-09-memu-memory-framework">Zylos Research · memU 深度研究（2026-01）</a><span class="d">三层架构与双检索的第三方梳理；LoCoMo 92.09% 转述出处（以官方仓库为准）</span></li>
+      <li><a href="https://forum.letta.com/t/agent-memory-solutions-letta-vs-mem0-vs-zep-vs-cognee/1477">Letta 论坛 · 记忆方案四方对比</a><span class="d">社区对照讨论，可延伸阅读</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>源码深读说明</h2>
+    <ul>
+      <li>本篇源码口径：EverMind-AI/EverOS 与 NevaMind-AI/memU 两仓 HEAD tarball 快照（2026-10-10）；文中 file:line 锚点相对该快照，后续版本可能漂移。</li>
+      <li>排雷三条：①EverOS 是开源仓库名，EverMemOS 是论文/云服务/产品名，同一团队；②memU 与 Mem0 无关，两个独立项目；③EverMind（盛大系，本篇）与 MemTensor/MemOS（系列第七篇主角）是两家公司。</li>
+      <li>第三方分析站 AISignal 的 EverOS 页为 AI 生成内容（星标数与基准数字与仓库不符），本篇未采用其数据。</li>
+    </ul>
+  </div>
+
+  <div class="foot">深度解读系列（Agent Memory）· 参考资料清单<br><a href="https://yelccccc.github.io/agent-memory-refs/">返回系列目录</a></div>
+</div>
+</body>
+</html>
