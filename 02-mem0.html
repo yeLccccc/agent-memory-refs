@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）二：Mem0</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #2f6f4f;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）二</h1>
+    <div class="sub">《Mem0 最简单的记忆，为什么最难做对》 · 2026-10</div>
+    <div class="note">说明：正文中 LoCoMo / LongMemEval 数字均标注口径——论文数字出自 arXiv:2504.19413（ECAI 2025），v2 算法对比出自官方迁移指南（<b>官方自报</b>，开源 SDK 口径），README 首页数字为托管平台口径；Zep 方数字出自 Zep 官方博客。星标数 66,918 为 GitHub API 截至 2026-10-10。源码结论实测自主干快照（SDK v2.2.1，commit b7ad69a，2026-10-07）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>官方资源</h2>
+    <ul>
+      <li><a href="https://github.com/mem0ai/mem0">GitHub 仓库 mem0ai/mem0</a><span class="d">README（平台口径基准表及「私货」脚注）、源码、AGENTS.md 贡献纪律</span></li>
+      <li><a href="https://docs.mem0.ai/">官方文档站</a><span class="d">docs.mem0.ai</span></li>
+      <li><a href="https://docs.mem0.ai/migration/api-changes">v2 迁移指南：Migrating to the New Memory Algorithm</a><span class="d">ADD-only、混合检索、entity linking 的官方说明；破坏性变更与 LoCoMo 71.4→91.6 / LongMemEval 67.8→93.4 出处</span></li>
+      <li><a href="https://github.com/mem0ai/mem0/releases/tag/v2.0.0">Release v2.0.0（2026-04）</a><span class="d">「A ground-up redesign」：单遍抽取、混合检索、内置实体链接、删除约 4000 行图驱动</span></li>
+      <li><a href="https://docs.mem0.ai/changelog/sdk">SDK Changelog</a><span class="d">v1→v2 全部转折（graph 移除、FAISS pickle 修复、list 契约统一等）带 PR 号</span></li>
+      <li><a href="https://docs.mem0.ai/platform/features/graph-threshold">Graph Memory（Platform 功能页）</a><span class="d">图记忆在托管版「内置常开」的说明</span></li>
+      <li><a href="https://mem0.ai/blog/introducing-openmemory-mcp">博客 · Introducing OpenMemory MCP</a><span class="d">OpenMemory 的原始发布文；注：openmemory 名称现已复用于另一个 CLI 产品</span></li>
+      <li><a href="https://github.com/mem0ai/mem0-chrome-extension">mem0-chrome-extension</a><span class="d">OpenMemory 形态的延续：给 ChatGPT / Claude / Perplexity 加记忆的浏览器扩展</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>论文与 Benchmark 论战</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2504.19413">Mem0 论文（arXiv:2504.19413，ECAI 2025）</a><span class="d">+26% vs OpenAI、p95 时延 -91%、Mem0g +2% 的出处；注意：论文描述的两阶段算法已被 v2 删除</span></li>
+      <li><a href="https://www.getzep.com/blog/lies-damn-lies-statistics-is-mem0-really-sota-in-agent-memory">Zep · Lies, Damn Lies, &amp; Statistics: Is Mem0 Really SOTA in Agent Memory?</a><span class="d">对照组实现三指控（用户模型、时间戳、串行搜索）、Zep 修正分 75.14%、全上下文基线悖论</span></li>
+      <li><a href="https://personaldevblog.web.app/zh/blog/mem0-deep-dive-from-paper-to-production-zh">第三方深析 · 26% 的真相：Mem0 论文、Benchmark 战争</a><span class="d">论战双方立场的中文梳理</span></li>
+      <li><a href="https://dreaming.press/posts/how-to-read-an-agent-memory-benchmark">How to Read an Agent-Memory Benchmark</a><span class="d">「Mem0 92.5、Mastra 95、Zep 修正 84→58——they can't all be right」</span></li>
+      <li><a href="https://www.kdjingpai.com/ai-zhinengtijiyiban/">中文报道 · AI 智能体记忆性能之争：Zep 指 Mem0 基准测试存疑</a><span class="d">LoCoMo 数据集质量缺陷清单的中文摘要</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>第三方技术分析与教程</h2>
+    <ul>
+      <li><a href="https://dreaming.press/posts/inside-mem0-2x-add-only-memory-engine.html">Inside Mem0 2.x: The ADD-Only Engine That Dropped the Graph Store</a><span class="d">v2 写读路径的第三方走读；「矛盾共存、prune 自管」的诚实账</span></li>
+      <li><a href="https://www.southbridge.ai/blog/mem0-technical-analysis-report">Southbridge · Mem0 Technical Analysis Report</a></li>
+      <li><a href="https://www.ssdnodes.com/learn/lang/zh-hant/self-host-mem0-memory-server-vps">自托管部署指南（中文）</a><span class="d">「需要装 Neo4j 吗？不需要——如果教程要求，说明它早于当前代码」</span></li>
+      <li><a href="https://jimo.studio/blog/mem0-deep-dive-architecture-principles-of-intelligent-memory-layer">积墨AI · Mem0 深度解析（八阶段流水线）</a><span class="d">注意：此为 v1 口径，v2 后「八阶段」与「四操作裁决」流程已变更</span></li>
+      <li><a href="https://juejin.cn/post/7680066396042625070">掘金 · Mem0 实战：给 AI 应用加上长期记忆</a></li>
+      <li><a href="https://yindongliang.com/posts/ai-agent-memory-systems-mem0-survey">AI Agent 记忆系统技术调研：Mem0 与主流方案对比</a></li>
+      <li><a href="https://segmentfault.com/a/1190000047650677">SegmentFault · Agent 上下文丢失：原因、影响与主流解决方案</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>源码深读说明</h2>
+    <ul>
+      <li>本篇源码口径：mem0ai/mem0 主干快照 commit b7ad69a（2026-10-07），Python SDK 版本 2.2.1；文中 file:line 锚点均相对该快照，后续版本可能漂移。</li>
+      <li>复刻路线的模块划分与行数量级（约 1,600 行 + 可选实体模块 250 行）为本系列基于源码结构的工程估算，非官方数据。</li>
+    </ul>
+  </div>
+
+  <div class="foot">深度解读系列（Agent Memory）· 参考资料清单<br><a href="https://yelccccc.github.io/agent-memory-refs/">返回系列目录</a></div>
+</div>
+</body>
+</html>
