@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）三：Letta</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #2f6f4f;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）三</h1>
+    <div class="sub">《Letta 把 Agent 记忆放进了 git 仓库》 · 2026-10</div>
+    <div class="note">说明：星标数 25,093（letta-ai/letta）与 3,562（letta-ai/letta-code）为 GitHub API 截至 2026-10-10；种子轮估值 7,000 万美元为第三方报道口径（<b>据报道</b>）；sleep-time compute 与 LoCoMo 对照数字分别出自 arXiv 论文与 Letta 官方博客。源码结论实测自 letta-ai/letta-code 快照（v0.34.10，2026-10-10）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>官方资源</h2>
+    <ul>
+      <li><a href="https://github.com/letta-ai/letta">GitHub 仓库 letta-ai/letta（平台门面仓）</a><span class="d">MemGPT 原仓库，现为 Platform 门面；「MemGPT 已弃用，源码在 letta-code」的声明在此 README</span></li>
+      <li><a href="https://github.com/letta-ai/letta-code">GitHub 仓库 letta-ai/letta-code（当前源码）</a><span class="d">stateful agent harness：memory blocks、MemFS、dreaming、skills、subagents、channels、mods</span></li>
+      <li><a href="https://docs.letta.com/">官方文档站</a><span class="d">docs.letta.com（Agent SDK / Platform CLI / 自托管 App Server）</span></li>
+      <li><a href="https://docs.letta.com/letta-code/memfs">文档 · MemFS（git-backed 记忆文件系统）</a><span class="d">记忆=agent 专属 git 仓库；根目录文件常驻 system prompt；MEMORY.md 签牌；worktree 并发</span></li>
+      <li><a href="https://docs.letta.com/letta-code/memory">文档 · Memory &amp; dreaming</a><span class="d">/init、/remember、/doctor、dreaming 触发条件（N 步后 / compaction 时）与二轮审查</span></li>
+      <li><a href="https://www.letta.com/blog/memory-blocks">博客 · Memory Blocks: The Key to Agentic Context Management（2025-05）</a><span class="d">block 四要素、逐块持久化 block_id、上下文「compiled」自 DB 状态、Jinja 模板、共享 block</span></li>
+      <li><a href="https://www.letta.com/blog/introducing-the-letta-code-app">博客 · Introducing the Letta Code App（2026-04-06）</a><span class="d">/init 从现有代码与 Claude Code/Codex 历史会话初始化记忆；memory subagents；/doctor</span></li>
+      <li><a href="https://www.letta.com/research/">Letta Research 页</a><span class="d">论文、Leaderboard、基准方法学的官方入口</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>论文与基准</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2310.08560">MemGPT: Towards LLMs as Operating Systems（arXiv:2310.08560，2023-10）</a><span class="d">虚拟上下文管理、OS 分层记忆、中断控制流；文档分析与多会话聊天两域验证；注意：「MemGPT」现为论文技术名</span></li>
+      <li><a href="https://arxiv.org/abs/2504.13171">Sleep-time Compute: Beyond Inference Scaling at Test-time（arXiv:2504.13171，2025-04）</a><span class="d">同等准确率省约 5x 测试时算力；+13%/+18%；多查询摊诒 2.5x；learned context 写入共享 block</span></li>
+      <li><a href="https://www.letta.com/blog/benchmarking-ai-agent-memory">博客 · Benchmarking AI Agent Memory: Is a Filesystem All You Need?（2025-08）</a><span class="d">纯文件方案 gpt-4o-mini 上 LoCoMo 74.0% vs Mem0 官方自报图变体 68.5%；对 Mem0 所报 MemGPT 数字的质疑原文</span></li>
+      <li><a href="https://docs.letta.com/guides/evals/concepts/overview">Letta Leaderboard（记忆基准）概念页</a><span class="d">固定框架考模型、动态造记忆交互的方法学；对照 LoCoMo 式静态检索</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>公司史与第三方分析</h2>
+    <ul>
+      <li><a href="https://trustvector.dev/agents/memgpt">TrustVector · Letta（formerly MemGPT）时间线档案</a><span class="d">2024-09 改名；2026-03 转向 Letta Code、弃用服务端 memory tools/templates/identities 的第三方时间线</span></li>
+      <li><a href="https://m.10100.com/article/63326771">中文报道 · Letta 获 Felicis 领投 1,000 万美元种子轮（2024-09）</a><span class="d">伯克利 Sky Computing Lab spinout；创始人 Sarah Wooders、Charles Packer；估值 7,000 万美元为报道口径</span></li>
+      <li><a href="https://forum.letta.com/t/agent-memory-solutions-letta-vs-mem0-vs-zep-vs-cognee/1477">Letta 论坛 · Agent memory solutions: Letta vs Mem0 vs Zep vs Cognee</a><span class="d">四条路线的社区对比讨论</span></li>
+      <li><a href="https://www.toutiao.com/article/7291873151037473321">中文解读 · 把 LLM 视作操作系统，它就拥有了无限「虚拟」上下文</a><span class="d">MemGPT 论文机制的早期中文梳理（论文口径）</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>源码深读说明</h2>
+    <ul>
+      <li>本篇源码口径：letta-ai/letta-code 主干快照（2026-10-10，package @letta-ai/letta-code v0.34.10，Bun/TypeScript，另含 python/letta_code 子包）；文中 file:line 锚点均相对该快照，后续版本可能漂移。</li>
+      <li>排雷：letta-ai/letta 老仓库（Python server，MemGPT 论文实现）已停止作为主源码；2026-03/04 起服务端 memory tools/templates/identities/MCP 集成/tool rules 弃用，网上大量「letta server + postgres」教程为旧世界内容。</li>
+      <li>复刻路线的模块划分与行数量级为本系列基于源码结构的工程估算，非官方数据。</li>
+    </ul>
+  </div>
+
+  <div class="foot">深度解读系列（Agent Memory）· 参考资料清单<br><a href="https://yelccccc.github.io/agent-memory-refs/">返回系列目录</a></div>
+</div>
+</body>
+</html>
