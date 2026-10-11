@@ -27,8 +27,8 @@
   <div class="card">
     <div class="back"><a href="index.html">← 返回目录</a></div>
     <h1>万字讲透各家 AI 编程 Agent Compaction机制 · 参考资料</h1>
-    <div class="sub">公众号「拉普拉斯大魔王」专题横评。正文外链被微信剥除，可点击版全部在本页；数据口径截至 2026-10-10。</div>
-    <div class="note"><b>数据口径与可靠性说明：</b>① Claude Code 默认触发百分比为社区反推，官方只给 token 锚点（200K 边界 / 1M 约 967K）；② Claude Code「9 段式」提示词为社区<b>行为学重建</b>，非官方泄露；③ ZCode 压缩提示词来自第三方泄露档案（2026-08），<b>未经官方证实</b>；④ Aider 经多版本源码核对<b>不存在 /compact 命令</b>，历史压缩为后台全自动；⑤ hermes 摘要骨架以源码为准（官方文档滞后）；⑥ dots 闭源，本文仅产品层描述；⑦ OpenClaw 压缩细节以官方文档为准，非官方镜像 wiki 的阈值数字不可信。</div>
+    <div class="sub">公众号「拉普拉斯大魔王」专题横评。正文外链被微信剥除，可点击版全部在本页；数据口径截至 2026-10-11。</div>
+    <div class="note"><b>数据口径与可靠性说明：</b>① Claude Code 默认触发百分比为社区反推，官方只给 token 锚点（200K 边界 / 1M 约 967K）；② Claude Code「9 段式」提示词为社区<b>行为学重建</b>，非官方泄露；③ ZCode 已于 2026-09-20 <b>官方开源</b>（zai-org/ZCode，Apache-2.0），压缩提示词在 <b>core/src/compact/prompt.ts</b> 直接可查；此前 2026-08 的第三方泄露版与官方版结构一致（泄露为真，仅作历史对照）；④ Aider 经多版本源码核对<b>不存在 /compact 命令</b>，历史压缩为后台全自动；⑤ hermes 摘要骨架以源码为准（官方文档滞后）；⑥ dots 闭源，本文仅产品层描述；⑦ OpenClaw 压缩细节以官方文档为准，非官方镜像 wiki 的阈值数字不可信。</div>
   </div>
 
   <div class="card">
@@ -41,7 +41,8 @@
     <div class="ref"><span class="tag src">官方</span>OpenCode 压缩文档（V2 滚动摘要 / keep.tokens / prune）<br><a href="https://opencode.ai/v2/docs/compaction">opencode.ai/v2/docs/compaction</a></div>
     <div class="ref"><span class="tag src">官方</span>OpenCode 摘要模板源码（SUMMARY_TEMPLATE 五段）<br><a href="https://github.com/sst/opencode/blob/dev/packages/core/src/session/compaction.ts">github.com/sst/opencode · core/src/session/compaction.ts</a></div>
     <div class="ref"><span class="tag src">官方</span>ZCode 官方文档：自动压缩触发点与「不可配置」声明<br><a href="https://zcode.z.ai/cn/docs/configuration">zcode.z.ai/cn/docs/configuration</a> · <a href="https://zcode.z.ai/cn/docs/memory">/docs/memory（Memory 机制）</a></div>
-    <div class="ref"><span class="tag warn">泄露</span>ZCode 压缩提示词 · 第三方泄露档案（elder-plinius/CL4R1T4S，未经官方证实）<br><a href="https://github.com/elder-plinius/CL4R1T4S">github.com/elder-plinius/CL4R1T4S</a></div>
+    <div class="ref"><span class="tag src">官方</span>ZCode 压缩提示词官方源码（zai-org/ZCode，2026-09-20 开源，Apache-2.0）：<b>apps/zcode-cli/packages/core/src/compact/prompt.ts</b><br><a href="https://github.com/zai-org/ZCode/blob/main/apps/zcode-cli/packages/core/src/compact/prompt.ts">github.com/zai-org/ZCode · compact/prompt.ts</a> · <a href="https://github.com/zai-org/ZCode">仓库主页</a></div>
+    <div class="ref"><span class="tag warn">历史对照</span>ZCode 压缩提示词 · 2026-08 第三方泄露档案（elder-plinius/CL4R1T4S；官方开源版已证实其结构一致）<br><a href="https://github.com/elder-plinius/CL4R1T4S">github.com/elder-plinius/CL4R1T4S</a></div>
     <div class="ref"><span class="tag src">官方</span>Trae 官方文档《上下文压缩》（全页仅定性描述）<br><a href="https://docs.trae.cn/ide_context-compaction">docs.trae.cn/ide_context-compaction</a> · <a href="https://github.com/Trae-AI/TRAE/issues">GitHub issues（压缩开关诉求）</a></div>
     <div class="ref"><span class="tag src">官方</span>hermes-agent 压缩文档（双层阈值 / 四阶段 / lean 尾部）<br><a href="https://hermes-agent.nousresearch.com/docs/developer-guide/context-compression-and-caching">hermes-agent.nousresearch.com · context-compression-and-caching</a> · <a href="https://hermes-agent.nousresearch.com/docs/developer-guide/micro-compaction">micro-compaction</a></div>
     <div class="ref"><span class="tag src">官方</span>OpenClaw Compaction / Pruning / Memory 三篇（伪转录配方出处）<br><a href="https://docs.openclaw.ai/concepts/compaction">docs.openclaw.ai/concepts/compaction</a> · <a href="https://docs.openclaw.ai/concepts/session-pruning">session-pruning</a> · <a href="https://docs.openclaw.ai/concepts/memory">memory</a></div>
