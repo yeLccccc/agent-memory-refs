@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考资料 · 深度解读系列（Agent Memory）十：腾讯系全景</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #2a6f6f;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>参考资料 · 深度解读系列（Agent Memory）十</h1>
+    <div class="sub">《腾讯系全景 骨架开源，记忆闭源》 · 2026-10 · 系列收尾篇</div>
+    <div class="note">说明：全部星标为 GitHub API 截至 2026-10-10；youtu-agent 的 GAIA 72.8% 为 text-only 子集且工具内模型计入开源口径，WebWalkerQA 71.47% 用 DeepSeek-V3.1（V3-0324 为 60.71%）；Youtu-GraphRAG 的 token 节省存在 README 33.6% 与论文 up to 90.71% 两套口径；RoMem 全部数字为 EMNLP 2026 论文自报，基线为作者复现；ima 记忆四模块（Soul/User/Memory/Agent）为媒体报道的产品口径（转引自腾讯新闻/江南都市报），非开源代码可验证；Training-Free GRPO 的 ~$8/~100 样本为 README 口径。源码结论实测自 2026-10-10 快照（WeKnora v0.8.2 / youtu-agent v0.1.3 / youtu-graphrag main）。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>开源层 · 仓库与官方站点</h2>
+    <ul>
+      <li><a href="https://github.com/Tencent/WeKnora">GitHub 仓库 Tencent/WeKnora</a><span class="d">33,044 星 · Go · MIT · v0.8.2 · 2025-07-22 开仓；RAG + Agent + Wiki 共享同一知识库；CHANGELOG：v0.5.0 Wiki Mode GA、v0.5.2 Wiki ingest 40k 文档</span></li>
+      <li><a href="https://weknora.weixin.qq.com">WeKnora 官网（weknora.weixin.qq.com）</a><span class="d">「腾讯开源的企业级知识管理框架」；Agent 能力页含长期记忆描述（跨会话记住确认过的偏好）；v0.8.2：本机浏览器、MCP Server、对话分叉</span></li>
+      <li><a href="https://github.com/TencentCloudADP/youtu-agent">GitHub 仓库 TencentCloudADP/youtu-agent</a><span class="d">4,623 星 · Python · MIT · v0.1.3；GAIA 72.8%（text-only 子集）/ WebWalkerQA 71.47%（DeepSeek-V3.1）；utu/practice/ 经验蒸馏；configs/agents/practice/ 附练成的 agent（46 条搜索经验）</span></li>
+      <li><a href="https://tencentcloudadp.github.io/youtu-agent/">Youtu-Agent 英文文档站</a><span class="d">Practice / Skills / 自动生成用法；Training-Free GRPO 实战另见 youtu-agent.cn/practice</span></li>
+      <li><a href="https://github.com/TencentCloudADP/youtu-graphrag">GitHub 仓库 TencentCloudADP/youtu-graphrag</a><span class="d">1,268 星 · ICLR 2026；README 徽章 MIT 但 LICENSE 正文为学术限定（禁商用/生产）；schemas/ 五份种子 schema；backend.py FastAPI 可视化</span></li>
+      <li><a href="https://github.com/TencentCloudADP">TencentCloudADP 组织（腾讯云智能体开发平台开源出口）</a><span class="d">youtu-rag 282 星 · hichunk · youtu-embedding · youtu-parsing · youtu-vl · youtu-tip 588 星（端侧）</span></li>
+      <li><a href="https://adp.tencentcloud.com">腾讯云 ADP 平台官网</a><span class="d">Enterprise Multi-Agent Platform · Dynamic Agentic RAG Engine；Youtu-GraphRAG 企业版 2026-02 上架</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>论文 · 官方口径出处</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2512.24615">Youtu-Agent: Scaling Agent Productivity with Automated Generation and Hybrid Policy Optimization（arXiv:2512.24615，2025-12-31）</a><span class="d">18 作者；WebWalkerQA 71.47% / GAIA 72.8% / 工具生成成功率 81%+ / AIME +2.7%、+5.4% / Agent RL 40% 加速</span></li>
+      <li><a href="https://arxiv.org/abs/2510.08191">Training-Free Group Relative Policy Optimization（arXiv:2510.08191，2025-10-10）</a><span class="d">experiential knowledge as a token prior；组内语义优势替代数值优势；DeepSeek-V3.1-Terminus；几十条样本量级</span></li>
+      <li><a href="https://arxiv.org/abs/2508.19855">Youtu-GraphRAG: Vertically Unified Agents for Graph Retrieval-Augmented Complex Reasoning（arXiv:2508.19855，ICLR 2026）</a><span class="d">seed schema / dually-perceived community detection / agentic retriever / Anonymity Reversion；up to 90.71% token saving + 16.62% accuracy</span></li>
+      <li><a href="https://huggingface.co/datasets/Youtu-Graph/AnonyRAG">AnonyRAG 匿名评测数据集（HuggingFace）</a><span class="d">Anonymity Reversion 任务数据；仓库内 config 引用的 anony schema 文件需从此获取</span></li>
+      <li><a href="https://arxiv.org/abs/2604.11544">Time is Not a Label: Continuous Phase Rotation for Temporal Knowledge Graphs and Agentic Memory（arXiv:2604.11544，EMNLP 2026 Main，oral）</a><span class="d">RoMem 本体：Semantic Speed Gate 波动率 / 连续相位旋转 / geometric shadowing（without deletion）；ICEWS05-15 72.6 MRR、MultiTQ 2-3×、DMR-MSC 零退化</span></li>
+      <li><a href="https://tencent.github.io/RoMem/">RoMem 项目页（tencent.github.io/RoMem）</a><span class="d">方法交互演示；署名 University of Edinburgh · LIGHTSPEED · University of St Andrews</span></li>
+      <li><a href="https://github.com/Tencent/RoMem">GitHub 仓库 Tencent/RoMem</a><span class="d">10 星 · 400MB 含数据集；baselines/ 自带 HippoRAG / mem0 / graphiti / tkge 四套基线实现；随仓分发 gate 预训练 checkpoint</span></li>
+      <li><a href="https://arxiv.org/abs/2505.18746">C3-Bench: The Things Real Disturbing LLM based Agent in Multi-Tasking（arXiv:2505.18746）</a><span class="d">三挑战：工具关系 / 隐藏信息 / 动态决策路径；49 个主流 agent 实测；长上下文依赖为显著短板</span></li>
+      <li><a href="https://arxiv.org/abs/2609.27284">Hunyuan-A13B Technical Report（arXiv:2609.27284，2026-09-23 提交）</a><span class="d">80B 总参 / 13B 激活 MoE · 20T token · 双模思维链（fast/slow thinking）；模型 2025-06 开源，报告晚一年余</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>产品层 · ima 记忆四模块（闭源，媒体口径）</h2>
+    <ul>
+      <li><a href="https://new.qq.com/rain/a/20260525A03RNE00">腾讯宣布 ima copilot 功能正式全面开放（腾讯新闻转江南都市报，2026-05-25）</a><span class="d">此前超 10 万人排队；记忆四模块：Copilot 设定（Soul）/ 用户档案（User）/ 长期记忆（Memory）/ 经验技巧（Agent）；「普通AI对话最大的问题是什么？聊完就忘。」</span></li>
+      <li><a href="https://new.qq.com/rain/a/20260429A045RT00">腾讯 ima 发布知识 Agent「copilot」（腾讯新闻，2026-04-29）</a><span class="d">知识库 Skill 可读取正文；ima 解锁 Agent 形态</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>第三方口径 · WeKnora 报道</h2>
+    <ul>
+      <li><a href="https://blog.csdn.net/Guo_Python/article/details/162068628">CSDN · 腾讯开源 WeKnora：RAG+Agent+Auto-Wiki 三引擎（2025）</a><span class="d">第三方盘点口径：20+ LLM、8 向量库、7 IM 渠道</span></li>
+      <li><a href="https://www.51dns.com/info/detail/12849.html">微信 AI 团队开源 WeKnora 报道</a><span class="d">团队归属口径：微信 AI 团队（与官网 TENCENT OPEN SOURCE 互证）</span></li>
+      <li><a href="https://www.besthub.dev/articles/weknora-tencent-wechat-team-s-open-source-enterprise-know">besthub · WeKnora: Tencent WeChat Team's Open-Source Enterprise Knowledge Base</a><span class="d">英文第三方报道</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>排雷 · 不姓腾讯的两个常客</h2>
+    <ul>
+      <li><a href="https://github.com/zhongwanjun/MemoryBank-SiliconFriend">zhongwanjun/MemoryBank-SiliconFriend（455 星）</a><span class="d">MemoryBank 源码；作者 Wanjun Zhong 等来自中山大学等高校，AAAI-24 收录——与腾讯无关，遗忘曲线经典只作对照</span></li>
+      <li><a href="https://arxiv.org/abs/2305.10250">MemoryBank 论文（arXiv:2305.10250，AAAI-24）</a><span class="d">Ebbinghaus Forgetting Curve 驱动的记忆更新；SiliconFriend 伴侣场景</span></li>
+      <li><a href="https://github.com/volcengine/OpenViking">volcengine/OpenViking</a><span class="d">系列第一篇主角，字节跳动火山引擎出品——检索「腾讯 记忆」时的高频误认项</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>对照锚点 · 系列内</h2>
+    <ul>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/05-zep-graphiti.html">五 Zep/Graphiti 篇参考资料</a><span class="d">双时钟 vs RoMem 相位旋转：两种时序记忆路线对照</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/06-graphrag.html">六 GraphRAG 篇参考资料</a><span class="d">微软社区摘要路线 vs Youtu-GraphRAG schema 先行路线</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/08-hipporag.html">八 HippoRAG 2 篇参考资料</a><span class="d">RoMem baselines/ 目录中的 PPR 检索基线</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/09-hindsight.html">九 Hindsight 篇参考资料</a><span class="d">四网络/信念层 vs ima 四模块的产品分法</span></li>
+      <li><a href="https://yelccccc.github.io/agent-memory-refs/">系列总索引</a><span class="d">全部十期的参考资料入口</span></li>
+    </ul>
+  </div>
+
+  <div class="foot">公众号「拉普拉斯大魔王」 · 深度解读系列（Agent Memory）<br>把 AI Agent 的记忆系统一个个拆开看：架构、原理、功能与用法，一次理清讲透。</div>
+</div>
+</body>
+</html>
