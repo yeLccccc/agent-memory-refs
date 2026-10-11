@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>万字讲透 AI Agent 记忆评测 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#3F5F9E;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f4f7fa;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#3F5F9E;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;} .ref .tag.board{background:#b08d27;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>万字讲透 AI Agent 记忆评测 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」「万字讲透」单篇线。正文外链被微信剥除，可点击版全部在本页；链接核实与口径截至 2026-10-10。</div>
+    <div class="note"><b>口径说明（读数字前先看）：</b>① 本文所有厂商分数均带四类口径标签：<b>官方自报 / 作者复现 / 第三方实测 / 转引</b>，跨标签不可直接比较；② LoCoMo 原版 judge 与人工一致率仅 43.67%，引用建议优先 LoCoMo-Refined 口径；③ LoCoMo 审计出 99 道答案键错误（上限 93.57），厂商研究页 94.7 分为越线自报；④ DyadMem 与 Memora 的官方仓库未能核实，只挂论文链接；⑤ MQuAKE 原版被审计出 33–76% 题目/标签损坏，引用请用 Remastered 版。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、静态基准：官方仓库与考卷</h2>
+    <div class="ref"><span class="tag src">仓库</span>LoCoMo（行业事实标准；发布版 10 对话/1986 题）<br><a href="https://github.com/snap-research/locomo">github.com/snap-research/locomo</a> · <a href="https://arxiv.org/abs/2402.17753">arXiv:2402.17753</a></div>
+    <div class="ref"><span class="tag src">仓库</span>LongMemEval（500 题五能力，ICLR 2025）<br><a href="https://github.com/xiaowu0162/LongMemEval">github.com/xiaowu0162/LongMemEval</a> · <a href="https://arxiv.org/abs/2410.10813">arXiv:2410.10813</a>（V2：<a href="https://arxiv.org/abs/2605.12493">arXiv:2605.12493</a>）</div>
+    <div class="ref"><span class="tag src">仓库</span>MemoryAgentBench（增量交互四能力，ICLR 2026）<br><a href="https://github.com/HUST-AI-HYZ/MemoryAgentBench">github.com/HUST-AI-HYZ/MemoryAgentBench</a> · <a href="https://arxiv.org/abs/2507.05257">arXiv:2507.05257</a></div>
+    <div class="ref"><span class="tag src">仓库</span>MemBench（有效性+效率+容量三维度）<br><a href="https://github.com/import-myself/Membench">github.com/import-myself/Membench</a> · <a href="https://arxiv.org/abs/2506.21605">arXiv:2506.21605</a></div>
+    <div class="ref"><span class="tag src">仓库</span>BEAM（百万–千万 token 长卷，ICLR 2026）<br><a href="https://github.com/mohammadtavakoli78/BEAM">github.com/mohammadtavakoli78/BEAM</a> · <a href="https://arxiv.org/abs/2510.27246">arXiv:2510.27246</a></div>
+    <div class="ref"><span class="tag src">仓库</span>PerLTQA（画像+社会关系长期记忆 QA）<br><a href="https://github.com/Elvin-Yiming-Du/PerLTQA">github.com/Elvin-Yiming-Du/PerLTQA</a> · <a href="https://arxiv.org/abs/2402.16288">arXiv:2402.16288</a></div>
+    <div class="ref"><span class="tag paper">论文</span>PersonaMem（动态用户画像 3 万题量级）<br><a href="https://arxiv.org/abs/2504.14225">arXiv:2504.14225</a></div>
+    <div class="ref"><span class="tag paper">论文</span>HaluMem（专测记忆系统幻觉：抽取/更新/使用三环节）<br><a href="https://arxiv.org/abs/2511.03506">arXiv:2511.03506</a></div>
+    <div class="ref"><span class="tag src">仓库</span>LoCoMo-Plus（认知级考题；注意继承 99 处答案键错误）<br><a href="https://github.com/xjtuleeyf/Locomo-Plus">github.com/xjtuleeyf/Locomo-Plus</a> · <a href="https://arxiv.org/abs/2602.10715">arXiv:2602.10715</a></div>
+    <div class="ref"><span class="tag src">仓库</span>CloneMem（非对话轨迹：日记/邮件/社媒）<br><a href="https://github.com/AvatarMemory/CloneMemBench">github.com/AvatarMemory/CloneMemBench</a> · <a href="https://arxiv.org/abs/2601.07023">arXiv:2601.07023</a></div>
+    <div class="ref"><span class="tag paper">论文</span>DyadMem（6.1 万题，Gold-Memory vs Full-Pipeline 双口径）<br><a href="https://arxiv.org/abs/2610.03020">arXiv:2610.03020</a>（仓库未能核实）</div>
+    <div class="ref"><span class="tag paper">论文</span>Memora（FAMA 指标专罚过时记忆，ACL 2026 Findings）<br><a href="https://arxiv.org/abs/2604.20006">arXiv:2604.20006</a>（仓库未能核实）</div>
+    <div class="ref"><span class="tag paper">论文</span>MOOM（中文超长角色扮演对话记忆）<br><a href="https://arxiv.org/abs/2509.11860">arXiv:2509.11860</a></div>
+    <div class="ref"><span class="tag paper">论文</span>DMR 出自 MemGPT 论文（MSC 数据集 arXiv:2107.07567）<br><a href="https://arxiv.org/abs/2310.08560">arXiv:2310.08560</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、评测套件、重标定与统一榜单</h2>
+    <div class="ref"><span class="tag board">套件</span>mem0ai/memory-benchmarks（LoCoMo+LongMemEval+BEAM 三合一 harness；Mem0 自家协议）<br><a href="https://github.com/mem0ai/memory-benchmarks">github.com/mem0ai/memory-benchmarks</a></div>
+    <div class="ref"><span class="tag board">套件</span>MemTensor/OmniMemEval（14 家记忆产品同环境横评 harness）<br><a href="https://github.com/MemTensor/OmniMemEval">github.com/MemTensor/OmniMemEval</a></div>
+    <div class="ref"><span class="tag board">榜单</span>Agent Memory Leaderboard（2026-07 上线的统一协议榜单）<br><a href="https://agentmemoryleaderboard.ai">agentmemoryleaderboard.ai</a></div>
+    <div class="ref"><span class="tag board">重标定</span>LoCoMo-Refined（原 judge 人工一致率 43.67%；清洗重标定版）<br><a href="https://github.com/mem-eval-suite/LoCoMo_refined">github.com/mem-eval-suite/LoCoMo_refined</a></div>
+    <div class="ref"><span class="tag board">审计</span>Penfield Labs：LoCoMo 答案键审计（99 题错误 / judge 放过 62.81% 故意错答）<br><a href="https://dev.to/penfieldlabs/we-audited-locomo-64-of-the-answer-key-is-wrong-and-the-judge-accepts-up-to-63-of-intentionally-33lg">dev.to/penfieldlabs · we-audited-locomo</a></div>
+    <div class="ref"><span class="tag board">去 judge 化</span>agent-memory-bench（预注册判定 + 任务检查器）<br><a href="https://github.com/GiulioDER/agent-memory-bench">github.com/GiulioDER/agent-memory-bench</a></div>
+    <div class="ref"><span class="tag board">复盘</span>widemem：基准标签映射 bug 自曝（judge 分差完整数字）<br><a href="https://widemem.ai/blog/benchmark-label-bug">widemem.ai/blog/benchmark-label-bug</a></div>
+    <div class="ref"><span class="tag board">榜单</span>第三方 Agent Memory Benchmark<br><a href="https://agentmemorybenchmark.ai">agentmemorybenchmark.ai</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、厂商记分牌原始出处（罗生门一手文件）</h2>
+    <div class="ref"><span class="tag src">论文</span>Mem0 论文（LoCoMo 表：66.88/68.44/65.99/52.90/全上下文 72.90）<br><a href="https://arxiv.org/abs/2504.19413">arXiv:2504.19413</a> · <a href="https://mem0.ai/research">mem0.ai/research</a></div>
+    <div class="ref"><span class="tag src">论文</span>Zep 论文（DMR 尸检报告 +「需要更多记忆基准」）<br><a href="https://arxiv.org/abs/2501.13956">arXiv:2501.13956</a> · <a href="https://www.getzep.com/research/">getzep.com/research（94.7 自报页）</a></div>
+    <div class="ref"><span class="tag src">博客</span>Zep 反击文《Lies, Damn Lies, & Statistics: Is Mem0 Really SOTA?》<br><a href="https://www.getzep.com/blog/lies-damn-lies-statistics-is-mem0-really-sota-in-agent-memory">getzep.com/blog · lies-damn-lies-statistics</a></div>
+    <div class="ref"><span class="tag src">Issue</span>getzep/zep-papers #5：Mem0 重算 58.44 与 Zep 定稿 75.14 的全过程<br><a href="https://github.com/getzep/zep-papers/issues/5">github.com/getzep/zep-papers · issue #5</a></div>
+    <div class="ref"><span class="tag src">博客</span>Zep《The Retrieval Tradeoff》（80.32 @ p50&lt;200ms，「80% 是天花板」）<br><a href="https://www.getzep.com/blog/the-retrieval-tradeoff-what-50-experiments-taught-us-about-context-engineering/">getzep.com/blog · the-retrieval-tradeoff</a></div>
+    <div class="ref"><span class="tag src">论文</span>MemOS 论文（Zep 41.62 出自其 Table）<br><a href="https://arxiv.org/abs/2507.03724">arXiv:2507.03724</a></div>
+    <div class="ref"><span class="tag src">论文</span>MIRIX 论文（Zep 79.09 / 自报 85.38 / ScreenshotVQA）<br><a href="https://arxiv.org/abs/2507.07957">arXiv:2507.07957</a></div>
+    <div class="ref"><span class="tag src">仓库</span>Memobase LoCoMo 实验文档（v0.0.32→v0.0.37 爬坡记录）<br><a href="https://github.com/memodb-io/memobase/tree/main/docs/experiments/locomo-benchmark">github.com/memodb-io/memobase · docs/experiments/locomo-benchmark</a></div>
+    <div class="ref"><span class="tag src">博客</span>Letta 官方评测博客（LoCoMo 74.0 文件方案 + Letta Evals）<br><a href="https://www.letta.com/blog/letta-evals">letta.com/blog/letta-evals</a></div>
+    <div class="ref"><span class="tag src">官方</span>Supermemory 研究页（Recall@15 口径，与准确率不可比）<br><a href="https://supermemory.ai/research">supermemory.ai/research</a></div>
+    <div class="ref"><span class="tag src">复测</span>hamzashabbir.dev 五系统同口径复测（最高 57.6，「无一达到 80–93%」）<br><a href="https://hamzashabbir.dev">hamzashabbir.dev（复测报告）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、检索与图谱侧：数据集、协议与指标库</h2>
+    <div class="ref"><span class="tag src">仓库</span>多跳三件套：HotpotQA / 2WikiMultihopQA / MuSiQue<br><a href="https://github.com/hotpotqa/hotpot">github.com/hotpotqa/hotpot</a> · <a href="https://github.com/Alab-NII/2wikimultihop">github.com/Alab-NII/2wikimultihop</a> · <a href="https://github.com/StonyBrookNLP/musique">github.com/StonyBrookNLP/musique</a></div>
+    <div class="ref"><span class="tag src">仓库</span>HippoRAG 2（统一底座复现协议样板；LightRAG 6.6 争议见 issue）<br><a href="https://github.com/OSU-NLP-Group/HippoRAG">github.com/OSU-NLP-Group/HippoRAG</a> · <a href="https://github.com/getzep/graphiti/issues/713">争议讨论：graphiti issue #713</a> · <a href="https://arxiv.org/abs/2502.14802">arXiv:2502.14802</a></div>
+    <div class="ref"><span class="tag src">仓库</span>Microsoft GraphRAG（win-rate 协议出处）<br><a href="https://github.com/microsoft/graphrag">github.com/microsoft/graphrag</a> · <a href="https://arxiv.org/abs/2404.16130">arXiv:2404.16130</a></div>
+    <div class="ref"><span class="tag src">仓库</span>LightRAG（token-F1 口径敏感性的当事方）<br><a href="https://github.com/HKUDS/LightRAG">github.com/HKUDS/LightRAG</a> · <a href="https://arxiv.org/abs/2410.05779">arXiv:2410.05779</a> · 质疑方 AutoSchemaKG：<a href="https://arxiv.org/abs/2505.23628">arXiv:2505.23628</a></div>
+    <div class="ref"><span class="tag src">仓库</span>RAGAS（faithfulness/context P/R/answer relevancy）<br><a href="https://github.com/explodinggradients/ragas">github.com/explodinggradients/ragas</a> · <a href="https://arxiv.org/abs/2309.15217">arXiv:2309.15217</a></div>
+    <div class="ref"><span class="tag paper">论文</span>GraphRAG-Bench（全流程考卷；不报排序指标遭批评）<br><a href="https://arxiv.org/abs/2506.02404">arXiv:2506.02404</a></div>
+    <div class="ref"><span class="tag src">官方</span>TruLens RAG Triad 与 Snowflake 的 LLM-judge 标定研究<br><a href="https://www.trulens.org/getting_started/core_concepts/rag_triad/">trulens.org · rag_triad</a> · <a href="https://www.snowflake.com/en/engineering-blog/benchmarking-LLM-as-a-judge-RAG-triad-metrics/">snowflake.com engineering-blog</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、过程性·RL 记忆管理·工程侧</h2>
+    <div class="ref"><span class="tag src">仓库</span>Reflexion（ALFWorld 130/134）· ExpeL · Agent Workflow Memory<br><a href="https://github.com/noahshinn/reflexion">github.com/noahshinn/reflexion</a> · <a href="https://github.com/LeapLabTHU/ExpeL">github.com/LeapLabTHU/ExpeL</a> · <a href="https://github.com/zorazrw/agent-workflow-memory">github.com/zorazrw/agent-workflow-memory</a></div>
+    <div class="ref"><span class="tag src">仓库</span>Voyager（Minecraft 技能库三项硬指标）· Memp（程序性记忆迁移）<br><a href="https://github.com/MineDojo/Voyager">github.com/MineDojo/Voyager</a> · <a href="https://github.com/zjunlp/MemP">github.com/zjunlp/MemP</a> · <a href="https://arxiv.org/abs/2508.06433">arXiv:2508.06433</a></div>
+    <div class="ref"><span class="tag src">仓库</span>RL 记忆管理三连：Memory-R1 / MEM1 / Mem-α / MemAgent<br><a href="https://arxiv.org/abs/2508.19828">arXiv:2508.19828</a> · <a href="https://arxiv.org/abs/2506.15841">arXiv:2506.15841</a> · <a href="https://github.com/wangyu-ustc/Mem-alpha">github.com/wangyu-ustc/Mem-alpha</a> · <a href="https://github.com/BytedTsinghua-SIA/MemAgent">github.com/BytedTsinghua-SIA/MemAgent</a></div>
+    <div class="ref"><span class="tag src">仓库</span>TheAgentCompany（CMU 虚拟软件公司，175 任务）<br><a href="https://github.com/TheAgentCompany/TheAgentCompany">github.com/TheAgentCompany/TheAgentCompany</a> · <a href="https://arxiv.org/abs/2412.14161">arXiv:2412.14161</a></div>
+    <div class="ref"><span class="tag paper">论文</span>ACE：Agentic Context Engineering（playbook 当记忆，AppWorld +10.6）<br><a href="https://arxiv.org/abs/2510.04618">arXiv:2510.04618</a></div>
+    <div class="ref"><span class="tag paper">论文</span>VibeMemBench（90 仓库 111 任务；11/12 配对不敌 memory-off）<br><a href="https://arxiv.org/abs/2609.23570">arXiv:2609.23570</a></div>
+    <div class="ref"><span class="tag src">官方</span>aider repo map 机制博文（唯一一篇，零数字）<br><a href="https://aider.chat/2023/10/22/repomap.html">aider.chat/2023/10/22/repomap.html</a></div>
+    <div class="ref"><span class="tag src">考场</span>MemoryArena（记忆-行动互依赖 gym，ICML 2026）<br><a href="https://memoryarena.github.io/">memoryarena.github.io</a> · <a href="https://arxiv.org/abs/2602.16313">arXiv:2602.16313</a></div>
+  </div>
+
+  <div class="card">
+    <h2>六、安全·冲突·时序专项</h2>
+    <div class="ref"><span class="tag src">仓库</span>AgentPoison（ASR&gt;80% @ &lt;0.1% 投毒率，NeurIPS 2024）<br><a href="https://github.com/AI-secure/AgentPoison">github.com/AI-secure/AgentPoison</a> · <a href="https://arxiv.org/abs/2407.12784">arXiv:2407.12784</a></div>
+    <div class="ref"><span class="tag src">仓库</span>PoisonedRAG（5 条毒文本 → 90% ASR，USENIX Security 2025）<br><a href="https://github.com/sleeepeer/PoisonedRAG">github.com/sleeepeer/PoisonedRAG</a> · <a href="https://arxiv.org/abs/2402.07867">arXiv:2402.07867</a></div>
+    <div class="ref"><span class="tag paper">论文</span>MINJA（纯查询交互写毒，ASR 76.8%）· PMPA（Claude Code 跨会话 C-ASR 81.7%）<br><a href="https://arxiv.org/abs/2503.03704">arXiv:2503.03704</a> · <a href="https://arxiv.org/abs/2609.13889">arXiv:2609.13889</a>（两者无官方仓库）</div>
+    <div class="ref"><span class="tag paper">论文</span>经验跟随陷阱（add-all 13.0% vs 严格门控 38.9%）· MemoryGraft（毒化检索 47.9%）<br><a href="https://arxiv.org/abs/2505.16067">arXiv:2505.16067</a> · <a href="https://arxiv.org/abs/2512.16962">arXiv:2512.16962</a></div>
+    <div class="ref"><span class="tag src">仓库</span>MQuAKE（原版）与 MQuAKE-Remastered（审计修正版，ICLR 2025 Spotlight）<br><a href="https://github.com/princeton-nlp/MQuAKE">github.com/princeton-nlp/MQuAKE</a> · <a href="https://github.com/henryzhongsc/MQuAKE-Remastered">github.com/henryzhongsc/MQuAKE-Remastered</a> · <a href="https://arxiv.org/abs/2305.14795">arXiv:2305.14795</a></div>
+    <div class="ref"><span class="tag src">仓库</span>ConflictBank（百万级声明冲突库，NeurIPS 2024 D&B）<br><a href="https://github.com/zhaochen0110/conflictbank">github.com/zhaochen0110/conflictbank</a> · <a href="https://arxiv.org/abs/2408.12076">arXiv:2408.12076</a></div>
+    <div class="ref"><span class="tag src">仓库</span>时序三件套：TimeQA / TempReason / TimeBench<br><a href="https://arxiv.org/abs/2108.06314">arXiv:2108.06314</a> · <a href="https://github.com/DAMO-NLP-SG/TempReason">github.com/DAMO-NLP-SG/TempReason</a> · <a href="https://github.com/zchuz/TimeBench">github.com/zchuz/TimeBench</a></div>
+    <div class="ref"><span class="tag src">官方</span>ROME 参数编辑项目页（与外挂记忆的边界参照）<br><a href="https://rome.baulab.info/">rome.baulab.info</a></div>
+  </div>
+
+  <div class="card">
+    <h2>七、元评估与综述</h2>
+    <div class="ref"><span class="tag paper">综述</span>A Survey on the Memory Mechanism of LLM-based Agents（direct/indirect 分类骨架，TOIS）<br><a href="https://arxiv.org/abs/2404.13501">arXiv:2404.13501</a></div>
+    <div class="ref"><span class="tag paper">评述</span>Anatomy of Agent Memory（「评测六宗罪」，2026）<br><a href="https://arxiv.org/abs/2602.19320">arXiv:2602.19320</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Ground Truth First / Veracium（换 judge 家族排名洗牌 p=0.031；先种事实后渲染语料）<br><a href="https://arxiv.org/abs/2607.21962">arXiv:2607.21962</a></div>
+    <div class="ref"><span class="tag paper">论文</span>3×3 写入×检索对照（检索 ±20pp、写入 3–8pp，ICLR 2026 MemAgents Workshop）<br><a href="https://arxiv.org/abs/2603.02473">arXiv:2603.02473</a></div>
+    <div class="ref"><span class="tag paper">论文</span>MemDelta 受控协议（换嵌入 ±6.2pp；Mem0 vs cloud-RAG 50 倍成本打平）<br><a href="https://arxiv.org/abs/2606.29914">arXiv:2606.29914</a></div>
+    <div class="ref"><span class="tag paper">论文</span>MemTrapBench（2 家族×5 框架全组合低于无记忆基线）· 跨场景诊断（扁平文件 harness 最稳）<br><a href="https://arxiv.org/abs/2608.20202">arXiv:2608.20202</a> · <a href="https://arxiv.org/abs/2606.04315">arXiv:2606.04315</a></div>
+    <div class="ref"><span class="tag paper">论文</span>有效索引率（196112 vs 1913 条链接）· 巩固决策评测（该不该记）· 预算约束范式<br><a href="https://arxiv.org/abs/2608.21829">arXiv:2608.21829</a> · <a href="https://arxiv.org/abs/2609.33013">arXiv:2609.33013</a> · <a href="https://arxiv.org/abs/2607.16848">arXiv:2607.16848</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Metis（训练集含评测集的污染自白）<br><a href="https://arxiv.org/abs/2607.26760">arXiv:2607.26760</a></div>
+    <div class="ref"><span class="tag board">参考</span>judge 的善与恶（判分偏置综述页）· 评测透明度审计<br><a href="https://mnemoverse.com/docs/research/evaluation/judges-good-and-evil">mnemoverse.com · judges-good-and-evil</a> · <a href="https://agentos.sh/blog/memory-benchmark-transparency-audit">agentos.sh · memory-benchmark-transparency-audit</a></div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI Agent Memory 系列 · 2026-10-10</div>
+</div>
+</body>
+</html>
