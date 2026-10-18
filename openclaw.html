@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深度解读系列（Personal Agent）三：OpenClaw 网关上的个人操作系统 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;} .ref .tag.video{background:#8a5fb0;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>深度解读系列（Personal Agent）三：OpenClaw 网关上的个人操作系统 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」Personal Agent 系列之三。正文外链被微信剥除，可点击版全部在本页；仓库与版本口径 2026-10-18（gh api 实查：392,291★ / 稳定版 v2026.10.4），媒体与社区口径以各条标注日期为准。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 机制细节来自仓库浅克隆（main 分支）与 docs.openclaw.ai 50 篇文档原文（快照 2026-10-18）：HEARTBEAT.md 已退役迁数据库监控草稿、Dreaming 默认开启、宿主机命令执行免审批均为文档现行口径；② 技能总数官方从未公布，5,705 / 13,729 / 13,700+ 均为第三方口径，正文并列注明；插件 2,411 为 ClawHub API 精确返回；③ 账单数字梯全部为第三方与媒体口径（卢松松/新京报/商务范/Vonng 等），正文逐条标注；④ CVE-2026-53840 严重度双口径：OSV CVSS v4.0 6.0 vs 第三方 7.1；⑤ BreachForums $25K 案为多方转述、原始帖未存档；Nick Pash 转账案为转述口径；⑥ CNCFERT/工信中心/中国互联网金融协会三份通报为官方一手（经权威媒体转载核实）。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、官方一手：仓库、文档与发布</h2>
+    <div class="ref"><span class="tag src">官方</span>GitHub 仓库 openclaw/openclaw（MIT；392,291★、82,459 fork，2026-10-18 gh api）<br><a href="https://github.com/openclaw/openclaw">github.com/openclaw/openclaw</a> · <a href="https://docs.openclaw.ai/">docs.openclaw.ai（安装/架构/渠道/心跳/沙箱/exposure runbook 全套）</a></div>
+    <div class="ref"><span class="tag src">官方</span>Releases：v2026.10.1 超级版（3,055 commits / 2,425 PRs / 402 contributors）至 v2026.10.4、beta 线 v2026.10.10-beta.1<br><a href="https://github.com/openclaw/openclaw/releases">github.com/openclaw/openclaw/releases</a></div>
+    <div class="ref"><span class="tag src">官方</span>信任模型与安全三件套：trust-model（一个 Gateway=一个信任边界、危险默认清单）、sandboxing（五后端矩阵）、exposure-runbook（五级暴露形态与最小安全基线）<br><a href="https://docs.openclaw.ai/gateway/security/trust-model">docs · gateway/security/trust-model</a> · <a href="https://docs.openclaw.ai/gateway/sandboxing">/gateway/sandboxing</a> · <a href="https://docs.openclaw.ai/gateway/security/exposure-runbook">/gateway/security/exposure-runbook</a></div>
+    <div class="ref"><span class="tag src">官方</span>心跳与记忆：heartbeat.md（HEARTBEAT.md 退役、NO_REPLY 契约、isolatedSession 官方数字 ~100K→2-5K token）、memory.md 与 Dreaming（三阶段巩固，灵感=arXiv:2504.13171）<br><a href="https://docs.openclaw.ai/gateway/heartbeat">docs · gateway/heartbeat</a> · <a href="https://docs.openclaw.ai/concepts/memory">docs · concepts/memory</a></div>
+    <div class="ref"><span class="tag src">官方</span>ClawHub 技能市场（安装/verify trust envelope/发布；VirusTotal+ClawScan+静态分析三重扫描展示）<br><a href="https://clawhub.ai">clawhub.ai</a> · <a href="https://github.com/openclaw/clawhub">github.com/openclaw/clawhub</a></div>
+    <div class="ref"><span class="tag src">官方</span>openclaw-enterprise（OCE：始于 OpenAI、捐给基金会，与 Red Hat/NVIDIA 协作）<br><a href="https://github.com/openclaw/openclaw-enterprise">github.com/openclaw/openclaw-enterprise</a> · <a href="https://openclaw.ai/blog/openclaw-enterprise">官方博客（2026-09-29）</a></div>
+    <div class="ref"><span class="tag video">官方视频</span>@OpenClawYT 唯一内嵌 demo：《Build an OpenClaw Dashboard with One Prompt》（docs/web/dashboards.md 内嵌；本机网络未可下载，留链接）<br><a href="https://www.youtube.com/watch?v=gHyBueWideg">youtube.com/watch?v=gHyBueWideg</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、安全事件与监管通报</h2>
+    <div class="ref"><span class="tag warn">官方警示</span>CNCERT 国家互联网应急中心：OpenClaw 风险提示（2026-03-10，四类风险，光明网转载）<br><a href="https://m.gmw.cn/2026-03/10/content_1304371227.htm">m.gmw.cn · CNCERT 风险提示</a></div>
+    <div class="ref"><span class="tag warn">官方警示</span>中国互联网金融协会：《关于 OpenClaw 在互联网金融行业应用安全的风险提示》（2026-03-15，新华社江苏等转载）——金融场景慎用</div>
+    <div class="ref"><span class="tag warn">供应链攻击</span>ClawHavoc：1,184 恶意技能 / 12 发布者账号（单人 677）/ AMOS 木马；Koi Security 命名、安天 CERT 定性 TrojanOpenClaw PolySkill<br><a href="https://cybersecuritynews.com/clawhavoc-poisoned-openclaws-clawhub/">cybersecuritynews.com（2026-02）</a></div>
+    <div class="ref"><span class="tag warn">漏洞</span>CVE-2026-53840（MCP 跨域重定向转发自定义 header；影响 &lt;2026.5.12，已修复；OSV CVSS v4.0 6.0）<br><a href="https://osv.dev/vulnerability/CVE-2026-53840">osv.dev · CVE-2026-53840</a></div>
+    <div class="ref"><span class="tag warn">事故复盘</span>新京报深读 A10：郭新 D 盘清空 / 顾准 VNC 被 139 连接入侵 / Summer Yue 压缩丢指令删 200 封邮件 / 张泉技能包藏恶意脚本 / 上科大 34 案例安全通过率 58.9%<br><a href="https://epaper.bjnews.com.cn">新京报电子报（2026-03-13，A10 深读）</a></div>
+    <div class="ref"><span class="tag warn">个人复盘</span>frxiaobei workspace 删空案（cd 不改变 exec 工作目录 → rm -rf 删 11,583 文件并 push 上 GitHub；四条护栏）<br><a href="https://jxxy.net/ai/articles/frxiaobei-openclaw-workspace-deleted">jxxy.net 转载（原文 2026-03-08）</a></div>
+    <div class="ref"><span class="tag">加固清单</span>DefectDojo：The OpenClaw Hardening Checklist（沙箱显式开、dm_policy 白名单、默认禁心跳、VM 优于 Docker、密钥月度限额）<br><a href="https://defectdojo.com/blog/the-openclaw-hardening-checklist-need-for-speed-edition">defectdojo.com（2026-02-01）</a></div>
+    <div class="ref"><span class="tag">官方立场</span>Trail of Bits 安全审计公布（OpenClaw 官方，2026-09-21；对比篇引用）</div>
+  </div>
+
+  <div class="card">
+    <h2>三、成本与渠道风险</h2>
+    <div class="ref"><span class="tag">账单实测</span>卢松松：Opus 15 问 $15、一天 $200-217、「不敢一直开着，生怕半夜醒来，房子没了」（文末含推广，注意利益相关）<br><a href="https://www.lusongsong.com/reed/19234.html">lusongsong.com/reed/19234（2026-03-11）</a></div>
+    <div class="ref"><span class="tag">账单实测</span>Vonng「小龙虾炒作」：官方博客「第一周烧 $100」、SecurityScorecard 13.5 万暴露实例、供应商封禁时间线、steipete 引语<br><a href="https://github.com/Vonng/blog">github.com/Vonng/blog（2026-03-09）</a></div>
+    <div class="ref"><span class="tag">账单实测</span>clawback.tools：心跳拆账（48 次/天 Opus $151 vs Haiku $8）、模型路由 $425→$170（-60%）<br><a href="https://clawback.tools/blog/model-routing-saves-60-percent">clawback.tools（2026-03-11）</a></div>
+    <div class="ref"><span class="tag">媒体汇总</span>商务范（via 网易）：傅盛卧床养 8 只虾/除夕 611 条、Mac mini 销量 +65%、装机经济（月销 3000 单收入 30-45 万）、Nick Pash 误转案（转述口径）<br><a href="https://c.m.163.com/news/a/KNOSJSVU0518809O.html">c.m.163.com（2026-03-11）</a></div>
+    <div class="ref"><span class="tag warn">渠道封禁</span>Anthropic 封禁-放行全时间线（01-09 封 Max OAuth → 04-04 断线 → 04-21 放行；HN 1,099 分与 511 分两帖）<br><a href="https://news.ycombinator.com/item?id=47633396">HN id=47633396</a> · <a href="https://news.ycombinator.com/item?id=47844269">id=47844269</a> · <a href="https://maplecheng.com/page/2026050701">maplecheng 时间线（2026-05-07）</a></div>
+    <div class="ref"><span class="tag">部署对比</span>兔哥：Mac mini vs Linux VPS 两周双环境实测（「想体验用 Mac，想长期用 VPS」）<br><a href="https://uuzi.net/openclaw-mac-mini-vs-linux-vps/">uuzi.net（2026-02-11）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、用例、养成与生态</h2>
+    <div class="ref"><span class="tag">用例</span>HN「Ask HN: Who is using OpenClaw?」（153 条顶层评论全量：晨报/记忆卡/多 agent/质疑声）<br><a href="https://news.ycombinator.com/item?id=47783940">HN id=47783940（2026-04-15）</a></div>
+    <div class="ref"><span class="tag">用例</span>菜鸟AI：一人 13 平台 16 agent 内容矩阵（「agent 是永远不睡觉的实习生」）<br><a href="https://cn486.com/news/4146201/">cn486.com（2026-06-05，转载源不明，谨慎）</a></div>
+    <div class="ref"><span class="tag">正面实测</span>sonim1「4 Days with OpenClaw」（门禁工单自动化、博客发布流水线、三件套安全观）<br><a href="https://sonim1.com/en/blog/openclaw-4-days-review">sonim1.com（2026-02-03）</a></div>
+    <div class="ref"><span class="tag">退坑纪录</span>maplecheng：维护时间&gt;帮忙时间即负担；Anthropic 封禁时间线<br><a href="https://maplecheng.com/page/2026050701">maplecheng.com（2026-05-07）</a></div>
+    <div class="ref"><span class="tag">论战</span>HN「security nightmare dressed up as a daydream」（397 分；守方名句出处）与「changing my life」（340 分，作者被扒 Rabbit R1 同款彩虹屁）<br><a href="https://news.ycombinator.com/item?id=47479962">HN id=47479962</a> · <a href="https://news.ycombinator.com/item?id=46931805">id=46931805</a></div>
+    <div class="ref"><span class="tag">生态</span>Moltbook（agent 社交网络，一周 77 万→150 万注册）；ClawPanel 多实例面板（2,931 星）<br><a href="https://github.com/qingchencloud/clawpanel">github.com/qingchencloud/clawpanel</a></div>
+    <div class="ref"><span class="tag">中文生态</span>汉化版（3,795 星，每小时同步上游）、Datawhale hello-claw 教程、阿里云轻量汉化镜像 3 分钟部署、Kimi Claw $39/月托管<br><a href="https://github.com/1186258278/OpenClawChineseTranslation">OpenClawChineseTranslation</a> · <a href="https://github.com/datawhalechina/hello-claw">datawhalechina/hello-claw</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、对比篇（vs hermes-agent）</h2>
+    <div class="ref"><span class="tag">迁移实测</span>`hermes claw migrate` 两份：轻量 2.5 分钟（zuquanzhi）/ 重度 2.5 小时、cron 与 secrets 不迁（joshie）<br><a href="http://blog.zuquanzhi.top/2026/04/15/51943">blog.zuquanzhi.top（2026-04-15）</a> · <a href="https://news.ycombinator.com/item?id=48586005">HN「Migrate from OpenClaw」122 分（2026-06-18）</a></div>
+    <div class="ref"><span class="tag">社区分流</span>kilo.ai 汇总 1,300 条 Reddit 评论：35% 留 OpenClaw / 30% 转 hermes / 20% 双开（口径 2026-04~05）<br><a href="https://kilo.ai/openclaw/vs-hermes">kilo.ai/openclaw/vs-hermes</a></div>
+  </div>
+
+  <div class="card">
+    <h2>六、图片与演示素材版权说明</h2>
+    <div class="ref"><span class="tag">版权</span>本文配图：官方仓库 docs 资产（macOS 首启流程 5 图、飞书教程图、WhatsApp 文档图、hero/banner——MIT 项目，合理引用并逐图标注）+ 自绘结构图 4 张（本账号原创）。官方无产品 UI 截图素材、仓库内零视频文件（全树核验）；官方演示视频仅 YouTube 一条，见第一节。</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · 深度解读系列（Personal Agent）· 第三篇参考资料 · 数据口径 2026-10-18</div>
+</div>
+</body>
+</html>
