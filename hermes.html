@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深度解读系列（Personal Agent）二：Hermes Agent 自己给自己写技能 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;} .ref .tag.video{background:#8a5fb0;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>深度解读系列（Personal Agent）二：Hermes Agent 自己给自己写技能 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」Personal Agent 系列之二。正文外链被微信剥除，可点击版全部在本页；仓库与版本数据口径 2026-10-18（gh api 实查：254,719★ / v0.22.2），社区与媒体口径以各条标注日期为准。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 源码/配置/文档细节来自仓库浅克隆与官方文档站（快照 2026-10-18），关键参数（memory_char_limit 2200、nudge_interval 10、creation_nudge_interval 15 等）均出自官方 config 样例；② OpenRouter 日 token 登顶存在双口径（智东西 05-09：271B vs 245B；andrew.ooo 05-10：224B vs 186B），正文已并列；③ $90M 融资与 Carbonato 僵尸网络为第三方转述（dataphoenix / The Hacker News），官方公告原文未及核验；④ Nous Portal 计费争议（issue #110912，列表促销价 11 倍）为用户实测+逐日账单证据，issue 已关闭、计费规则请以当时官方说明为准；⑤ hermesagents.net 等第三方 SEO 站仅作旁证。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、官方一手：仓库、文档与发布公告</h2>
+    <div class="ref"><span class="tag src">官方</span>GitHub 仓库 NousResearch/hermes-agent（MIT；254,719★、55,371 fork，2026-10-18 gh api）<br><a href="https://github.com/NousResearch/hermes-agent">github.com/NousResearch/hermes-agent</a></div>
+    <div class="ref"><span class="tag src">官方</span>官方文档站（安装/配置/记忆/技能/cron/安全全套；本文机制参数均出自此处）<br><a href="https://hermes-agent.nousresearch.com/docs">hermes-agent.nousresearch.com/docs</a> · <a href="https://hermes-agent.nousresearch.com/about">/about（定位句与发布口径）</a></div>
+    <div class="ref"><span class="tag src">官方</span>Releases：v0.22.0 "The Threshold Release"（2026-10-14，~24,200 commits / 6,080 PRs / 2,520 contributors / 代码 -34%）及 v0.22.1、v0.22.2<br><a href="https://github.com/NousResearch/hermes-agent/releases">github.com/NousResearch/hermes-agent/releases</a></div>
+    <div class="ref"><span class="tag src">官方</span>SECURITY.md 信任模型声明（「对抗恶意 LLM 的唯一安全边界是操作系统」；无 bug bounty）<br><a href="https://github.com/NousResearch/hermes-agent/blob/main/SECURITY.md">仓库 SECURITY.md</a></div>
+    <div class="ref"><span class="tag src">官方</span>安装：一键脚本 / PowerShell / Termux APT / Docker 镜像<br><a href="https://hermes-agent.nousresearch.com/docs/getting-started/installation">docs · installation</a> · <a href="https://hermes-agent.nousresearch.com">官网（含 Desktop 下载与演示视频）</a></div>
+    <div class="ref"><span class="tag src">官方</span>Nous Portal（订阅与 Tool Gateway）与 Hermes Cloud 托管<br><a href="https://portal.nousresearch.com">portal.nousresearch.com</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、本文关键机制的证据位（仓库内文件）</h2>
+    <div class="ref"><span class="tag src">配置</span>cli-config.yaml.example（schema v51：记忆 2200/1375、nudge 10/15、approvals、terminal backends、cron 全参数）——仓库根目录</div>
+    <div class="ref"><span class="tag src">渠道</span>hermes_cli/platforms.py 内置注册表 21 项（含 weixin/qqbot/yuanbao/dingtalk/feishu/wecom）——仓库源码</div>
+    <div class="ref"><span class="tag src">技能</span>skills/（随包 58）与 optional-skills/（官方可选 153）目录实测——仓库源码</div>
+    <div class="ref"><span class="tag src">记忆</span>官方文档 memory.md / curator.md / honcho.md / sessions.md（FTS5 ~20ms、Curator 14/30 天、冻结快照注入）</div>
+    <div class="ref"><span class="tag src">安全</span>security.md 八层防线（DM pairing 8 位码、硬底线黑名单、容器 cap-drop ALL、SSRF、Clash fake-ip 白名单）</div>
+  </div>
+
+  <div class="card">
+    <h2>三、成本与计费（社区实测）</h2>
+    <div class="ref"><span class="tag warn">关键证据</span>issue #4379：每次 API 调用约 13,935 token 固定开销（工具定义 46.1% + 系统提示 27.2%），换模型省不掉<br><a href="https://github.com/NousResearch/hermes-agent/issues/4379">github.com/…/issues/4379</a></div>
+    <div class="ref"><span class="tag warn">计费争议</span>issue #110912：Portal 信用额烧完后按列表促销价 11 倍扣费（逐日账单+探针实测；已关闭）<br><a href="https://github.com/NousResearch/hermes-agent/issues/110912">github.com/…/issues/110912</a></div>
+    <div class="ref"><span class="tag">实测</span>Reddit 用户账单 "$5k total, $131/day" 与社区分流（35% 留 OC / 30% 转 Hermes / 20% 双开；kilo.ai 汇总 1,300 条 Reddit 评论）<br><a href="https://kilo.ai/openclaw/vs-hermes">kilo.ai/openclaw/vs-hermes</a></div>
+    <div class="ref"><span class="tag">实测</span>Imran 的 1/13 优化账本（重复任务代码化交 cron 零 token）<br><a href="https://gitcode.csdn.net/69e75fae0a2f6a37c5a156df.html">gitcode.csdn.net 实战记录（2026-04-21）</a></div>
+    <div class="ref"><span class="tag">实测</span>Composio 基准：同任务只换 agent 框架 token 最高差 30 倍；官方 browser_exec 合并后 -48%~66%（什么值得买转述）<br><a href="https://post.smzdm.com/p/a5rg2p2x/">post.smzdm.com（2026-08-19）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、安全事件与审批层裂缝</h2>
+    <div class="ref"><span class="tag warn">事件</span>Carbonato 僵尸网络：扫裸奔 Docker 2375 装正版 Hermes、篡改 SOUL.md、Telegram 遥控偷 key（检出标志 GH0ST / CARBONATO_API_KEY）<br><a href="https://thehackernews.com">The Hacker News（2026-09-28，经 parallel.ai 转述）</a> · <a href="https://parallel.ai/articles/what-is-hermes-agent">parallel.ai · what-is-hermes-agent（含 2026-06 dashboard 后门旧案）</a></div>
+    <div class="ref"><span class="tag warn">审批绕过①</span>issue #59293：`hermes config set approvals.mode off` 一键关审批层（2026-07-06 起 open）<br><a href="https://github.com/NousResearch/hermes-agent/issues/59293">github.com/…/issues/59293</a></div>
+    <div class="ref"><span class="tag warn">审批绕过②</span>issue #130890 审批竞态（heredoc 盲点 + PTY 注入）→ 修复 PR #130912（+15 测试）；terminalblog 复盘<br><a href="https://github.com/NousResearch/hermes-agent/issues/130890">issue #130890</a> · <a href="https://github.com/NousResearch/hermes-agent/pull/130912">PR #130912</a></div>
+    <div class="ref"><span class="tag warn">更新器危机</span>issue #125437：失败更新留半成品、官方自认一周 15 个 Discord 支持帖 + 25 issue / 5 种机制<br><a href="https://github.com/NousResearch/hermes-agent/issues/125437">github.com/…/issues/125437</a></div>
+    <div class="ref"><span class="tag">攻略</span>七种 terminal backend 实测（换沙箱后端=跳过命令审批的机制解释）<br><a href="http://quidproquo.cc/posts/ai/2026-08-18-hermes-agent-terminal-backends">quidproquo.cc（2026-08-18）</a></div>
+    <div class="ref"><span class="tag">最小权限</span>VPS 安装安全姿势（专用非 sudo 用户、白名单 sudoers、独立 key+预算）<br><a href="https://blog.mikecodeur.com/post/install-hermes-agent-vps">blog.mikecodeur.com（2026-05-30）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、社区实战与迁移</h2>
+    <div class="ref"><span class="tag">用例集</span>sotasync 整理的 Reddit/X/YouTube 真实用例（会前调研、播客压缩 23 步→6 步、树莓派+Qwen3.5:4b）<br><a href="https://sotasync.com/reader/2026-04-20-hermes-agent-what-people-actually-use/">sotasync.com（2026-04-20）</a></div>
+    <div class="ref"><span class="tag">用例集</span>agentaibox 两月使用报告（CI/周报/技能复用 15 分钟→3 分钟；多项目记忆串台教训）<br><a href="https://www.agentaibox.com/articles/hermes-agent-experience">agentaibox.com（2026-05-29）</a></div>
+    <div class="ref"><span class="tag">长线</span>fasty97「养马初体验」：三 profile 双开、SOUL.md 实调、「这篇博客就是 Hermes 写的」<br><a href="https://www.fasty97.top/2026/06/24/Hermes养马初体验/">fasty97.top（2026-06-24）</a></div>
+    <div class="ref"><span class="tag">迁移</span>`hermes claw migrate` 两份实测：轻量 2.5 分钟（zuquanzhi）/ 重度 2.5 小时、cron 与 secrets 不迁（joshie）<br><a href="http://blog.zuquanzhi.top/2026/04/15/51943">blog.zuquanzhi.top（2026-04-15）</a> · <a href="https://www.joshie.com/">joshie.com（2026-05-23）</a> · <a href="https://news.ycombinator.com/item?id=48586005">HN「Migrate from OpenClaw」122 分讨论（2026-06-18，含 EvoMap 治理争议）</a></div>
+    <div class="ref"><span class="tag">对比</span>Kilo 博客定性（gateway around a learning agent vs agent around a messaging gateway）<br><a href="https://kilo.ai/openclaw/vs-hermes">kilo.ai/openclaw/vs-hermes</a></div>
+    <div class="ref"><span class="tag">避坑</span>25 坑指南（记忆显式说、压缩失忆、max_iterations 8-12、本地模型 7B 起步）<br><a href="https://xugj520.cn/archives/hermes-agent-pitfall-guide-developers.html">xugj520.cn（基于 v0.8.0，2026-04）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>六、中文圈与媒体</h2>
+    <div class="ref"><span class="tag src">媒体</span>广州日报大洋网《AI 圈新顶流，是匹什么马》（2 个月 11 万星、小米 MiMo 接入限免、「龙虾干活、马动脑」）<br><a href="https://news.dayoo.com/society/202604/23/140000_54951788.htm">news.dayoo.com（2026-04-23）</a></div>
+    <div class="ref"><span class="tag src">媒体</span>智东西（CSDN 转载）：OpenRouter 日调用登顶 271B、小米 MiMo 第一贡献模型（05-09 口径）<br><a href="https://blog.csdn.net/2501_91883294/article/details/160947667">blog.csdn.net（2026-05-10）</a></div>
+    <div class="ref"><span class="tag">教程</span>少数派：极空间 NAS Docker+飞书+MiniMax 全流程（2026-04-08）/ Termux 手机开发服务器 / Somvia 健身应用<br><a href="https://sspai.com/post/108391">sspai.com/post/108391</a> · <a href="https://sspai.com/post/114749">/post/114749</a> · <a href="https://sspai.com/post/114811">/post/114811</a></div>
+    <div class="ref"><span class="tag">评测</span>掘金源码级评测：学习环可审计、别无人值守<br><a href="https://juejin.cn/post/7682659072475693065">juejin.cn/post/7682659072475693065（2026-09-07）</a></div>
+    <div class="ref"><span class="tag">教程</span>腾讯云开发者社区：70 个 Skills 调教与 SOUL.md 模板<br><a href="https://developer.cloud.tencent.com/article/2655947">developer.cloud.tencent.com/article/2655947</a></div>
+    <div class="ref"><span class="tag">祛魅</span>翔宇工作流测评：「别被 self-improving 忽悠了——它在记笔记」；MiniMax 月费约 ¥29<br><a href="https://xiangyugongzuoliu.com/hermes-agent-review">xiangyugongzuoliu.com（2026-04-10）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>七、演示视频与图片版权</h2>
+    <div class="ref"><span class="tag video">官方视频</span>Hermes Desktop 官方演示（74s：release notes→PR #482→内联生图；本文两条 GIF 的源视频）<br><a href="https://hermes-assets.nousresearch.com/hermes-desktop.mp4">hermes-assets.nousresearch.com/hermes-desktop.mp4</a></div>
+    <div class="ref"><span class="tag video">官方视频</span>TUI 会话编排器演示（官方 docs 内嵌短循环）<br><a href="https://hermes-agent.nousresearch.com/docs">docs · tui-session-orchestrator</a></div>
+    <div class="ref"><span class="tag">版权</span>本文配图：官方官网/仓库文档截图（MIT 项目与官方营销资产，合理引用并逐图标注来源）+ 自绘结构图 5 张（本账号原创）。GIF 为官方视频片段截取（760px/12fps 调色板压缩）。</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · 深度解读系列（Personal Agent）· 第二篇参考资料 · 数据口径 2026-10-18</div>
+</div>
+</body>
+</html>
