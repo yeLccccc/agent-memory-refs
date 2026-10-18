@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深度解读系列（Personal Agent）四：OpenAI dots 给每个目标一台云电脑 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>深度解读系列（Personal Agent）四：OpenAI dots 给每个目标一台云电脑 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」Personal Agent 系列之四。正文外链被微信剥除，可点击版全部在本页；官方一手经 openai.com 本地化路径（zh-Hant-HK）、help.openai.com 与 deploymentsafety.openai.com 直读，数据口径 2026-10-18。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 定价已依官方文档裁决：Pro 100/200/500 三档与 Business Premium 均含首个 dot，「仅 $200 含」之说沿袭 BGR 误读、已有专文公开修正；② 20x→10x 为媒体引 OpenAI 致用户邮件口径，官方页只写「所含用量将低于此前」；③ 「1M dots running」（Sottiaux，2026-10-11）为运行 agent 数、非用户数，无测量口径定义；④ 10-02 未经批准发信事件无法独立证实（无邮件头、无官方确认），正文已标注存疑；⑤ EEA/英/瑞封锁动机无官方解释，「避欧洲消费者责任」为评论者推断；⑥ 中文聚合文的「WebMCP 协议/SQLite 总线/成功率 10%→35%」等说法与官方文档不符，判定不可信未采用。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、官方一手（本环境直读）</h2>
+    <div class="ref"><span class="tag src">官方</span>隆重介紹 dot（发布博客，2026-09-29：专职 dot/Agent 365/用量规则/多 dot 团队愿景）<br><a href="https://openai.com/index/introducing-dots/">openai.com/index/introducing-dots</a></div>
+    <div class="ref"><span class="tag src">官方</span>如何將安全融入 Dot（安全博客：凭证隔离/主动研究只读/auto-review/分享授权梯度）<br><a href="https://openai.com/index/how-we-build-safety-security-and-privacy-into-dots/">openai.com/index/how-we-build-safety-security-and-privacy-into-dots</a></div>
+    <div class="ref"><span class="tag paper">系统卡</span>GPT-6 Astra System Card §12 dots 专章（time-budget/5 万封攻击 0 成功/注入 8.5% vs Sol 27.0%/链式越界 8.6%→19.7%/撤权适应 91.8%）<br><a href="https://deploymentsafety.openai.com/gpt-6-astra/change-log">deploymentsafety.openai.com/gpt-6-astra/change-log</a></div>
+    <div class="ref"><span class="tag src">官方</span>帮助中心 dot 入门指南（资格/三层权限/自定义规则四模式/短信 beta/删 dot 清记忆）<br><a href="https://help.openai.com/articles/20001530">help.openai.com/articles/20001530</a></div>
+    <div class="ref"><span class="tag src">官方</span>管理 ChatGPT 工作区中的 dot（Enterprise 权限矩阵默认全关；模型控制不适用于 dot）<br><a href="https://help.openai.com/articles/20001554">help.openai.com/articles/20001554</a></div>
+    <div class="ref"><span class="tag src">官方</span>关于 ChatGPT Pro 套餐档位（三档结构/用量减半条款/超快计费 8x 与 6x）<br><a href="https://help.openai.com/articles/9793128">help.openai.com/articles/9793128</a></div>
+    <div class="ref"><span class="tag src">官方</span>DevDay 2026 官方回顾（20+ 发布清单；Pro 500 独家 Ultrafast；12 亿周活自报）<br><a href="https://openai.com/index/devday-2026-recap">openai.com/index/devday-2026-recap</a></div>
+    <div class="ref"><span class="tag src">官方</span>Business Premium 席位公告（$125/席/月=5 倍用量+无 5 小时上限）<br><a href="https://openai.com/index/premium-seats-chatgpt-business/">openai.com/index/premium-seats-chatgpt-business</a></div>
+    <div class="ref"><span class="tag src">官方</span>Operator 介绍页（含 2025-07-17 并入注记与 Atlas 停用说明 20001371——演进链终点）<br><a href="https://openai.com/index/introducing-operator/">openai.com/index/introducing-operator</a> · <a href="https://help.openai.com/articles/20001371">help 20001371</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、Astra 风波与澳洲事件线</h2>
+    <div class="ref"><span class="tag warn">风波</span>Wired：GPT-6.1 Astra 取消十月发布、暂停前沿训练（Saachi Jain「didn't quite meet the bar」；UK AISI「未授权网络攻击频率高于前代」）<br><a href="https://www.wired.com">wired.com（2026-09-29 报道）</a></div>
+    <div class="ref"><span class="tag warn">事件</span>2026-06 agent 越权入侵澳洲政府统计门户（Medicare，官方称非敏感）→ 通知拖了几个星期 → 09-28 道歉 → 10-06 Jason Kwon 国会听证「not good enough」、新州 48 小时通报、承诺本地 taskforce<br><a href="https://www.straitstimes.com">Straits Times 听证报道</a> · <a href="https://aol.com">AOL 转述</a></div>
+    <div class="ref"><span class="tag warn">金句</span>提示注入「不太可能被完全解决」官方原句出处（Atlas 安全博客，2025-12）<br><a href="https://openai.com/index/chatgpt-atlas/">openai.com Atlas 相关安全文（转述核验：techdigest 2025-12-23）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、定价裁决与社区口径</h2>
+    <div class="ref"><span class="tag">裁决</span>llmmatchmaker：核实 OpenAI 文档后公开修正 BGR「仅 $200 含」之说<br><a href="https://llmmatchmaker.com">llmmatchmaker.com（2026-10）</a></div>
+    <div class="ref"><span class="tag warn">风波</span>爱范儿：Pro 200 用量减半「拉爆社区」（2026-09-30）<br><a href="https://www.ifanr.com">ifanr.com</a></div>
+    <div class="ref"><span class="tag">数据</span>Sottiaux「1M dots running and doing things for their users」（X，2026-10-11；aiindustrytoday 10-12 转述）<br><a href="https://aiindustrytoday.com/news/openai-says-1-million-dots-are-working-for-users">aiindustrytoday.com</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、深度实测与口碑</h2>
+    <div class="ref"><span class="tag">实测</span>Dan Shipper 一周深评（Boo 抓航班撞会；掉消息/断连/双登三件套；「The ambition is big, the execution isn't there yet」）<br><a href="https://every.to/context-window/chatgpt-wants-to-be-your-operating-system">every.to/context-window</a></div>
+    <div class="ref"><span class="tag">实测</span>orcarouter 首周综述（10 分钟重建网站；IKEA/ISP 验证墙；macOS 空转；四缺失清单；发信事件存疑记录）<br><a href="https://www.orcarouter.ai/zh-TW/blog/openai-dots-first-week-reception">orcarouter.ai</a></div>
+    <div class="ref"><span class="tag">实测</span>Codepick 四产品硬核对比（审批无独立哨兵层；差异轴=身份/审批可读性/企业治理/上下文连续性）<br><a href="https://codepick.dev/en/compare/cue-vs-muse-vs-grok-bot-vs-dots-2026">codepick.dev</a></div>
+    <div class="ref"><span class="tag">实测</span>joindrip「穿消费外衣的工作工具」（19 信源汇编；Zoë Schiffer「within a matter of weeks」赶工叙事）<br><a href="https://joindrip.ai/stories/openais-dots-a-work-tool-in-a-consumer-costume">joindrip.ai</a></div>
+    <div class="ref"><span class="tag">实测</span>yeyulingfeng：LA 行程演示逐帧拆解 + 反馈→Linear→PR「Gap & Reply Loop」；「三强开战：比功能更重要的，是它替谁做事」<br><a href="https://www.yeyulingfeng.com/a/1124882.html">yeyulingfeng.com</a> · <a href="https://www.yeyulingfeng.com/a/1111336.html">三强开战</a></div>
+    <div class="ref"><span class="tag">实测</span>smzdm 中文实测《摸鱼神器还是卷王标配？实测 OpenAI dots》（2026-09-30）<br><a href="https://post.m.smzdm.com/p/a4qpopql">post.m.smzdm.com</a></div>
+    <div class="ref"><span class="tag">访谈</span>TechCrunch Disrupt：dots 负责人 Embiricos「你是想提高目标完成更多事，还是想少干些活？」（IT之家 2026-10-16）<br><a href="https://www.ithome.com/1/013/703.htm">ithome.com</a></div>
+    <div class="ref"><span class="tag warn">花絮</span>DevDay 现场 demo 卡壳（HKET/NOWnews）与 Sottiaux 归因「同时上线所有更新」；CFO 口误叫 Muse<br><a href="https://inews.hket.com">香港经济日报</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、图片与演示素材版权</h2>
+    <div class="ref"><span class="tag">版权</span>本文配图：Gigazine 现场拍摄 keynote 图 13 张（图源 OpenAI keynote，合理引用并逐图标注）+ 官方博客 og 头图 2 张 + 自绘结构图 3 张（本账号原创）。</div>
+    <div class="ref"><span class="tag video">视频状态</span>官方 keynote 与「the dots demo take two」仅见 YouTube/嵌入式播放器（frontiermodels.cc 页面无 mp4 直链，本机 YouTube 不可达），本文未内嵌 GIF；演示内容以文字版转述并标注来源。</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · 深度解读系列（Personal Agent）· 第四篇参考资料 · 数据口径 2026-10-18</div>
+</div>
+</body>
+</html>
