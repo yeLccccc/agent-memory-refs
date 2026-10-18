@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深度解读系列（Personal Agent）五：xAI Grok Bot 合用一台电脑的 agent 团队 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>深度解读系列（Personal Agent）五：xAI Grok Bot 合用一台电脑的 agent 团队 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」Personal Agent 系列之五。正文外链被微信剥除，可点击版全部在本页。取证路径说明：x.ai 与 docs.x.ai 本机/服务端均不可达，官方原文经 cursor.com 镜像文档 WebFetch 直读、TechMoon 截取的官方 changelog/FAQ 原文、第三方逐字转引三条路径交叉；数据口径 2026-10-18。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 「All of your Bots use the same cloud computer」「Isolation is per user, not per Grok Bot」「Do not use separate Bots as a security boundary」均为官方文档/FAQ 逐字（cursor.com 镜像直读与转引）；② SuperGrok Heavy $300 为媒体口径，官方页无公开数字；免费试用「7 天」为聚合站讹传，官方从未公布时长额度；③ 周配额池大小与超额单价官方从未公布；$292/月为竞品营销算例；④ Firecracker microVM 与云电脑 8 核/16G/128G 规格为第三方/社区口径；⑤ 「Grok Bot 即 Cursor 团队秘密研发、代号 sand」为社区口径未获官方确认；⑥ Cursor「Sand」内部调查：截至发稿无公开证据证明客户数据实际外泄，调查结论未公开；⑦ Amazon 封禁（robots.txt 99 agent）未解除（10-16 复核仍在）；「信用卡照片」是 Musk 个人示范非官方流程；⑧ 418K WAU 出处为 SpaceXAI 伦敦活动演示材料+Bloomberg 跟进；DAU 34.2 万为 App 追踪者估算；Haggle Bot $100K 节省为公司自报无审计；⑨ 「路由 Claude Opus 5.5」只是 Musk 说法，产品不显示当前模型；⑩ Grok Bot 无官方 API。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、官方文档与官方口径（镜像直读/官方截图）</h2>
+    <div class="ref"><span class="tag src">官方</span>Grok Bot 产品文档（cursor.com 镜像，=docs.x.ai 同文：共享云电脑三句原话、无模型选择器、单消息布置任务、费率上限不拦运行中 Bot）<br><a href="https://cursor.com/docs/grok-bot">cursor.com/docs/grok-bot</a></div>
+    <div class="ref"><span class="tag src">官方</span>官方 FAQ（共享机器答复「Yes. Every Grok Bot shares one persistent cloud computer」；隔离按用户；九类订阅可用；被网站封锁时交还给人）<br><a href="https://cursor.com/help/grok-bot/faqs">cursor.com/help/grok-bot/faqs</a></div>
+    <div class="ref"><span class="tag src">官方</span>私有网络与出口文档（默认经 Cursor 共享静态出口 IP；「Dedicated per-customer egress IPs are not available」；无网络策略默认 allow-all；Route egress 原话与企业管理项）<br><a href="https://cursor.com/docs/grok-bot/private-networks">cursor.com/docs/grok-bot/private-networks</a></div>
+    <div class="ref"><span class="tag src">官方</span>官方 changelog v0.70.2（2026-10-11：Bot 专属邮箱、免连账号搜 X、X Money/Stripe Link 付款、聊天内应用卡——TechMoon 截图存档）<br><a href="https://techmoon.xyz/grok-bot-email-x-search-update">techmoon.xyz（官方 changelog 截图）</a></div>
+    <div class="ref"><span class="tag src">官方</span>x.ai 公告页（introducing-grok-bot / grok-bot-more-plans / x-subscription——本机不可达，内容经多源转述核对；08-21 扩档公告由官方 @bot 账号发出）<br><a href="https://x.ai">x.ai（转述口径）</a></div>
+    <div class="ref"><span class="tag">模板市场</span>官方目录 x.ai/bot/marketplace（URL 结构侧证）；第三方目录 grokbot.dev 收录 131 Bot/39 插件（2026-10）<br><a href="https://grokbot.dev">grokbot.dev</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、母体线：收购、IPO 与内部调查</h2>
+    <div class="ref"><span class="tag">收购</span>SpaceX 宣布收购 xAI（2026-02-02/03：证券时报/央视财经等，「xAI 不再独立存在」）<br><a href="https://www.stcn.com">stcn.com</a></div>
+    <div class="ref"><span class="tag">IPO</span>SpaceX Nasdaq 上市（2026-06-12，代码 SPCX，首日 +29%，央广网/中证网等多源一致）<br><a href="https://www.cnstock.com">cnstock.com</a></div>
+    <div class="ref"><span class="tag">收购</span>SpaceX 完成 600 亿美元全股票收购 Cursor/Anysphere（2026-08-14，CBS News 等）<br><a href="https://www.cbsnews.com">cbsnews.com</a></div>
+    <div class="ref"><span class="tag warn">调查</span>Cursor 内部调查「Sand」（07 下旬启动，10-15 Crypto Briefing 披露：员工测试疑致数据流向 SpaceX AI 部门、律师警告「serious trust crisis」；<b>无公开实锤外泄</b>）<br><a href="https://cryptobriefing.com">cryptobriefing.com</a></div>
+    <div class="ref"><span class="tag">称谓</span>「更名 SpaceXAI」时间口径不一（toutiao 等）；10 月起部分英文稿写作 SpaceXSI（teslanorth/singularity 用法）——官方现用名未证实</div>
+  </div>
+
+  <div class="card">
+    <h2>三、事故与封禁</h2>
+    <div class="ref"><span class="tag warn">事故</span>Shane Mac（XMTP Labs CEO）：个人 CFO Bot 把银行月报发进公司 Slack 约 2 小时（10-01 事发、10-06 自述 48h 69 万阅读、10-09 BI/WSJ 报道；根因两说=频道同名/跨 Bot 凭证复用；Musk 34 分钟回应帖 2600 万阅读；当晚上线跨渠道转移需授权）<br><a href="https://www.businessinsider.com">businessinsider.com</a></div>
+    <div class="ref"><span class="tag warn">封禁</span>Amazon robots.txt 全禁 99 个具名 agent（10-15/16：GrokBot/Grok-DeepSearch/xAI-Grok 在列；9 月已封 Meta Muse；Musk 回 Paul Graham「也许该搞个亚马逊竞品」；背景=Amazon 诉 Perplexity Comet 案）<br><a href="https://singularity.kiwi">singularity.kiwi</a></div>
+    <div class="ref"><span class="tag warn">争议</span>代购+信用卡照片（Musk 2026-10-10 原话经 TeslaNorth 转录；Rich Eisen「This sounds absolutely positively insane」；10-15「SpaceX will make you whole」兜底承诺）<br><a href="https://teslanorth.com/2026/10/10/elon-grok-bot-shopping/">teslanorth.com</a></div>
+    <div class="ref"><span class="tag warn">配额</span>周额度「烧双倍」用户报告潮（09-27→10-11，factfile 汇编：均轶事、xAI 无回应、池大小不公布无法自证）<br><a href="https://factfile.pk">factfile.pk</a></div>
+    <div class="ref"><span class="tag">案例</span>Dre Dyson：Ultra 档 3 天烧 99% 周额度（09-16，6 个月记录：周耗 2.84 亿 token、cache read 84%、3 例程=864 触发/天、调优后 15-25%）<br><a href="https://rupload.com">rupload.com（Dre Dyson 博客）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、数据与实测</h2>
+    <div class="ref"><span class="tag">数据</span>WAU 418K（09-14，+24% WoW：SpaceXAI 伦敦活动演示材料+Bloomberg Ed Ludlow 跟进；移动 DAU ~342K 为 Adam Blacker 估算；ARK「史上最成功 app 发布」）<br><a href="https://tao.media">tao.media（2026-09-22）</a></div>
+    <div class="ref"><span class="tag">实测</span>readmusk 中文实测《7 天 82 推文力推，中文使用者实测后想退款》（温州婚礼行程：4 点起床航班、比价 1 报价、评分 7/10）<br><a href="https://readmusk.com">readmusk.com（2026-10-13）</a></div>
+    <div class="ref"><span class="tag">实测</span>@sairahul1 一人公司 6 Bot（08-19，3.6M 阅读；UU AI Hub 编译含架构图/角色卡/六步流程图——本文 07/08/09 号图源）<br><a href="https://www.uuaihub.com/blog/grok-bot-one-person-company-2026">uuaihub.com</a></div>
+    <div class="ref"><span class="tag">实测</span>smzdm 社区聚合《试用额度 2 小时烧完：5 个坑、3 类人》（08-25：云电脑 8 核/16G/128G 社区口径；「尝鲜者的玩具」）<br><a href="https://www.smzdm.com">smzdm.com</a></div>
+    <div class="ref"><span class="tag">实测</span>PTrubey 卡车公司 8 天入职培训案例（08-29，Reddit→X）；Haggle Bot 首周 $100K+ 节省（09-04 上线，自报无审计）<br><a href="https://www.agihunt.com">agihunt.com（Haggle Bot 报道）</a></div>
+    <div class="ref"><span class="tag">横评</span>Codepick《Cue vs Muse vs Grok Bot vs Dots 2026》（09-30/10-16 更新：Firecracker 按用户隔离、Enterprise 治理最强、短板=强制云存储/无 Legacy Privacy Mode/allow-all/仅美国云）<br><a href="https://codepick.dev/en/compare/cue-vs-muse-vs-grok-bot-vs-dots-2026">codepick.dev</a></div>
+    <div class="ref"><span class="tag">安全</span>HowToHarden：Grok Bot 加固指南（官方警告转引、lethal trifecta 对照、企业 DLP/证书/代理控制）<br><a href="https://howtoharden.com">howtoharden.com</a></div>
+    <div class="ref"><span class="tag">金句</span>SpaceXAI 产品成员 Roman（08-12，most.tw）：「九成完成和百分之百完成之間有很大的差距……工作會落到真人原本就會放的地方——實際工具裡」<br><a href="https://www.most.tw">most.tw</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、图片与演示素材版权</h2>
+    <div class="ref"><span class="tag">版权</span>本文配图：官方产品图（SpaceXAI 供图，The Verge/MacMagazine 载，合理引用）+官方 changelog/FAQ 截图（TechMoon 截取）+第三方制图 3 张（UU AI Hub，逐图署名）+TechMoon 十月更新插图（署名）+自绘结构图 4 张（本账号原创）。</div>
+    <div class="ref"><span class="tag video">视频状态</span>官方发布视频与代购演示均在 X（@bot），本机不可达无法截取；本文未内嵌 GIF，演示内容以文字转述并标注来源。</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · 深度解读系列（Personal Agent）· 第五篇参考资料 · 数据口径 2026-10-18</div>
+</div>
