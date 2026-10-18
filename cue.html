@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深度解读系列（Personal Agent）六：Manus Cue 给每个 agent 发一张身份证 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>深度解读系列（Personal Agent）六：Manus Cue 给每个 agent 发一张身份证 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」Personal Agent 系列之六。正文外链被微信剥除，可点击版全部在本页；官方一手经 cue.im 全站文案快照（SPA 的 JS bundle 抽取 316 条提示词与 FAQ）、manus.im 官方博客逐字全文与官方 74.7s 演示片直读，数据口径 2026-10-18。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 「约 $4B 估值」为 Bloomberg 9 月报道的目标价转述（gpts24/新浪财经跟进），官方未确认，融资官宣口径仅「超 $500M、Boyu/IDG 领投」；② 电话月费三口径并存（美区 $0.99 实测弹窗／英区约 ¥8 用户实测／iOS 内购页 $9.99），「续费涨十倍」为个案转述、官方价目未统一公示；③ Manus 2.0 Cloud Computer 定价 $30/$50 与 $39/月两说冲突未决；④ 「Dream 机制」仅 AIHub 单源提及，官方博客/FAQ/帮助文档均无此词，正文按单源转述处理；⑤ Cascade 三个百分比（token -23.2%/时间 -28.2%/成本 -32%）为官方单配置自测，官方配图脚注自注「非整体平均」；⑥ 邮箱开通方式两轮实测矛盾（注册即得 vs 手动开通+AgentMail 授权），官方未写；⑦ 号码 VoIP 性质、支付通道底层、数据驻留国、agent 间隔离机制官方零披露；⑧ Salt Labs 漏洞为 Cue 上线前 Manus 平台漏洞，直接报告未获回应、经 Meta 赏金渠道修复确认；⑨ 首批邀请码限 1000 人为 iThome 转述，官方博客未写。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、官方一手（本环境直读）</h2>
+    <div class="ref"><span class="tag src">官方</span>Introducing Manus 2.0（2026-09-28 官方博客：Cue 定义、四件套逐字、群聊场景、Cascade 三数字及脚注限定）<br><a href="https://manus.im/blog/introducing-manus-2-0">manus.im/blog/introducing-manus-2-0</a></div>
+    <div class="ref"><span class="tag src">官方</span>Manus 2.0 中文发布公告（公众号「蝴蝶效应 Butterfly Effect」，2026-09-28 深夜；含国内版团队组建与国产模型合作表述——新黄河/新浪转载）<br><a href="https://www.sina.cn/news/detail/5348410060439946.html">sina.cn（新黄河转载）</a></div>
+    <div class="ref"><span class="tag src">官方</span>cue.im 产品站（SPA；官网 meta「each with its own email, phone number, wallet and computer」、四项身份能力卡、FAQ、316 条内置提示词样例——全文快照经 JS bundle 抽取）<br><a href="https://cue.im">cue.im</a></div>
+    <div class="ref"><span class="tag src">官方</span>cue.im 首屏官方演示片（74.7s 4K：选号 UI「Dedicated line」、Christine's cloud computer、 ****1234 虚拟卡、Tokyo trip 群聊、扫码建 agent 全链路——本文 GIF 与截帧源）<br><a href="https://cue.im">cue.im（hero video，本页不外链视频文件）</a></div>
+    <div class="ref"><span class="tag src">官方</span>推出 Manus 2.0 影片編輯器（中文博客：「Cue 發佈前一晚 9 點，我接到了需求」——发布片彩蛋出处）<br><a href="https://manus.im/zh-tw/blog/introducing-video-editor">manus.im/zh-tw/blog/introducing-video-editor</a></div>
+    <div class="ref"><span class="tag src">官方</span>应用商店官方页（Android 包名 ai.manus.agents；iOS App Store id6808613358，v26.17.9，2026-10 上架；开发者署名 BUTTERFLY EFFECT PTE. LTD.）<br><a href="https://play.google.com/store/apps/details?id=ai.manus.agents">Google Play</a></div>
+    <div class="ref"><span class="tag src">官方·第三方</span>Stripe 客户案例页 Manus（「推出付费方案 4 个月后实现 9,000 万美元年化营收」）<br><a href="https://stripe.com/cn/customers/manus">stripe.com/cn/customers/manus</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、公司线与监管线</h2>
+    <div class="ref"><span class="tag warn">监管</span>外商投资安全审查工作机制办公室禁止投资决定（2026-04-27，《外商投资安全审查办法》2020 年以来首个「禁止投资」案例；四川省商务厅转发公告）<br><a href="https://swt.sc.gov.cn/sccom/c25030603/2026/5/9/e39a0a2b6d4b49bebbecd17efee520a3.shtml">swt.sc.gov.cn（发改委公告转发）</a></div>
+    <div class="ref"><span class="tag warn">定调</span>玉渊谭天：《禁止Manus并购案，不是禁止AI企业出海》；「洗澡式出海」批评见经济日报（台中时引中央社 2026-04-28）<br><a href="https://money.udn.com/money/story/5603/9469668">money.udn.com</a></div>
+    <div class="ref"><span class="tag">时间线</span>商务部对交易开展评估调查（2026-01-08 发言人，中国青年网 2026-08-18 回溯）<br><a href="https://news.youth.cn/sh/202608/t20260818_16820579.htm">news.youth.cn</a></div>
+    <div class="ref"><span class="tag">独立运营</span>Manus X 官宣恢复独立运营（2026-09-01，中央社）<br><a href="https://www.cna.com.tw/news/acn/202609010278.aspx">cna.com.tw</a></div>
+    <div class="ref"><span class="tag">融资</span>超 $500M 新一轮官宣（2026-10-08，Boyu/IDG 领投，腾讯/HSG/真格加持；凤凰网江西/腾讯新闻）<br><a href="https://jx.ifeng.com/c/8x3djeaZVMj">jx.ifeng.com</a></div>
+    <div class="ref"><span class="tag">估值口径</span>$4B 为 Bloomberg 目标价转述（gpts24 2026-10-08；新浪财经《刷新中国AI应用估值纪录，40亿美金的Manus将带回哪些想象空间?》）<br><a href="https://finance.sina.com.cn/cj/2026-10-08/doc-iniunvxc7659831.shtml">finance.sina.com.cn</a> · <a href="https://www.gpts24.com/zh/news/manus-closes-record-500m-round-at-4-billion-after-meta-deal-collapsed">gpts24.com</a></div>
+    <div class="ref"><span class="tag">招聘</span>融资同日北京 17 岗位、肖弘「一天收到上千封简历」（量子位 2026-10-08）<br><a href="https://www.qbitai.com/2026/10/502009.html">qbitai.com</a></div>
+    <div class="ref"><span class="tag">ARR</span>2025-12 下旬 ARR 突破 $100M（肖弘「最严格口径，Stripe 可查」，鞭牛士/财经网 2026-09-01 引述）<br><a href="https://www.bianews.com/news/details?id=227716">bianews.com</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、安全与支付边界</h2>
+    <div class="ref"><span class="tag warn">漏洞</span>Salt Labs：Manus 邮件提示注入研究（冷门 JS 混淆绕过护栏、警告滞后、reverse shell 取连接凭据；直接报告未获回应，经 Meta bounty 修复确认 2026-09-24，公开 2026-10-01）<br><a href="https://salt.security">salt.security（新闻稿）</a> · <a href="https://www.itsecurityguru.org">IT Security Guru 跟进</a></div>
+    <div class="ref"><span class="tag">权限阶梯</span>OpenAIMaster：预算上限不阻止错误购买；L0 只读→L3 有界自治四级阶梯，建议停在 L1（2026-10-07）<br><a href="https://openaimaster.com">openaimaster.com</a></div>
+    <div class="ref"><span class="tag">三问</span>腾讯云社区·不懂小彬：「钱包有没有刹车，刹车有没有记录，记录能不能追责」（2026-10-02）<br><a href="https://cloud.tencent.com/developer/article/2754740">cloud.tencent.com</a></div>
+    <div class="ref"><span class="tag">评语</span>Robot Zone：「Financial guardrails are not the same as judgment guardrails.」（2026-10-08）<br><a href="https://robotzone.ai">robotzone.ai</a></div>
+    <div class="ref"><span class="tag warn">滥用面</span>《An agent with its own phone number》（IWH）；「Amazon Blocks Muse, Manus Gives Agents Their Own IDs: The Battle Over Who Gets Through the Door」（dev.to）；「客户派 AI 来砍价了」（今日头条 2026-10）<br><a href="https://www.toutiao.com">toutiao.com（标题检索口径）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、实测与横评（发布三周内 9 篇）</h2>
+    <div class="ref"><span class="tag">实测</span>觉醒学院《Manus 2.0 与 Cue 从拿码到上手：万字实测》（jxxy.net：四件套全拆解、云电脑 8 核/15.6G/孟加拉 IP、Claude 22 分钟封号、电话 $0.99/月、「看你怎么当这个老板」）<br><a href="https://jxxy.net">jxxy.net</a></div>
+    <div class="ref"><span class="tag">实测</span>网易科技《Muse 之后又来新选手？Manus 新产品 Cue 的第一轮实测》（腾讯云社区转载 2753362：选题会 10 分钟、Excel 5 分钟、Notion 16 分钟 3 次介入、验证码「读到了填不进去」、同账户共用云电脑）<br><a href="https://cloud.tencent.com/developer/article/2753362">cloud.tencent.com</a></div>
+    <div class="ref"><span class="tag">实测</span>iT 邦帮忙《【Day 22】Manus 2.0 你的專屬 Agent 隨時 Cue》（「根本就是全方位秘書，只差沒有實體」）<br><a href="https://ithelp.ithome.com.tw/articles/10421639">ithelp.ithome.com.tw</a></div>
+    <div class="ref"><span class="tag">横评</span>Codepick《Cue vs Muse vs Grok Bot vs Dots 2026》（2026-09-30 发布/10-16 更新：「Cue's published difference is a phone, email, wallet, and computer for each agent」；agent 电脑与付费 Cloud Computer 关系列为 unknown）<br><a href="https://codepick.dev/en/compare/cue-vs-muse-vs-grok-bot-vs-dots-2026">codepick.dev</a></div>
+    <div class="ref"><span class="tag">横评</span>watcha 观猹《万字报告，个人 Agent 竞品分析》（Cue 标签「身份」；「大厂嫌合规麻烦、不太愿意碰的东西」；「美国号码实测发不了短信」）<br><a href="https://watcha.cn/discuss/16001">watcha.cn</a></div>
+    <div class="ref"><span class="tag">横评</span>FOMA《Best Personal AI Agents vs Agent Teams》（agent team 榜第 2 次于 Grok Bot；独立测试 Grok Bot A-/dots B/Muse D/Cue 无分；「Cue may compete once it opens」）<br><a href="https://foma.news">foma.news（2026-10-08/11）</a></div>
+    <div class="ref"><span class="tag">用例</span>真格基金 elsewhere.news：上线 12 小时四用例（打电话/机器人游戏/迪拜 3 agent 协作/Harvard 社团视频；「Every QR code you see can spawn an Agent」）<br><a href="https://elsewhere.news/en/zhenfund/manus-20">elsewhere.news</a></div>
+    <div class="ref"><span class="tag">指南</span>voguesly《Manus Cue 指南》（2026-09-30 三区 App Store 均搜不到、Mac 仅 M 系列）；夜雨聆风安装教程；V2EX 邀请码互赠帖（T9X8Y 等）<br><a href="https://voguesly.com/guides/manus-cue-guide">voguesly.com</a> · <a href="https://www.v2ex.com/t/1247166">v2ex.com/t/1247166</a></div>
+    <div class="ref"><span class="tag">电话费</span>今日头条用户实测：英国号约 ¥8/月、「续费涨十倍」个案（2026-10 上旬）<br><a href="https://www.toutiao.com/article/7691260187462517291/">toutiao.com</a></div>
+    <div class="ref"><span class="tag">第三极</span>heise：《Personal AI agents: Manus challenges Meta and OpenAI》（德国权威 IT 媒体专题；本机两次抓取超时，引用限标题层级）<br><a href="https://www.heise.de/en/news/Personal-AI-agents-Manus-challenges-Meta-and-OpenAI-11471604.html">heise.de</a></div>
+    <div class="ref"><span class="tag">回应</span>肖弘即刻长文与朋友圈（「Manus 被做出来的时候，世界上是没有 Codex 和 Claude cowork 这类产品的」；「挺像卖电脑的生意」——凤凰网科技 2026-09-29）<br><a href="https://tech.ifeng.com/c/8woPhxCXjjq">tech.ifeng.com</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、图片与演示素材版权</h2>
+    <div class="ref"><span class="tag">版权</span>本文配图：cue.im 官方 og 视觉与官方 4K 演示片截帧/裁剪 GIF（选号 UI、扫码建 agent 两段，图源 Manus 官方宣传片，合理引用并逐图标注）+ manus.im 官方博客配图（Cascade 基准图、Cue 主视觉、Cloud Computer 面板）+ 自绘结构图 4 张（本账号原创）。</div>
+    <div class="ref"><span class="tag video">视频状态</span>官方宣传片经 cue.im 首屏 mp4 直链下载（74.7s/4K，源文件已存档），本文 GIF 由此剪制；Manus 官方 X 发布视频本机不可达，仅记链接层级。</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · 深度解读系列（Personal Agent）· 第六篇参考资料 · 数据口径 2026-10-18</div>
+</div>
