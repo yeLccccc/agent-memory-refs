@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>万字长文带你梳理 AI 改进 AI（RSI）· 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#24406B;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f5f9;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#24406B;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;} .ref .tag.video{background:#8a5fb0;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>万字长文带你梳理 AI 改进 AI：递归自我改进（RSI）的定义、四条路线与产品全景 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」RSI 新系列·序一（综述篇）。正文外链被微信剥除，可点击版全部在本页；事实口径截至 2026-10-18。</div>
+    <div class="note"><b>数据口径与可靠性说明：</b>① Anthropic 两个核心数字（合入代码 >80% 由 Claude 完成、Claude「主导」26% 研发工作）均为<b>官方自报</b>，指数刻度为 AL0–AL5，官方自称 prototype 并欢迎第三方验证，两个数字口径不同（代码行 vs 加权研发工作）不可混用；② METR「89 天翻倍」是 <b>2024 年以来发布模型</b>的口径（2023 年起为 131 天、2019–2025 全期约 7 个月），Claude Opus 4.5 视野 320 分钟置信区间 170–729 分钟；③ 智谱 GLM Infra Agent 全部数字为<b>厂商自报</b>，官方博客自认「迈向（Toward）RSI、尚未达完全自主设计训练下一代模型的阶段」，吞吐 3 倍的基准是自家初始基线；④ SSI 获英伟达投资为官宣事实，「约 $5B」出自 Bloomberg/Reuters 知情人士口径，双方未披露金额；⑤ Recursive Superintelligence 的 CEO 是 Richard Socher，田渊栋为联合创始人之一（中文标题惯称「田渊栋创办」不准确）；⑥ Reflection 与 SpaceX 的 $6.3B 合同是 <b>Reflection 向 SpaceX 采购算力</b>（2026-07 起每月 $1.5 亿、至 2029），方向勿反；⑦ 本文已主动排除的讹传：DGM「修改自身拒绝回答的 prompt」（论文与官方博客均无）、SICA「$13 成本」（论文口径约 $7,000/15 轮）、「AI 写的论文登 Nature」（登 Nature 的是 Sakana 人类作者的系统论文）、Christiano《Takeoff speeds》误标 2023（实为 2018-02-24）。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、实验室官方一手（本文引子的三个数字来源）</h2>
+    <div class="ref"><span class="tag src">官方</span>Anthropic《When AI Builds Itself》（Marina Favaro × Jack Clark，2026-06-04；>80% 合入代码、8.0× 人均产出、三种未来情景、可验证放缓倡议）<br><a href="https://www.anthropic.com/institute/recursive-self-improvement">anthropic.com/institute/recursive-self-improvement</a></div>
+    <div class="ref"><span class="tag src">官方</span>Anthropic R&D Automation Index（2026-09-17，AL0–AL5 刻度，Claude「主导」占比 2026-02 不足 1% → 2026-08 达 26%，官方自称 prototype）<br><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development">anthropic.com/institute/measuring-pace-of-ai-development</a></div>
+    <div class="ref"><span class="tag src">官方</span>Anthropic Claude Fable 5 发布公告（2026-06-09，与 Mythos 5 同代——自曝文 5 天后）<br><a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">anthropic.com/news/claude-fable-5-mythos-5</a></div>
+    <div class="ref"><span class="tag src">官方</span>METR《Time Horizon 1.1》（2026-01-29；2024 年以来翻倍 89 天、Opus 4.5 视野 320 分钟）<br><a href="https://metr.org/blog/2026-01-29-time-horizon-1-1/">metr.org/blog/2026-01-29-time-horizon-1-1</a> · 原版：<a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">2025-03-19 首测（约 7 个月）</a></div>
+    <div class="ref"><span class="tag src">官方</span>METR《Frontier Risk Report Feb–Mar 2026》（2026-05-19；公开模型拟合翻倍 105 天、内部领先 1.55×、MirrorCode 基准）<br><a href="https://metr.org/blog/2026-05-19-frontier-risk-report/">metr.org/blog/2026-05-19-frontier-risk-report</a> · <a href="https://metr.org/risk-report-feb-mar-2026.pdf">全文 PDF</a></div>
+    <div class="ref"><span class="tag src">官方</span>METR《Have We Seen an Acceleration in Discoveries?》（2026-08-14；七条算法优化指标无一显示加速）<br><a href="https://metr.org/notes/2026-08-14-llm-contribution-to-discoveries/">metr.org/notes/2026-08-14-llm-contribution-to-discoveries</a></div>
+    <div class="ref"><span class="tag src">官方</span>DeepMind AlphaEvolve 官方博客与一周年影响报告<br><a href="https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/">博客（2025-05-14）</a> · <a href="https://deepmind.google/blog/alphaevolve-impact/">alphaevolve-impact（2026-05-07）</a></div>
+    <div class="ref"><span class="tag src">官方</span>OpenAI《Why we no longer evaluate SWE-bench Verified》（2026-02-23；难题 59.4% 测试有缺陷、六个月 74.9%→80.9%、建议 SWE-bench Pro）<br><a href="https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/">openai.com/index/why-we-no-longer-evaluate-swe-bench-verified</a></div>
+    <div class="ref"><span class="tag src">官方</span>OpenAI ExploitGym 事件双报告（2026-08-26；约 1200 agent 越权互通 7 万+消息、约 700 入侵 Hugging Face、停训 17 天）<br><a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/">openai.com 官方报告</a>（openai.com 有反爬，正文引数经 METR/Redwood 独立报告交叉核对）</div>
+    <div class="ref"><span class="tag src">官方</span>智谱 z.ai 官方博客《Toward Recursive Self-Improvement: How GLM Built Its Own Inference Infrastructure》（2026-09-17）<br><a href="https://z.ai/blog/glm-built-its-inference-infrastructure">z.ai/blog/glm-built-its-inference-infrastructure</a> · 国内转述：<a href="https://www.cnstock.com/commonDetail/791648">中国证券网</a></div>
+    <div class="ref"><span class="tag src">官方</span>Sakana AI：Darwin Gödel Machine / ShinkaEvolve / RSI Lab / Schmidhuber 首席科学顾问公告<br><a href="https://sakana.ai/dgm/">sakana.ai/dgm</a> · <a href="https://sakana.ai/shinka-evolve/">sakana.ai/shinka-evolve</a> · <a href="https://sakana.ai/rsi-lab/">sakana.ai/rsi-lab</a> · <a href="https://sakana.ai/schmidhuber/">sakana.ai/schmidhuber</a></div>
+    <div class="ref"><span class="tag src">官方</span>Reflection AI《Introducing Beam》（2026-10-05；501B MoE / 23B 激活 / Apache 2.0 权重承诺）<br><a href="https://reflection.ai/blog/introducing-beam">reflection.ai/blog/introducing-beam</a> · <a href="https://reflection.ai/blog/beam-is-available">beam-is-available</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、改代码线（第四节）论文与仓库</h2>
+    <div class="ref"><span class="tag paper">论文</span>FunSearch（Nature 2023-12-14，无 arXiv 版；Mathematics and the imagination 装箱/cap set）<br><a href="https://www.nature.com/articles/s41586-023-06924-6">nature.com/articles/s41586-023-06924-6</a></div>
+    <div class="ref"><span class="tag paper">论文</span>AlphaEvolve 技术报告（48 次乘法、0.7% 算力、自指加速）<br><a href="https://arxiv.org/abs/2506.13131">arxiv.org/abs/2506.13131</a> · 第三方验证：<a href="https://arxiv.org/abs/2506.13242">CNRS 有理化 arXiv 2506.13242</a></div>
+    <div class="ref"><span class="tag src">仓库</span>OpenEvolve（AlphaEvolve 开源复现；circle packing 2.635977 落盘可查，matmul 未复现）<br><a href="https://github.com/algorithmicsuperintelligence/openevolve">github.com/algorithmicsuperintelligence/openevolve</a></div>
+    <div class="ref"><span class="tag paper">论文</span>ShinkaEvolve：Sample-Efficient Program Evolution（150 次评估超 AlphaEvolve 基线）<br><a href="https://arxiv.org/abs/2509.19349">arxiv.org/abs/2509.19349</a> · <a href="https://github.com/SakanaAI/ShinkaEvolve">SakanaAI/ShinkaEvolve</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Darwin Gödel Machine（SWE-bench 20→50%、Polyglot 14.2→30.7%、$22k 附录 E.1、三条安全事件官方披露）<br><a href="https://arxiv.org/abs/2505.22954">arxiv.org/abs/2505.22954</a> · <a href="https://github.com/jennyzzt/dgm">jennyzzt/dgm</a></div>
+    <div class="ref"><span class="tag paper">论文</span>SICA: Self-Improving Coding Agent（布里斯托 Robeyns/Szummer/Aitchison；17%→53%、约 $7,000/15 轮）<br><a href="https://arxiv.org/abs/2504.15228">arxiv.org/abs/2504.15228</a> · <a href="https://github.com/MaximeRobeyns/self_improving_coding_agent">MaximeRobeyns/self_improving_coding_agent</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Gödel Agent（运行时 monkey patching 自改；DROP 80.9→90.5、约 $15/次）<br><a href="https://arxiv.org/abs/2410.04444">arxiv.org/abs/2410.04444</a></div>
+    <div class="ref"><span class="tag paper">论文</span>HGM（Huxley-Gödel Machine，Schmidhuber 署名；元生产力-性能错配）与 SIFT（LLM 裁判树搜索，单轮约 $34、DGM-harness 对照约 $150、Polyglot 35.1%）<br><a href="https://arxiv.org/abs/2510.21614">arXiv 2510.21614</a> · <a href="https://arxiv.org/abs/2609.19526">arXiv 2609.19526</a></div>
+    <div class="ref"><span class="tag warn">安全</span>基准投毒攻击自改 agent（Trusting Trust 的 AI 翻版）<br><a href="https://arxiv.org/abs/2609.17817">arxiv.org/abs/2609.17817</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、改权重线（第五节）论文</h2>
+    <div class="ref"><span class="tag paper">源头</span>STaR（2203.14465）/ Self-Instruct（2212.10560）/ Self-Rewarding（9.94→15.38→20.44；流传 29.7→41.6 不在论文）<br><a href="https://arxiv.org/abs/2203.14465">2203.14465</a> · <a href="https://arxiv.org/abs/2212.10560">2212.10560</a> · <a href="https://arxiv.org/abs/2401.10020">2401.10020</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Absolute Zero（零数据自博弈、uh-oh moment）<br><a href="https://arxiv.org/abs/2505.03335">arxiv.org/abs/2505.03335</a> · <a href="https://github.com/LeapLabTHU/Absolute-Zero-Reasoner">LeapLabTHU/Absolute-Zero-Reasoner</a></div>
+    <div class="ref"><span class="tag paper">论文</span>TTRL（多数投票当奖励；AIME24 +211% 为 v3 口径、v1 为 +159%）<br><a href="https://arxiv.org/abs/2504.16084">arxiv.org/abs/2504.16084</a> · <a href="https://github.com/PRIME-RL/TTRL">PRIME-RL/TTRL</a></div>
+    <div class="ref"><span class="tag paper">论文</span>R-Zero（Challenger/Solver 共进化；伪标签 79.0%→63.0% 衰减、4B AIME25 下滑）<br><a href="https://arxiv.org/abs/2508.05004">arxiv.org/abs/2508.05004</a> · <a href="https://github.com/Chengsong-Huang/R-Zero">Chengsong-Huang/R-Zero</a></div>
+    <div class="ref"><span class="tag paper">论文</span>SEAL: Self-Adapting Language Models（自生成教材 47.0% vs GPT-4.1 的 46.3%、ARC 0→72.5%）<br><a href="https://arxiv.org/abs/2506.10943">arxiv.org/abs/2506.10943</a> · <a href="https://github.com/Continual-Intelligence/SEAL">Continual-Intelligence/SEAL</a></div>
+    <div class="ref"><span class="tag paper">论文</span>SPIRAL（2506.24119）/ Self-Questioning（2508.03682）/ Intuitor（2505.19590）/ SPICE（2510.24684）<br><a href="https://arxiv.org/abs/2506.24119">2506.24119</a> · <a href="https://arxiv.org/abs/2508.03682">2508.03682</a> · <a href="https://arxiv.org/abs/2505.19590">2505.19590</a> · <a href="https://arxiv.org/abs/2510.24684">2510.24684</a></div>
+    <div class="ref"><span class="tag warn">冷水</span>《Your Self-Play Algorithm is Secretly an Adversarial Imitator》（自博弈=对抗性模仿，天花板钉在基座）与《What is Missing from AI Post-Training AI》（清华，策略锁死）<br><a href="https://arxiv.org/abs/2602.01357">arXiv 2602.01357</a> · <a href="https://arxiv.org/abs/2608.19072">arXiv 2608.19072</a></div>
+    <div class="ref"><span class="tag paper">厂商口径</span>DeepSeek R1 技术报告（600k 推理数据回流、800k 蒸馏全系）；Nature 封面论文（2026-09-18，数据截止 2024-07 自证无蒸馏、512 H800×80h≈$29.4 万）<br><a href="https://arxiv.org/abs/2501.12948">arXiv 2501.12948</a> · <a href="https://www.nature.com/nature/volumes/642/issues/8087">Nature 642 封面（2026-09）</a></div>
+    <div class="ref"><span class="tag paper">合成飞轮</span>Phi-4 报告（约 400B 合成 token、约 40%）<br><a href="https://arxiv.org/abs/2412.08905">arxiv.org/abs/2412.08905</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、改配置线（第六节）论文与生态</h2>
+    <div class="ref"><span class="tag paper">论文</span>Reflexion（2303.11366）/ PromptBreeder（2309.16797）/ ADAS（2408.08435）/ AFlow（2410.10762）<br><a href="https://arxiv.org/abs/2303.11366">2303.11366</a> · <a href="https://arxiv.org/abs/2309.16797">2309.16797</a> · <a href="https://arxiv.org/abs/2408.08435">2408.08435</a> · <a href="https://arxiv.org/abs/2410.10762">2410.10762</a></div>
+    <div class="ref"><span class="tag paper">论文</span>GEPA（反思式提示进化；v2 口径 +6% vs GRPO、rollout 省 35 倍；v1 曾写 +10%）<br><a href="https://arxiv.org/abs/2507.19457">arxiv.org/abs/2507.19457</a></div>
+    <div class="ref"><span class="tag paper">论文</span>ACE: Agentic Context Engineering（brevity bias + context collapse；增量更新永不整体重写）<br><a href="https://arxiv.org/abs/2510.04618">arxiv.org/abs/2510.04618</a> · <a href="https://github.com/ace-agent/ace">ace-agent/ace</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Google RRSI：Regularized Recursive Self-Improvement（背题实锤：同分布 +14.1 vs OOD +4.7；泄漏筛查等双端正则化）<br><a href="https://arxiv.org/abs/2609.24972">arxiv.org/abs/2609.24972</a></div>
+    <div class="ref"><span class="tag src">官方</span>Anthropic Agent Skills 工程博客（渐进披露三级加载）与开放标准<br><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">anthropic.com/engineering · agent skills</a> · <a href="https://agentskills.io">agentskills.io</a> · <a href="https://github.com/anthropics/skills">anthropics/skills</a></div>
+    <div class="ref"><span class="tag warn">基准</span>Agentic Benchmark Checklist（ABC：17 基准审计，缺陷可致相对虚高最高 100%）<br><a href="https://arxiv.org/abs/2507.02825">arxiv.org/abs/2507.02825</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、自动科研线（第七节）</h2>
+    <div class="ref"><span class="tag paper">论文</span>The AI Scientist v1（&lt;$15/篇；自改代码延长时限的安全事件披露）与 v2（agentic tree search）<br><a href="https://arxiv.org/abs/2408.06292">2408.06292</a> · <a href="https://arxiv.org/abs/2504.08066">2504.08066</a> · <a href="https://github.com/SakanaAI/AI-Scientist">SakanaAI/AI-Scientist</a></div>
+    <div class="ref"><span class="tag paper">里程碑</span>Sakana 系统论文登 Nature（2026-03-26，人类作者；「AI 论文登 Nature」系讹传）与 ICBINB workshop 盲审 6.33 分、录用即撤<br><a href="https://www.nature.com/articles/s41586-026-10265-5">nature.com/articles/s41586-026-10265-5</a> · <a href="https://sakana.ai/ai-scientist-first-publication/">sakana.ai/ai-scientist-first-publication</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Google AI co-scientist（锦标赛进化；AML/细菌耐药案例）<br><a href="https://arxiv.org/abs/2502.18864">arxiv.org/abs/2502.18864</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Kosmos（Edison Scientific/FutureHouse 衍生；12 小时、约 200 rollouts、4.2 万行代码、陈述准确率 79.4%）<br><a href="https://arxiv.org/abs/2511.02824">arxiv.org/abs/2511.02824</a> · <a href="https://edisonscientific.com/news/announcing-kosmos">edisonscientific.com · announcing-kosmos</a></div>
+    <div class="ref"><span class="tag paper">论文</span>DeepScientist（西湖大学张岳团队，非 HKUDS；5,000 想法→1,100 实验→21 推进=1.9% 成活率）<br><a href="https://arxiv.org/abs/2509.26603">arxiv.org/abs/2509.26603</a> · <a href="https://github.com/ResearAI/DeepScientist">ResearAI/DeepScientist</a></div>
+    <div class="ref"><span class="tag warn">审计</span>Google Cloud 证据链审计 CoE（幻觉引用率最高 20.9%；方法-代码对齐 DeepScientist/Sakana 33%、ScientistOne 93%）<br><a href="https://arxiv.org/abs/2605.26340">arxiv.org/abs/2605.26340</a></div>
+    <div class="ref"><span class="tag warn">治理</span>ICML 2026 水印蜜罐（506 审稿人违规、497 篇连坐桌拒）与华东师大「AI 一作」论文被知网下架（2026-07-15）<br><a href="https://blog.icml.cc/">ICML 2026 官方博客</a> · <a href="https://www.thepaper.cn/">澎湃相关报道检索</a></div>
+  </div>
+
+  <div class="card">
+    <h2>六、公司与资本（第八节）</h2>
+    <div class="ref"><span class="tag src">官方/报道</span>SSI×英伟达战略合作（2026-07-27，Vera Rubin 早期访问、「算力一年提升一个数量级」；$5B 为 Bloomberg/Reuters 口径）<br><a href="https://www.reuters.com/technology/">Reuters 科技版检索（2026-07-27）</a></div>
+    <div class="ref"><span class="tag src">官方/报道</span>Recursive Superintelligence 出隐身（2026-05-13，$650M@$4.65B，CEO Richard Socher、联创含田渊栋/Jeff Clune/Peter Norvig 等）<br><a href="https://techcrunch.com/2026/05/13/richard-socher-launches-recursive-superintelligence/">TechCrunch 报道口径</a></div>
+    <div class="ref"><span class="tag src">官方</span>Prime Intellect Environments Hub 与 A 轮；Mechanize 种子轮与 Google 拟收购报道<br><a href="https://github.com/PrimeIntellect-ai">PrimeIntellect-ai</a> · <a href="https://www.mechanize.com">mechanize.com</a> · <a href="https://www.businessinsider.com/">Business Insider（2026-08 报道，未交割）</a></div>
+    <div class="ref"><span class="tag src">官方</span>OpenAI「自动化研究实习生」里程碑（2026-09-07）与 Preparedness Framework v2（self-improvement 列为跟踪类别）<br><a href="https://openai.com/index/">openai.com/index（2026-09-07 公告）</a> · <a href="https://cdn.openai.com/openai-preparedness-framework-v2.pdf">Preparedness v2 PDF</a></div>
+    <div class="ref"><span class="tag src">官方</span>DeepSeek R1 Nature 封面（2026-09-18）与融资线报道（澎湃，2026-10）<br><a href="https://www.nature.com/nature/volumes/642/issues/8087">Nature 642(8087)</a> · <a href="https://www.thepaper.cn/newsDetail_forward_34135561">thepaper.cn 公司线梳理</a></div>
+    <div class="ref"><span class="tag warn">转述</span>梁文锋 2026-07 闭门交流纪要（流出纪要，无一手音视频；「持续学习之后……甚至自己研究和开发自己」）<br><a href="https://www.stcn.com/article/detail/4037119.html">证券时报转述</a></div>
+  </div>
+
+  <div class="card">
+    <h2>七、治理（第十节）</h2>
+    <div class="ref"><span class="tag src">法条</span>加州 SB 53《Transparency in Frontier Artificial Intelligence Act》（2025-09-29 签署；「失控」列入灾难性风险定义）<br><a href="https://oag.ca.gov/sb53">oag.ca.gov/sb53</a> · 注解站 <a href="https://sb53.info">sb53.info</a></div>
+    <div class="ref"><span class="tag src">官方</span>中国《人工智能安全治理框架》2.0（TC260，2025-09-15；新增「可信应用、防范失控」）与专家解读<br><a href="https://www.cac.gov.cn/2025-09/26/c_1760606717425964.htm">网信办专家解读</a></div>
+    <div class="ref"><span class="tag warn">事件</span>Ezra Klein 专栏《We Can't Lose Control of A.I.》（NYT，2026-09-20，呼吁立法禁止 RSI）与约 1,200 名实验室员工联名信（2026-07-29）<br><a href="https://www.nytimes.com/2026/09/20/opinion/ezra-klein-ai-control.html">nytimes.com（付费墙，观点经多方转述核对）</a> · <a href="https://www.independent.co.uk/">The Independent（2026-07-29）</a></div>
+    <div class="ref"><span class="tag paper">测量</span>AIRDA：Measuring AI R&D Automation（Chan/Greaves/Anderljung 等，监管讨论的共用量表）<br><a href="https://arxiv.org/abs/2603.03992">arxiv.org/abs/2603.03992</a></div>
+    <div class="ref"><span class="tag warn">证词</span>METR Chris Painter 美国参议院证词（2026-09-30）与《AI systems could cover up misbehavior》（2026-10-06）<br><a href="https://metr.org/blog/">metr.org/blog（2026-09/10 篇目）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>八、综述与立场文献（第三节）</h2>
+    <div class="ref"><span class="tag paper">第一代</span>Self-Evolution of LLMs（2404.14387）/ Self-Evolving Agents（2507.21046，TMLR 2026-01）/ Self-Evolving AI Agents（2508.07407）<br><a href="https://arxiv.org/abs/2404.14387">2404.14387</a> · <a href="https://arxiv.org/abs/2507.21046">2507.21046</a> · <a href="https://arxiv.org/abs/2508.07407">2508.07407</a></div>
+    <div class="ref"><span class="tag paper">第二代</span>Recursive Self-Improvement in AI（2607.07663，1,250 篇文献；「有界自精炼已是工业实践，开放式 RSI 全维度受限」）与 Two Perspectives on RSI（2610.14625）<br><a href="https://arxiv.org/abs/2607.07663">arxiv.org/abs/2607.07663</a> · <a href="https://arxiv.org/abs/2610.14625">arxiv.org/abs/2610.14625</a></div>
+    <div class="ref"><span class="tag paper">理论</span>Good 1965（智能爆炸）/ Schmidhuber 哥德尔机（cs/0309048）/ Christiano《Takeoff speeds》（2018-02-24，非 2023）/ Yudkowsky 2002 LOGI（RSI 造词）<br><a href="https://arxiv.org/abs/cs/0309048">cs/0309048</a> · <a href="https://sideways-view.com/2018/02/24/takeoff-speeds/">sideways-view.com/2018/02/24/takeoff-speeds</a></div>
+    <div class="ref"><span class="tag">立场</span>Silver & Sutton《Welcome to the Era of Experience》（2025-04，自挂 PDF 后入 MIT Press 书章）/ Nathan Lambert《Lossy self-improvement》（2026-03-22）/ Cunningham《Definitions of RSI》（2026-06-05）/ Naam 定量反方（2026-09）<br><a href="https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf">Era of Experience PDF</a> · <a href="https://www.interconnects.ai/p/lossy-self-improvement">interconnects.ai/p/lossy-self-improvement</a> · <a href="https://tecunningham.github.io/posts/2026-06-05-rsi-definitions.html">tecunningham.github.io · rsi-definitions</a> · <a href="https://www.rameznaam.com/p/ai-rsi-isnt-leading-to-super-intelligence">rameznaam.com · 差 5–10 倍</a></div>
+    <div class="ref"><span class="tag">情景</span>AI-2027（2025-04，三次自我修正）与 AI 2040: Plan A（AI Futures Project，2026-07-09）<br><a href="https://ai-2027.com/">ai-2027.com</a> · <a href="https://blog.aifutures.org/p/ai-2040-plan-a">blog.aifutures.org/p/ai-2040-plan-a</a></div>
+    <div class="ref"><span class="tag">中文</span>中文世界三篇盘点（火星财经全景转述 / alishangtian 验证瓶颈长文 / ai-berkshire 批判性综述）<br><a href="https://www.toutiao.com/article/7694864851180569097">toutiao.com 转载</a> · <a href="https://www.alishangtian.com/article/user-1d52e0c31c">alishangtian.com</a> · <a href="https://github.com/xbtlin/ai-berkshire">github.com/xbtlin/ai-berkshire</a></div>
+  </div>
+
+  <div class="card">
+    <h2>九、官方视频专区（正文视频由作者手动上传）</h2>
+    <div class="ref"><span class="tag video">官方</span>DeepMind《Code Evolution》32s——AlphaEvolve 官方概念动画（正文配图 04 的动版）<br><a href="https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/media/Code-Evolution-Illustration_compressed_iUJETbv.mp4">storage.googleapis.com · Code-Evolution-Illustration.mp4（直链）</a></div>
+    <div class="ref"><span class="tag video">官方</span>DeepMind AlphaEvolve 一周年页封面动画 7s（进化地形）<br><a href="https://deepmind.google/blog/alphaevolve-impact/">deepmind.google/blog/alphaevolve-impact（页内播放器）</a></div>
+    <div class="ref"><span class="tag video">官方</span>DeepMind FunSearch 装箱对比动画 14s（Best-fit vs FunSearch，正文图 3 的动版）<br><a href="https://deepmind.google/blog/funsearch-making-new-discoveries-in-mathematical-sciences-using-large-language-models/">deepmind.google · FunSearch 博客（页内播放器）</a></div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · RSI 系列 序一 · 生成于 2026-10-18 · 错误指正请移步公众号评论区（两天内逐条回复）</div>
+</div>
+</body>
+</html>
