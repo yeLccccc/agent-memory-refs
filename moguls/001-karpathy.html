@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI大牛列传·一：卡帕西，把GPT拆到200行的男人，回去炼Claude了 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>AI大牛列传·一：卡帕西，把GPT拆到200行的男人，回去炼Claude了 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」《AI大牛列传》系列第一期。人物为在世公众人物，全部轶事与事实均经双源核验（维基百科与媒体档案互证、本人一手博客/推文为准）；正文外链被微信剥除，可点击版全部在本页，数据口径 2026-11-01。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 出生（1986-10-23 布拉迪斯拉发）、2001 年 15 岁移居多伦多：维基百科与多份人物档案一致；② 三段实习（Google Brain 2011 / Google Research 2013 / DeepMind 2015）与 UBC 硕士论文题、博士论文题：以 Stanford 学术页与 karpathy.ai 为准的单源结构，正文以「据其学术主页」口径使用；③ YouTube 播放（约 810 万）与订阅（约 174 万）为撰稿时点数；④ 「第 11 号员工」为媒体通称口径；⑤ vibe coding 原推（2025-02-02）措辞以 vibecodingwiki 存档与多源转述为准；⑥ 「他称 vibe coding 已过时」为 2026-02 HN 讨论转述；⑦ Anthropic 职位（预训练团队 IC、向 Nick Joseph 汇报）为 Yahoo Finance/kingy.ai/网易等多源一致；⑧ 认知漏斗四层数字（60 亿 / 约 5000 人 / 0.00006%）为其 2026-10 推文自报口径，非独立统计。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、本人一手（博客 / 代码库 / 课程 / 推文）</h2>
+    <div class="ref"><span class="tag src">博客</span>karpathy.github.io（全部博文年表：Unreasonable Effectiveness 2015-05-21、Recipe 2019-04-25、microgpt 2026-02-12 等）<br><a href="https://karpathy.github.io/">karpathy.github.io</a></div>
+    <div class="ref"><span class="tag src">仓库</span>nanoGPT（2022-12，「训练 GPT 最简单最快的仓库」；GPT-2 124M 复现口径）<br><a href="https://github.com/karpathy/nanoGPT">github.com/karpathy/nanoGPT</a></div>
+    <div class="ref"><span class="tag src">仓库</span>nanochat（2025-10-13，约 8000 行、$100 全栈 ChatGPT）<br><a href="https://github.com/karpathy/nanochat">github.com/karpathy/nanochat</a> · <a href="https://news.ycombinator.com/item?id=45569350">HN 讨论</a></div>
+    <div class="ref"><span class="tag src">代码</span>microgpt（2026-02-12 博客 + gist：约 200 行纯 Python GPT，手写反向传播）<br><a href="https://karpathy.github.io/2026/02/12/microgpt/">博文</a> · <a href="https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95">gist</a></div>
+    <div class="ref"><span class="tag src">文章</span>Software 2.0（2017-11，Medium；「权重即程序」原始论述）<br><a href="https://medium.com/@karpathy/software-2-0-a6eb961050ce">medium.com/@karpathy/software-2-0</a></div>
+    <div class="ref"><span class="tag src">课程</span>Neural Networks: Zero to Hero（micrograd → makemore → Let's build GPT → tokenizer → 复现 GPT-2）<br><a href="https://karpathy.ai/zero-to-hero.html">karpathy.ai/zero-to-hero.html</a></div>
+    <div class="ref"><span class="tag src">学术</span>Stanford 学术页（教育/论文/履历基准源）<br><a href="https://cs.stanford.edu/people/karpathy">cs.stanford.edu/people/karpathy</a></div>
+    <div class="ref"><span class="tag src">公司</span>Eureka Labs 官网与 LLM101n 仓库（2024-07 创立，AI 原生学校）<br><a href="https://www.eurekalabs.ai">eurekalabs.ai</a> · <a href="https://github.com/karpathy/LLM101n">github.com/karpathy/LLM101n</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、关键推文（X 原帖）</h2>
+    <div class="ref"><span class="tag">2023-01-24</span>「The hottest new programming language is English」<br><a href="https://x.com/karpathy/status/1617979122625712128">x.com/karpathy/status/1617979122625712128</a></div>
+    <div class="ref"><span class="tag">2023-02-09</span>回归 OpenAI：「Some personal news: I am joining OpenAI (again :))」<br><a href="https://x.com/karpathy/status/1623476659369443328">x.com/karpathy/status/1623476659369443328</a> · <a href="https://www.teslarati.com/tesla-ai-director-andrej-karpathy-rejoins-openai">Teslarati 报道</a></div>
+    <div class="ref"><span class="tag">2024-02-13</span>二度离开：「Hi everyone yes, I left OpenAI yesterday…」<br><a href="https://x.com/karpathy/status/1757600075281547344">x.com/karpathy/status/1757600075281547344</a> · <a href="https://techcrunch.com/2024/02/13/andrej-karpathy-is-leaving-openai-again-but-he-says-there-was-no-drama">TechCrunch 报道</a></div>
+    <div class="ref"><span class="tag">2025-02-02</span>vibe coding 造词推（措辞以存档转述为准）<br><a href="https://x.com/karpathy/status/1886192184882706689">x.com/karpathy/status/1886192184882706689</a> · <a href="https://x.com/ycombinator/status/1897301568736911530">YC 转发</a></div>
+    <div class="ref"><span class="tag">2026-10</span>AI 认知漏斗（60 亿人未接触 / 约 5000 人前沿内部访问）<br><a href="https://x.com/karpathy/status/2109361546505966046">x.com/karpathy/status/2109361546505966046</a> · <a href="https://www.businessinsider.com/andrej-karpathy-ai-gap-widening-usage-2026-10">Business Insider</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、职业时间线锚点（权威媒体）</h2>
+    <div class="ref"><span class="tag paper">特斯拉</span>加入（2017-06，Director of AI）与离开（2022-07-13，sabbatial 后）<br><a href="https://www.cnbc.com/2022/07/13/tesla-ai-leader-andrej-karpathy-announces-hes-leaving-the-company.html">CNBC</a> · <a href="https://www.reuters.com/business/autos-transportation/teslas-ai-director-leaving-company-after-4-month-sabbatical-2022-07-13">Reuters</a></div>
+    <div class="ref"><span class="tag paper">AI Day</span>Tesla AI Day 2021（2021-08-19：HydraNet、vector space、数据引擎、纯视觉）<br><a href="https://techcrunch.com/2021/08/19/top-five-highlights-of-elon-musks-tesla-ai-day">TechCrunch</a> · <a href="https://www.engineering.com/tesla-ai-day-musk-unveils-ambitious-plan-to-be-an-ai-world-leader">Engineering.com</a></div>
+    <div class="ref"><span class="tag paper">纯视觉</span>FSD Beta 全量 Pure Vision、移除雷达（2021-10）<br><a href="https://www.teslarati.com/tesla-fsd-beta-members-pure-vision-no-radar-beta-pool-expansion">Teslarati</a> · <a href="https://www.autonews.com/automakers-suppliers/musk-shows-self-driving-progress-humanoid-robot-tesla-ai-day">Automotive News</a></div>
+    <div class="ref"><span class="tag paper">Anthropic</span>加入 Anthropic 预训练团队（2026-05-19，IC、向 Nick Joseph 汇报）<br><a href="https://finance.yahoo.com/sectors/technology/articles/ex-tesla-ai-director-joins-170628095.html">Yahoo Finance</a> · <a href="https://kingy.ai/news/andrej-karpathy-just-joined-anthropic-heres-what-that-actually-means">kingy.ai 解读</a> · <a href="https://www.163.com/dy/article/KTB2N37D0556C3J2.html">网易（中文）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、思想与教学线</h2>
+    <div class="ref"><span class="tag">讲稿</span>YC AI Startup School 演讲（2025-06-16，Software 1.0/2.0/3.0 三层栈）<br><a href="https://www.scribd.com/document/878835610/Andrej-Karpathy-YC-AI-Startup-School-June-16-2025">Scribd 讲稿</a></div>
+    <div class="ref"><span class="tag">课程</span>CS231n（与 Justin Johnson、李飞飞共创；2016 冬季课视频与课件署名）<br><a href="https://cs231n.stanford.edu/slides/2016/winter1516_lecture10.pdf">2016 课件</a> · <a href="https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC">YouTube 课单</a></div>
+    <div class="ref"><span class="tag">讨论</span>「Let's build GPT」HN 串（2023-01）与 nanochat HN 串（2025-10）<br><a href="https://news.ycombinator.com/item?id=34414716">HN 34414716</a> · <a href="https://news.ycombinator.com/item?id=45569350">HN 45569350</a></div>
+    <div class="ref"><span class="tag">中文</span>认知漏斗中文报道（「全球只有5000人能用上最强AI」）<br><a href="https://www.sohu.com/a/1087768525_123024593">搜狐</a></div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 ·《AI大牛列传》系列 · 001 期 · 2026-11-01</div>
+</div>
+</body>
+</html>
