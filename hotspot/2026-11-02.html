@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 热点追踪 · 第 001 期（2026-11-02）· 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.hn{background:#ff6600;} .ref .tag.gh{background:#24292e;} .ref .tag.wx{background:#07c160;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
+    <h1>AI 热点追踪 · 第 001 期（2026-11-02）· 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 001 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-01 21:45（九通道 + 公众号铺量扫描）。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 「五次实验模型一次没派活」为公众号「一麻袋土豆」对开源原型的独立复刻实测，非 DeepSeek 官方结论；② 「约 5000 人中招」为安全公司 Phorion 通报的估计上限；③ 「快 9.8%」为量子位报道口径，原始论文/基准未附链接；④ Memdoor「302 分」为本文采集时点（2026-11-01 晚）的 Hacker News 分数；⑤ 公众号文章的 mp.weixin 直链本期被搜狗反爬拦截未能解析，以「公众号名 + 日期」标注，可在微信内按标题检索。</div>
+  </div>
+
+  <div class="card">
+    <h2>01｜DeepSeek Super-agent（主打）</h2>
+    <div class="ref"><span class="tag wx">官方</span>DeepSeek Harness 团队《Super-agent 设计探索：迈向更自主的 Agent 系统》（官方公众号原文，2026-10-31 晚；MIT 协议研究原型同日开源）<br>微信公众号「DeepSeek」（微信内可搜标题）</div>
+    <div class="ref"><span class="tag src">媒体</span>IT之家：《DeepSeek 提出 Super-agent 架构设计：Router 与 Worker 双层架构，探索更自主的 Agent》（2026-11-01）<br><a href="https://www.ithome.com/0/102/0615.htm">ithome.com/0/102/0615.htm</a></div>
+    <div class="ref"><span class="tag wx">解读</span>新智元《DeepSeek刚发的下一代Agent，竟被这家硅谷团队提前半年实现了?》（2026-11-01 18:21）｜临界智变《DeepSeek 发布 Super-agent：没人 @ 它，它也会主动干活》（2026-11-01 18:25）｜晨星的技术站《Super-agent 架构分析与技术实现对比》（2026-11-01 17:23）<br>微信公众号（微信内可搜标题）</div>
+    <div class="ref"><span class="tag wx">实测</span>一麻袋土豆《DeepSeek Super-agent：五次实验，模型一次没派活》（独立复刻实测，2026-11-01 19:11/19:15 两篇）<br>微信公众号（本条为正文金句出处）</div>
+  </div>
+
+  <div class="card">
+    <h2>02｜Cursor 市场 Claude Code 插件后门</h2>
+    <div class="ref"><span class="tag src">通报</span>安全公司 Phorion 通报（2026-10-30；恶意版本 2.1.312 / 2.1.313，SSH 后门 svc-telemetry，约 11 小时分发窗口，估计最多约 5000 人）<br>原始通报页本期未取得直链，以上为多源一致口径</div>
+    <div class="ref"><span class="tag wx">解读</span>算子引力《Cursor 里的「官方」Claude Code 插件被调包，最多 5000 人中招》（2026-11-01 18:57/19:08 两篇）｜听任家说《用 Cursor 的先查：5 条要闻》（2026-10-31 21:42，版本号与自查命令口径）<br>微信公众号（微信内可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>03｜Memdoor：5×Qwen3.8-27B 组队</h2>
+    <div class="ref"><span class="tag gh">开源</span>Memdoor 仓库 team-solve workflow（5 个 Qwen3.8-27B 协作，LiveCodeBench 对比 Fable 5）<br><a href="https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve">github.com/guregodevo/memdoor</a></div>
+    <div class="ref"><span class="tag hn">HN</span>Hacker News 首页讨论（采集时点 302 分，2026-11-01）<br><a href="https://news.ycombinator.com/front">news.ycombinator.com（当日首页存档可查）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>04｜AI 零样本写算子反超 9.8%</h2>
+    <div class="ref"><span class="tag wx">报道</span>量子位《AI零帧起手写算子，反超DeepSeek人类手写巅峰：快了9.8%！》（2026-11-01 推文）<br>微信公众号「量子位」（微信内可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>05｜Gemini 4 Carbon 登顶却用不上</h2>
+    <div class="ref"><span class="tag wx">解读</span>AI技术哪家强《登顶全球第一却用不上：Gemini 4 Carbon 把「发布」和「可用」拆开了》（2026-11-01 20:00）<br>微信公众号（微信内可搜标题）</div>
+    <div class="ref"><span class="tag src">榜单</span>Artificial Analysis 模型榜单（Gemini 4 Carbon 2026-10-28 发布后登顶）<br><a href="https://artificialanalysis.ai/">artificialanalysis.ai</a></div>
+  </div>
+
+  <div class="card">
+    <h2>06｜「别学 subagent 了」争议</h2>
+    <div class="ref"><span class="tag src">原文</span>掘金：《别学 subagent 了，很可能要凉了。》（2026-11-01，热榜 369 热度）<br><a href="https://juejin.cn/post/7702012705843232810">juejin.cn/post/7702012705843232810</a></div>
+  </div>
+
+  <div class="card">
+    <h2>尾巴 · 明日关注</h2>
+    <div class="ref"><span class="tag wx">预告</span>阿里云 CTO 于云栖大会（阿姆斯特丹）预告 Qwen4「next week」（2026-10-29；晓龙说AI《Qwen4 发布前夕，先把你的显存账单拉出来》2026-10-31 跟进）<br>微信公众号（微信内可搜标题）</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 每晚 20:00 生产 / 次日 08:00 发布</div>
+</div>
+</body>
+</html>
