@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 热点追踪 · 第 002 期（2026-11-03）· 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.hn{background:#ff6600;} .ref .tag.gh{background:#24292e;} .ref .tag.wx{background:#07c160;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
+    <h1>AI 热点追踪 · 第 002 期（2026-11-03）· 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 002 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-02 20:00（8/9 通道 + 公众号铺量扫描，GitHub Trending 通道超时降级）。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① HackerTube「约两小时」「6454 个视频」「约 4 万条推荐评论」均为卡帕西博文原口径，代码未开源（放出的整站数据导出），GitHub 上的同名仓库均为第三方复刻；② Postgres 19 条目原文（rhaas.blogspot.com）在本机网络不可达，「110+ bug」「8–10 个特性拉回」「11 月 19 日前后」为 TrackFuture / Employed-AI / Declic 三源交叉口径；③ 思科条目一手源为 Business Insider 访谈报道，IT之家为中文转译；④ 陶哲轩博客该文为 Frank Calegari 客座文章；⑤ 公众号文章的 mp.weixin 直链被搜狗反爬拦截，以「公众号名 + 日期」标注，可在微信内按标题检索。</div>
+  </div>
+
+  <div class="card">
+    <h2>01｜HackerTube（主打）</h2>
+    <div class="ref"><span class="tag src">原文</span>卡帕西《HackerTube》（2026-10-31；动机、两小时流程、HN 全量评论→约 4 万条推荐评论→6454 视频、数据导出说明）<br><a href="https://karpathy.bearblog.dev/hacker-tube/">karpathy.bearblog.dev/hacker-tube</a></div>
+    <div class="ref"><span class="tag src">站点</span>HackerTube 本站（视频墙可浏览；站内提供整站数据导出）<br><a href="https://hackertube.org/">hackertube.org</a></div>
+    <div class="ref"><span class="tag wx">铺量</span>LC智趣厅《Karpathy 的 HackerTube》（2026-11-01 11:44，最早中文篇）｜蓝莓Lab（2026-11-02 09:20/09:23 两篇）｜AINLP（11-02 12:51）等<br>微信公众号（微信内可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>02｜robots.txt 统一 AI 训练退出信号</h2>
+    <div class="ref"><span class="tag src">报道</span>Unite.ai《OpenAI to Honor Shared Robots.txt Signal for AI Training Preferences》（2026-10-30）<br><a href="https://www.unite.ai/openai-to-honor-shared-robots-txt-signal-for-ai-training-preferences">unite.ai/openai-to-honor-shared-robots-txt-signal…</a></div>
+    <div class="ref"><span class="tag src">聚合</span>daily.dev（OpenAI、Google、Microsoft、Anthropic 四家共认；2026-11-01）<br><a href="https://daily.dev/posts/openai-google-microsoft-and-anthropic-will-honor-one-robots-txt-signal-for-ai-training-opt-outs-srjmtpgd1">daily.dev/posts/openai-google-microsoft-and-anthropic…</a></div>
+    <div class="ref"><span class="tag src">细节</span>谷歌侧信号名为 __usage_ai-training，2027 年全面铺开（mihata.jp 专栏）<br><a href="https://mihata.jp/en/column/robots-txt-ai-training-block">mihata.jp/en/column/robots-txt-ai-training-block</a></div>
+  </div>
+
+  <div class="card">
+    <h2>03｜ChatGPT 与 Codex 合并额度</h2>
+    <div class="ref"><span class="tag src">官方</span>OpenAI 帮助中心《Understanding ChatGPT and Codex usage limits》（12 月起 Plus/Pro/Business 共享额度；部分计划翻倍；5 小时窗口与周上限照旧）<br><a href="https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits">help.openai.com/en/articles/20001625</a></div>
+    <div class="ref"><span class="tag wx">铺量</span>机器之心《Tibo 28连更后，OpenAI 合并额度池，计费聊天开始了》（2026-10-30）｜36kr《ChatGPT要和Codex共用额度，免费重置时代结束了》（2026-11-02）<br>微信公众号 / 36kr（可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>04｜陶哲轩博客「数学已经变了」</h2>
+    <div class="ref"><span class="tag src">原文</span>Frank Calegari 客座于陶哲轩博客《Mathematics has changed. Let's act like it》（2026-11-01；回应 OpenAI 10-06 放出的 700+ 篇 AI 数学论文；六条改革建议）<br><a href="https://terrytao.wordpress.com/2026/11/01/mathematics-has-changed-lets-act-like-it/">terrytao.wordpress.com/2026/11/01/mathematics-has-changed…</a></div>
+    <div class="ref"><span class="tag wx">关联</span>数智之间《OpenAI 掌门人同情数学家，但猛攻不会停止》（2026-11-02 12:21，中文侧关联讨论）<br>微信公众号（微信内可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>05｜Postgres 19 延期</h2>
+    <div class="ref"><span class="tag src">原文</span>Robert Haas（PostgreSQL 资深贡献者）《Postgres 19 is late and it's AI's fault》（2026-10 下旬；本机网络不可达，正文口径为多源交叉）<br><a href="https://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html">rhaas.blogspot.com/2026/10/postgres-19-is-late…</a></div>
+    <div class="ref"><span class="tag src">交叉</span>Employed-AI（110+ bug 口径）｜Declic Media（8–10 特性拉回、11-19 发布）｜TrackFuture（「AI 审查致延期」说法的辨析）<br>三源经 WebSearch 交叉核对（2026-11-02）</div>
+  </div>
+
+  <div class="card">
+    <h2>06｜思科的无上限 Token 赌局</h2>
+    <div class="ref"><span class="tag src">一手</span>Business Insider：思科总裁 Jeetu Patel 访谈（27 岁工程师 Padmanabhan、EzDubs 联创；无上限 token 预算、两人团队、先 4 周验证、24 个月重写 98% 遗留代码；2.1 万工程师转「AI 原生」）<br>businessinsider.com（可搜「Cisco unlimited tokens」）</div>
+    <div class="ref"><span class="tag src">中文</span>IT之家转译报道（2026-11-02）<br><a href="https://www.ithome.com/0/102/0857.htm">ithome.com/0/102/0857.htm</a></div>
+  </div>
+
+  <div class="card">
+    <h2>落选池 · 留观</h2>
+    <div class="ref"><span class="tag wx">留观</span>智元双模型「杀穿多榜」（量子位 11-02 推文；机器人基金会模型，一手源待核，下期视情况跟进）<br>微信公众号「量子位」</div>
+    <div class="ref"><span class="tag wx">留观</span>GPT-6.2 Astra / Fable 5.5 曝光（36kr 11-02；未经证实传闻，六类红线不上稿）<br>36kr（可搜标题）</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 每晚 20:00 生产 / 次日 08:00 发布</div>
+</div>
+</body>
+</html>
