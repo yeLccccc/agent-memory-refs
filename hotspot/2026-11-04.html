@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 热点追踪 · 第 003 期（2026-11-04）· 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.hn{background:#ff6600;} .ref .tag.gh{background:#24292e;} .ref .tag.wx{background:#07c160;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
+    <h1>AI 热点追踪 · 第 003 期（2026-11-04）· 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 003 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-03 20:00（8/9 通道 + 公众号铺量扫描，HackerNews 通道超时降级）。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① MIT 权重编辑研究的「数学涨 6 倍」= MATH-500 从 7.9% 到 48.1%（6.1 倍，0.8B 小模型低基数），论文暂无 arXiv 编号，一手源为项目博客 + 实验日志仓库，社区复现尚未出现（Ethan Mollick 等Explicitly 表示等复现）；② 该研究尚未经同行评审，所有数字为作者自报口径（含对照实验 Gemma 3 270M 提不动）；③ Apple 千问为系统级集成但需登录千问账户或「通过 Apple 登录」；④ MiniMax H3 的 8GB 显存为社区 NF4 量化 + offload 方案口径（官方目录收录），非官方原生支持；⑤ DeepSeek 创造模式部分演示插件为多轮迭代产物，单条提示词未必一次复现（官方原话）。</div>
+  </div>
+
+  <div class="card">
+    <h2>01｜MIT：GPT-6 直接改 Qwen 权重（主打）</h2>
+    <div class="ref"><span class="tag src">原文</span>MIT CSAIL 博客《Sparks of Weight-Space Programming: LLMs can natively read &amp; write neural network weights》（2026-11-02；Rikiya Takehi / Jayden Teoh 共同一作，Omar Khattab 组；Qwen3.5-0.8B、131,072 参数=0.016%、MATH-500 7.9%→48.1%、IFEval 21.0%→62.3%、GSM8K 13.8%→67.1%、撞限 93%→33%、第 15/19 层 MLP 方向减除、Gemma 3 270M 对照）<br><a href="https://rikiyat.github.io/blog/weight-space-programming">rikiyat.github.io/blog/weight-space-programming</a></div>
+    <div class="ref"><span class="tag gh">日志</span>实验日志仓库 lm_understand-logs（2026-10-29 建，538★，Python）<br><a href="https://github.com/RikiyaT/lm_understand-logs">github.com/RikiyaT/lm_understand-logs</a></div>
+    <div class="ref"><span class="tag gh">模型</span>改后的 Qwen3.5-0.8B（Hugging Face，可复现）<br><a href="https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming">huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming</a></div>
+    <div class="ref"><span class="tag hn">发酵</span>Reddit r/accelerate 讨论｜latent.space 聚合｜FourWeekMBA 分析（「loop fix, not a smarter model」）｜dev.to 独立复算<br><a href="https://www.reddit.com/r/accelerate/comments/1xm9ggp/absolutely_incredible_mit_researchers_say_gpt6">reddit.com/r/accelerate（可搜 GPT-6 Qwen weights）</a></div>
+    <div class="ref"><span class="tag wx">铺量</span>量子位《MIT：GPT-6 Astra能直接修改Qwen权重，数学能力暴涨6倍》（2026-11-03 推文，中文圈首波）<br>微信公众号（微信内可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>02｜DeepSeek 创造模式 7 套官方提示词</h2>
+    <div class="ref"><span class="tag src">官方</span>@DeepSeekHarness（X，2026-11-02）<br><a href="https://x.com/DeepSeekHarness/status/2117256196227019194">x.com/DeepSeekHarness/status/2117256196227019194</a></div>
+    <div class="ref"><span class="tag src">提示词</span>官方提示词合集页（cdn.deepseek.com，7 场景全量）<br><a href="https://cdn.deepseek.com/harness/dsh-creator-mode-prompt-collection-en.html">cdn.deepseek.com/harness/dsh-creator-mode-prompt-collection-en.html</a></div>
+    <div class="ref"><span class="tag wx">中文</span>量子位报道（36kr 授权转载，2026-11-03）<br><a href="https://www.36kr.com/p/4053409634800768">36kr.com/p/4053409634800768</a></div>
+  </div>
+
+  <div class="card">
+    <h2>03｜Apple 智能国行接千问</h2>
+    <div class="ref"><span class="tag src">官方</span>Apple 新闻稿《Apple 智能即将登陆中国》（11-04 开发者 Beta、12 月 iOS 27.3 正式版；千问驱动 Siri 深度问答/写作工具/Genmoji/视觉智能；登录千问账户或「通过 Apple 登录」）<br><a href="https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china">apple.com.cn/newsroom/2026/10/apple-intelligence-features…</a></div>
+    <div class="ref"><span class="tag src">中文</span>新浪财经（2026-10-31）｜华尔街见闻｜IT之家（2026-11-03）多源交叉<br><a href="https://finance.sina.cn/stock/jdts/2026-10-31/detail-inixaraw5004177.d.html">finance.sina.cn（10-31 报道）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>04｜OpenAI 自建 Git 后端 Pando</h2>
+    <div class="ref"><span class="tag src">原文</span>OpenAI 博客《Scaling Git at OpenAI》（2026-11-02；Agent 把 push 量拉高 1378%、推送延迟中位数 -80%、日吞吐近 1PB）<br><a href="https://openai.com/index/scaling-git-at-openai">openai.com/index/scaling-git-at-openai</a></div>
+    <div class="ref"><span class="tag src">官方</span>@OpenAIDevs（X）<br><a href="https://x.com/OpenAIDevs/status/2117408792346509663">x.com/OpenAIDevs/status/2117408792346509663</a></div>
+    <div class="ref"><span class="tag wx">中文</span>NovusAI《OpenAI Pando重构Git后端》（2026-11-03，中文首波）<br>微信公众号（微信内可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>05｜MiniMax H3 官方集成目录更新</h2>
+    <div class="ref"><span class="tag gh">仓库</span>awesome-minimax-h3-integration（MiniMax-AI 官方组织，2026-08-13 建，544★，2026-11-02 更新；按显存分档收录社区部署方案，NF4 量化 + offload 8GB 起步）<br><a href="https://github.com/MiniMax-AI/awesome-minimax-h3-integration">github.com/MiniMax-AI/awesome-minimax-h3-integration</a></div>
+    <div class="ref"><span class="tag gh">模型</span>MiniMax-H3 官方模型页（Hugging Face）<br><a href="https://huggingface.co/MiniMaxAI/MiniMax-H3">huggingface.co/MiniMaxAI/MiniMax-H3</a></div>
+    <div class="ref"><span class="tag wx">中文</span>9up水《MiniMax H3 社区目录更新》（2026-11-03 10:35）<br>微信公众号（微信内可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>落选池 · 留观</h2>
+    <div class="ref"><span class="tag src">老货</span>Claude Code 团队代码审查方法论（claude.dev 博客，原文 2026-10-15，中文圈 11-03 才翻译铺量——超窗口不上，感兴趣的读者值得直接读原文）<br><a href="https://claude.dev/blog/solving-code-review-at-anthropic">claude.dev/blog/solving-code-review-at-anthropic</a></div>
+    <div class="ref"><span class="tag wx">留观</span>Anthropic「14 万亿参数模型泄露」（36kr 11-03；未经证实传闻，六类红线不上稿）｜Runway Dev 编程 Agent 插件（11-02 传开，一手官宣未核到）<br>36kr（可搜标题）</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 每晚 20:00 生产 / 次日 08:00 发布</div>
+</div>
+</body>
+</html>
