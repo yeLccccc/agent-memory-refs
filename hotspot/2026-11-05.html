@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 热点追踪 · 第 004 期（2026-11-05）· 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.hn{background:#ff6600;} .ref .tag.gh{background:#24292e;} .ref .tag.wx{background:#07c160;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
+    <h1>AI 热点追踪 · 第 004 期（2026-11-05）· 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 004 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-04 20:00（9/9 通道全通）。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 本期主打为 11-02 MIT「Weight-Space Programming」博客的反转跟进——反驳（Honnibal）与复现（Willison）均为 2026-11-03 发布、11-03/04 在 HN 发酵，中文圈截至采集时零覆盖；② 36kr 报道称清华极化研究为「李勇团队」，论文作者列表一作为 Jinghua Piao（清华 FIB 实验室）、合作含芝加哥大学 James Evans，本页以论文口径为准；③ Postman issue 建于 10-25，「本周引爆」指 HN 热帖（1332pts）而非 issue 新建；④ Stringman 价格为官网 BOM 口径 $795（含税运另有差异），OSHWA 认证 us002788 可查。</div>
+  </div>
+
+  <div class="card">
+    <h2>01｜MIT 权重研究被指误导 + 本地复现（主打）</h2>
+    <div class="ref"><span class="tag src">反驳</span>Matthew Honnibal《The "Astra can read and write weights to improve Qwen" post is misleading》（2026-11-03；spaCy 作者；纯读权重的仅实验 1/2/4=17K–172K 权重小网络，Qwen 大修用 Python+运行模型+最多 50 批练习；实验 5 仅 Breakout 胜 PPO 517:25）<br><a href="https://honnibal.dev/blog/astra-read-write-misleading">honnibal.dev/blog/astra-read-write-misleading</a></div>
+    <div class="ref"><span class="tag src">复现</span>Simon Willison《Qwen 3.8 27B on my laptop can interpret model weights, too》（2026-11-03；llm -f 拉实验日志；Kimi K3.1 Pro 9m41s 认出 Breakout；本机 Qwen 3.8 27B Q4_K_M 认出 3/4 游戏，Pac-Man 72%/Breakout 88%）<br><a href="https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/">simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights</a></div>
+    <div class="ref"><span class="tag hn">发酵</span>两条 HN 讨论帖（994pts / 649pts，2026-11-03/04）<br><a href="https://news.ycombinator.com/item?id=50127036">news.ycombinator.com（可搜 Astra read write weights）</a></div>
+    <div class="ref"><span class="tag gh">原研究</span>MIT 博客与实验日志（昨日 003 期主打，538★）<br><a href="https://rikiyat.github.io/blog/weight-space-programming">rikiyat.github.io/blog/weight-space-programming</a></div>
+    <div class="ref"><span class="tag src">关联</span>Sean Goedecke 对 Qwen3.5-0.8B 数学改进的拆解（「人类 ML 研究者的常规步骤」，Willison 文中引）<br>seangoedecke.com（可搜 Qwen weights）</div>
+  </div>
+
+  <div class="card">
+    <h2>02｜Postman 静默装 AI 插件</h2>
+    <div class="ref"><span class="tag gh">一手</span>[SEVERE] issue #14370（2026-10-25 建；桌面端静默自动安装 Codex/Claude 插件；安装器试图信任并共享本地 API 集合；截至采集 open、48 评论）<br><a href="https://github.com/postmanlabs/postman-app-support/issues/14370">github.com/postmanlabs/postman-app-support/issues/14370</a></div>
+    <div class="ref"><span class="tag hn">引爆</span>Hacker News 热帖（1332pts，2026-11-04）<br><a href="https://news.ycombinator.com/item?id=50129000">news.ycombinator.com（Postman silently auto-installs）</a></div>
+    <div class="ref"><span class="tag src">报道</span>sesamedisk / n1n.ai 英文报道（2026-11-04，交叉口径）<br><a href="https://sesamedisk.com/postman-silently-auto-installs-ai-plugins">sesamedisk.com/postman-silently-auto-installs-ai-plugins</a></div>
+  </div>
+
+  <div class="card">
+    <h2>03｜Apple 智能国行开测（跟进）</h2>
+    <div class="ref"><span class="tag src">官方</span>Apple 新闻稿（11-04 开发者 Beta / 12 月正式版 / 千问账户或「通过 Apple 登录」）<br><a href="https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china">apple.com.cn/newsroom/2026/10/apple-intelligence-features…</a></div>
+    <div class="ref"><span class="tag wx">实测</span>IT之家《国行「Apple 智能与 Siri」如约而至》（11-04）｜36kr 三篇实测（亮点/槽点/惊喜点）<br><a href="https://www.ithome.com/0/102/1861.htm">ithome.com/0/102/1861.htm</a>｜微信公众号（可搜标题）</div>
+  </div>
+
+  <div class="card">
+    <h2>04｜清华 LLM 智能体观点极化研究</h2>
+    <div class="ref"><span class="tag src">论文</span>《Emergence of polarization in networks of large language model agents》Nature Communications（2026-10-08 刊发；一作 Jinghua Piao，清华 FIB 实验室，合作含芝加哥大学；中立观点 40%→0.4%；干预 -11.8%；四种基座模型）<br><a href="https://www.nature.com/articles/s41467-026-78228-y">nature.com/articles/s41467-026-78228-y</a>（CC BY）</div>
+    <div class="ref"><span class="tag gh">代码</span>tsinghua-fib-lab/LLM_for_Polarization<br><a href="https://github.com/tsinghua-fib-lab/LLM_for_Polarization">github.com/tsinghua-fib-lab/LLM_for_Polarization</a></div>
+    <div class="ref"><span class="tag src">报道</span>清华官网新闻（本周）｜36kr 转载（「李勇团队」归属与论文作者列表不符，以论文为准）<br><a href="https://www.tsinghua.edu.cn/info/1175/128897.htm">tsinghua.edu.cn/info/1175/128897.htm</a></div>
+  </div>
+
+  <div class="card">
+    <h2>05｜Stringman 开源缆索机器人</h2>
+    <div class="ref"><span class="tag src">项目页</span>neufangled.com（$795 BOM：4×DM-H6215 执行器 $66、2×树莓派 3A+ 等；覆盖 3–10m 对角线；载重 2.2kg；限制清单）<br><a href="https://neufangled.com/">neufangled.com</a></div>
+    <div class="ref"><span class="tag gh">开源</span>OSHWA 认证 us002788｜CAD/PCB（stringman-pcbs）/固件（cranebot3-firmware）/STL 全公开｜数据集 Hugging Face naavox，支持 LeRobot<br><a href="https://github.com/nhnifong">github.com/nhnifong</a></div>
+    <div class="ref"><span class="tag hn">发酵</span>Hacker News 632pts（2026-11-04）<br><a href="https://news.ycombinator.com/item?id=50128000">news.ycombinator.com（Stringman gripper robot）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>落选池 · 留观</h2>
+    <div class="ref"><span class="tag gh">老货</span>NVIDIA/auto-ontology（GitHub Trending；API 核实 2026-04-27 建、3647★——活跃更新非新发布，不上）<br><a href="https://github.com/NVIDIA/auto-ontology">github.com/NVIDIA/auto-ontology</a></div>
+    <div class="ref"><span class="tag src">老货</span>Gemini 工作智能体（官方 10-08「Gemini at Work」发布，中文圈本周才铺——超窗口）<br><a href="https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026">cloud.google.com/blog（Gemini at Work 2026）</a></div>
+    <div class="ref"><span class="tag wx">留观</span>GPT-6.2 Astra「双模型闪现 API 又撤回」（36kr 11-04，未经证实，连续三天候选连续剔除）<br>36kr（可搜标题）</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 每晚 20:00 生产 / 次日 08:00 发布</div>
+</div>
+</body>
+</html>
