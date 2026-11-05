@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google 开源 Harness²：让 Agent 自己改脚手架 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#24406B;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f5f9;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#24406B;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;} .ref .tag.img{background:#4a7c59;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>Google 开源 Harness²：让 Agent 自己改脚手架 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」RSI 深读 · 01。正文外链被微信剥除，可点击版全部在本页；事实口径截至 2026-11-05。</div>
+    <div class="note"><b>数据口径与可靠性说明：</b>① 本文全部实验数字为<b>论文自报</b>（arXiv 2610.14224v1，2026-10-09 提交，未经独立审计）；判分虽由基准方协议的第三方模型完成（WorkBuddy 复合验证器、JobBench 用 Claude Opus 4.8 按加权 rubric、Harvey LAB 用 Claude Sonnet 4.6 按 per-criterion 通过率），rubric 不向改进管线暴露，但仍无外部复现。② 仓库 README 自述 "This is not an officially supported Google product"——研究开源，非产品发布。③ 中文圈「Gemini 3.5 性能暴涨」等说法查无一手出处，本文未采用。④ 「弱模型 + 改过的脚手架反超强模型」的对照是同基准同判分下的均值比较（GLM-5/OpenCode 改后 75.7 vs Gemini 3.5 Flash/OpenCode 原始 72.4），不是跨基准结论。⑤ 编辑器/选择器全程为 Claude Opus 4.8，执行器为 GLM-5 与 Gemini 3.5 Flash（各配 OpenCode / Codex）。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、一手资源（论文、代码、官网）</h2>
+    <div class="ref"><span class="tag src">论文</span>Harness²: Recursive Agent Harnessing for an Open World（Xu, Chen, CuiZhu, Dalvi Mishra, Ming, Yu, Han, Lee, Pfister；西北大学 + Google Cloud AI Research，CC BY 4.0）<br><a href="https://arxiv.org/abs/2610.14224">arxiv.org/abs/2610.14224</a> · <a href="https://arxiv.org/html/2610.14224v1">HTML 全文（含 Appendix H 全部阶段提示词）</a></div>
+    <div class="ref"><span class="tag src">仓库</span>google-research/harness2（Apache 2.0；Linux + Python 3.12 + uv；harness2-demo 无需模型凭证）<br><a href="https://github.com/google-research/harness2">github.com/google-research/harness2</a></div>
+    <div class="ref"><span class="tag src">官网</span>Harness² 项目主页（交互式方法讲解与结果表）<br><a href="https://harness2.github.io/">harness2.github.io</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、方法谱系（论文直接引用的先行工作）</h2>
+    <div class="ref"><span class="tag paper">论文</span>RSI 定义来源：Duan et al.《The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement》<br><a href="https://arxiv.org/abs/2609.11873">arxiv.org/abs/2609.11873</a></div>
+    <div class="ref"><span class="tag paper">论文</span>STOP: Self-Taught Optimizer（递归改写代码改进程序，Zelikman et al.，COLM 2024）<br><a href="https://arxiv.org/abs/2310.02304">arxiv.org/abs/2310.02304</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Darwin Gödel Machine（agent 代码进化，SWE-bench 20%→50%，Sakana+UBC）<br><a href="https://arxiv.org/abs/2505.22954">arxiv.org/abs/2505.22954</a> · <a href="https://github.com/jennyzzt/dgm">jennyzzt/dgm</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Self-Refine（迭代自精化，串行递归的思想来源）与 Reflexion（语言反馈）<br><a href="https://arxiv.org/abs/2303.17651">arxiv.org/abs/2303.17651</a> · <a href="https://arxiv.org/abs/2303.11366">arxiv.org/abs/2303.11366</a></div>
+    <div class="ref"><span class="tag paper">论文</span>RSA: Recursive Self-Aggregation（并行递归的聚合原则来源，Venkatraman et al.）<br><a href="https://arxiv.org/abs/2509.26626">arxiv.org/abs/2509.26626</a></div>
+    <div class="ref"><span class="tag paper">论文</span>AHE: Agentic Harness Engineering（八组件文件级分解的来源，本文在其基础上新增 plugin）<br><a href="https://arxiv.org/abs/2604.25850">arxiv.org/abs/2604.25850</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Meta-Harness: End-to-End Optimization of Model Harnesses（离线搜索基线，Lee/Nair/Zhang/Klee/Khattab/Finn，COLM 2026；无公开 arXiv 号，经 Harness² 论文引用）</div>
+    <div class="ref"><span class="tag paper">论文</span>RHI: Recursive Harness Self-Improvement（Lee et al.，配对输出判断信号）<br><a href="https://arxiv.org/abs/2607.15524">arxiv.org/abs/2607.15524</a></div>
+    <div class="ref"><span class="tag paper">论文</span>TTHE: Test-Time Harness Evolution（批间携带 harness，Nie et al.）<br><a href="https://arxiv.org/abs/2607.08124">arxiv.org/abs/2607.08124</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Rethinking the Evaluation of Harness Evolution for Agents（Harness Scaling 基线与评测反思，COLM 2026 Lifelong Agents workshop）<br><a href="https://arxiv.org/abs/2607.12227">arxiv.org/abs/2607.12227</a></div>
+    <div class="ref"><span class="tag paper">论文</span>ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory（记忆路线对照基线，Ouyang et al.，ICLR）</div>
+    <div class="ref"><span class="tag paper">论文</span>MemoHarness: Agent Harnesses that Learn from Experience（离线诊断经验库）<br><a href="https://arxiv.org/abs/2607.14159">arxiv.org/abs/2607.14159</a></div>
+    <div class="ref"><span class="tag paper">论文</span>2026 上半年 harness 改进带（Harness² Table 4 对照的其余系统）：Harness-R1 <a href="https://arxiv.org/abs/2608.02276">2608.02276</a> · JIT-Agent <a href="https://arxiv.org/abs/2608.25593">2608.25593</a> · DarwinX <a href="https://arxiv.org/abs/2608.07545">2608.07545</a> · Hyperagents <a href="https://arxiv.org/abs/2603.19461">2603.19461</a> · Continual Harness <a href="https://arxiv.org/abs/2605.09998">2605.09998</a> · HCL <a href="https://arxiv.org/abs/2608.19013">2608.19013</a> · Adaptive Auto-Harness <a href="https://arxiv.org/abs/2606.01770">2606.01770</a> · HarnessX <a href="https://arxiv.org/abs/2606.14249">2606.14249</a> · Evo-Harness <a href="https://arxiv.org/abs/2608.15071">2608.15071</a> · Recuris <a href="https://arxiv.org/abs/2608.24876">2608.24876</a> · HyperSkill <a href="https://arxiv.org/abs/2608.16114">2608.16114</a> · MetaSkill-Evolve <a href="https://arxiv.org/abs/2607.05297">2607.05297</a> · AI4AI <a href="https://arxiv.org/abs/2608.12307">2608.12307</a></div>
+    <div class="ref"><span class="tag paper">综述</span>Lilian Weng（翁荔）《Harness engineering for self-improvement》（Lil'Log，2026；harness engineering 概念综述锚点，论文三次引用）<br><a href="https://lilianweng.github.io/">lilianweng.github.io</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、三个评测基准</h2>
+    <div class="ref"><span class="tag paper">论文</span>WorkBuddy-Bench（腾讯；多域 coding-agent 基准，防污染任务构造；Code 40 / Web 35 / Office 25 测试任务）<br><a href="https://arxiv.org/abs/2607.20911">arxiv.org/abs/2607.20911</a></div>
+    <div class="ref"><span class="tag paper">论文</span>JobBench: Aligning Agent Work with Human Will（65 职业任务 / 34 测试，加权 rubric 判分）<br><a href="https://arxiv.org/abs/2605.26329">arxiv.org/abs/2605.26329</a></div>
+    <div class="ref"><span class="tag src">官方</span>Harvey LAB: The Legal Agent Benchmark（1251 法律任务 / 冻结 100 测试任务，Partial 口径）<br><a href="https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark">harvey.ai/blog/introducing-harveys-legal-agent-benchmark</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Don't Train the Model, Evolve the Harness（J. Niklaus，Hugging Face Blog；LAB 上 Meta-Harness 的 harness 优化研究，本文沿用其任务切分）<br><a href="https://huggingface.co/blog">huggingface.co/blog</a>（2026 年发布，按标题站内检索）</div>
+  </div>
+
+  <div class="card">
+    <h2>四、模型与执行器</h2>
+    <div class="ref"><span class="tag paper">论文</span>GLM-5: From Vibe Coding to Agentic Engineering（智谱；论文对照组执行模型）<br><a href="https://arxiv.org/abs/2602.15763">arxiv.org/abs/2602.15763</a></div>
+    <div class="ref"><span class="tag src">仓库</span>OpenCode（开源终端 coding agent，默认执行器与编辑器运行环境）<br><a href="https://github.com/sst/opencode">github.com/sst/opencode</a></div>
+    <div class="ref"><span class="tag src">仓库</span>Codex CLI（OpenAI 终端 coding agent，--substrate cx 执行器）<br><a href="https://github.com/openai/codex">github.com/openai/codex</a></div>
+    <div class="ref"><span class="tag src">官方</span>Claude Opus 4.8 System Card（Anthropic；默认 harness 编辑器与选择器） · Gemini 3.5 Flash 模型卡（Google DeepMind）</div>
+  </div>
+
+  <div class="card">
+    <h2>五、本文图片与版权</h2>
+    <div class="ref"><span class="tag img">封面</span>NASA STS-61 舱外维修照片（NASA ID 9401031，公版；哈勃首次在轨维修，「核心不换、换外围组件」的隐喻）<br><a href="https://images.nasa.gov/details/9401031">images.nasa.gov/details/9401031</a></div>
+    <div class="ref"><span class="tag img">正文图</span>Harness² 管线图、八组件图、递归模式图：论文 Figure 3 / Figure 2 / Figure 4 同源（arXiv HTML 版，CC BY 4.0）与仓库 assets（Apache 2.0），版权归 Google Cloud AI Research 与论文作者</div>
+    <div class="ref"><span class="tag img">结构图</span>两层递归全景图为本号自制（PIL），机制描述以论文 §2 为准</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · RSI 深读 01 · 口径截至 2026-11-05 · <a href="index.html" style="color:#a0aab4;">返回系列目录</a></div>
+</div>
+</body>
+</html>
