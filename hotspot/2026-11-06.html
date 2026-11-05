@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 热点追踪 · 第 005 期（2026-11-06）· 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.hn{background:#ff6600;} .ref .tag.gh{background:#24292e;} .ref .tag.wx{background:#07c160;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
+    <h1>AI 热点追踪 · 第 005 期（2026-11-06）· 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 005 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-05 20:00（9/9 通道全通）。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① K3.1 Pro 本身 10 月下旬即有 API 版（awesome 清单 10-23 起收录），本期新闻点是<b>权重开放下载</b>——HF 仓库 11-02 建、权重近日放出、HN 11-04 发酵（551pts/155 评）；② 规格（2.8T/104B/MXFP4 QAT/1M）与许可条款（2000 万美元 MaaS 线、亿级 MAU 标注线）均取自 HF 模型卡与 LICENSE 原文（2026-11-05 经 hf-mirror 核对）；③ Ripple-65B 的 TerminalBench 2.1 对比为<b>官方发布页自称口径</b>，非第三方复测；④ 混元 Hy4 正式版权重尚未放出（官方称「近期开源」），本地可下的只有 preview 版（Apache 2.0）；⑤ Discord 内存数字：290MB 为 CTO 展示的任务管理器截图（双账号同开），老客户端 1–2GB 为空闲常态、4GB 为长会话极端值，口径不同层级。</div>
+  </div>
+
+  <div class="card">
+    <h2>01｜Kimi K3.1 Pro 开放权重（主打）</h2>
+    <div class="ref"><span class="tag src">一手</span>HuggingFace 模型卡 moonshotai/Kimi-K3.1-Pro（2.8T 总参/104B 激活 MoE、MXFP4 QAT、1M 上下文、Terminal-Bench 4.0 65.7；createdAt 2026-11-02，下载 1.1 万+）<br><a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro">huggingface.co/moonshotai/Kimi-K3.1-Pro</a></div>
+    <div class="ref"><span class="tag src">许可</span>Kimi K3.1-Pro License 原文（MaaS 年营收超 $20M 须另行协议；月活超 1 亿或月营收超 $20M 须界面标注；内部使用豁免）<br><a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE">huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE</a></div>
+    <div class="ref"><span class="tag hn">发酵</span>Hacker News「Kimi K3.1 Pro model weights are out」（551pts/155 评，2026-11-04 提交）<br><a href="https://news.ycombinator.com/item?id=50155832">news.ycombinator.com（weights are out）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>02｜Anthropic FlashProve 可证明推理</h2>
+    <div class="ref"><span class="tag src">一手</span>Anthropic Research《Progress on provable inference for large language models》（2026-11-05 前后；zkSNARK+Lean 形式化验证；Llama 4 Maverick 4bit 单 H100 ~110 tok/s）<br><a href="https://www.anthropic.com/research/provable-inference">anthropic.com/research/provable-inference</a></div>
+  </div>
+
+  <div class="card">
+    <h2>03｜OpenAI Images 2.6</h2>
+    <div class="ref"><span class="tag src">一手</span>OpenAI《Introducing Images 2.6》（2026-11-04；GIF 生成、快 50%、Flare/Sunburst 双变体；每周 40 亿张）<br><a href="https://openai.com/index/introducing-images-2-6/">openai.com/index/introducing-images-2-6</a></div>
+  </div>
+
+  <div class="card">
+    <h2>04｜Ripple-65B Preview（Ricursive Intelligence）</h2>
+    <div class="ref"><span class="tag src">一手</span>发布页《Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding》（2026-11-04；TerminalBench 2.1 80.52；dense 80 层/$32M/12T tokens/1M 上下文）<br><a href="https://www.ricursive.com/ripple">ricursive.com/ripple</a></div>
+  </div>
+
+  <div class="card">
+    <h2>05｜腾讯混元 Hy4 正式版</h2>
+    <div class="ref"><span class="tag wx">转述</span>掘金《腾讯混元 Hy4 正式版发布了》（770B/49B MoE、新增视觉理解与 CUA、正式版权重未放、API 价格不变；2026-11-05）<br><a href="https://juejin.cn/post/7704150793607462950">juejin.cn/post/7704150793607462950</a></div>
+    <div class="ref"><span class="tag src">产品</span>腾讯云混元产品页（正式版入口与 API 文档）<br><a href="https://cloud.tencent.com/product/hunyuan">cloud.tencent.com/product/hunyuan</a></div>
+  </div>
+
+  <div class="card">
+    <h2>06｜Discord 弃 Electron 改 Rust</h2>
+    <div class="ref"><span class="tag wx">转述</span>IT之家《内存涨价环境下 Discord 弃用 Electron：改用 Rust 重写客户端，占用体积从 4GB 降至 290MB》（2026-11-05；CTO Vishnevskiy X 确认、GPUI 渲染、Phoenix 双账号 290MB）<br><a href="https://www.ithome.com/0/102/2673.htm">ithome.com/0/102/2673.htm</a></div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 第 005 期 · 2026-11-06</div>
+</div>
+</body>
+</html>
