@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 热点追踪 · 第 006 期（2026-11-07）· 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.hn{background:#ff6600;} .ref .tag.gh{background:#24292e;} .ref .tag.wx{background:#07c160;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
+    <h1>AI 热点追踪 · 第 006 期（2026-11-07）· 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 006 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-06 20:00（8/9 通道，GitHub Trending 断连降级）。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① Claude Code 邮箱泄露——行为本身 2026-08-11 已有 HN 帖（38pts），本期爆点是 11-05 issue #107757（诈骗邮件后果）+ 官方 v2.1.317 内置 cc-plugin-privacy 阻断 + HN 1221pts 发酵，「新行为」表述不成立；② GPT-6 Cyber 的 81 个 Firefox 漏洞为 OpenAI 公告口径（Mozilla 定级高危、复现+证据+候选补丁交付）；③ DeepSeek Harness 154 万日活为「官方 API 用户」口径（截至 11-04），92 万亿 Token 为官方发文数字；④ Frameboy 为云端 GPU 串流 + 浏览器交互（最高 15fps），「装进掌机」是部分中文标题的通胀说法，Game Boy 仅为界面致敬；⑤ Gemini Omni 1.2 Flash 双榜第一为智东西转述的榜单口径，价格 $0.07/秒（720p）。</div>
+  </div>
+
+  <div class="card">
+    <h2>01｜Claude Code 邮箱泄露（主打）</h2>
+    <div class="ref"><span class="tag gh">一手</span>anthropics/claude-code issue #107757「Privacy violation in User-Agent header」（2026-11-05 22:13 UTC 建，open，68 评论，area:security；报告者：每天数十封诈骗邮件，版本 2.1.318）<br><a href="https://github.com/anthropics/claude-code/issues/107757">github.com/anthropics/claude-code/issues/107757</a></div>
+    <div class="ref"><span class="tag gh">官方回应</span>Contributor poteat 评论（11-05 23:31 UTC）：v2.1.317 起内置 cc-plugin-privacy mod 确定性阻断，将公开该内置模组源码<br><a href="https://github.com/anthropics/claude-code/issues/107757">见 issue 评论楼</a></div>
+    <div class="ref"><span class="tag hn">前史</span>HN「Claude Code is leaking real email address as a User-Agent string in curl command」（2026-08-11，38pts/29 评——行为 8 月已知）<br><a href="https://news.ycombinator.com/item?id=50522641">news.ycombinator.com（8 月帖）</a></div>
+    <div class="ref"><span class="tag hn">发酵</span>HN「Claude Code sends your email address to websites」（2026-11-05/06，1221pts）<br><a href="https://news.ycombinator.com/item?id=50161089">news.ycombinator.com（本帖）</a></div>
+    <div class="ref"><span class="tag wx">中文</span>公众号 superdiao的果壳《Claude Code 替你给网站留了邮箱，诈骗邮件跟着来了》（2026-11-06）<br>（公众号正文，可站内搜）</div>
+  </div>
+
+  <div class="card">
+    <h2>02｜GPT-6 Cyber</h2>
+    <div class="ref"><span class="tag src">一手</span>OpenAI《Introducing GPT-6 Cyber》（81 个 Mozilla 定级高危的 Firefox 新漏洞+复现+补丁候选；Linux 内核审计；评测 48.5%；仅向审核通过的安防团队开放）<br><a href="https://openai.com/index/introducing-gpt-6-cyber">openai.com/index/introducing-gpt-6-cyber</a></div>
+  </div>
+
+  <div class="card">
+    <h2>03｜DeepSeek Harness 官方数据</h2>
+    <div class="ref"><span class="tag wx">转述</span>IT之家《DeepSeek Harness：日活跃用户达 154 万、日消耗 Token 约 92 万亿，将建设官方插件市场》（2026-11-05 22:48，转官方发文；v0.1 8-13/桌面端 9-29/插件 3.5 万个/60% 用户造装过插件/Token 激励）<br><a href="https://www.ithome.com/0/102/3011.htm">ithome.com/0/102/3011.htm</a></div>
+  </div>
+
+  <div class="card">
+    <h2>04｜World Labs Frameboy / Atlas 实时化</h2>
+    <div class="ref"><span class="tag src">一手</span>World Labs《Atlas in real time: introducing Frameboy》（2026-11-05；自回归世界模型优化、云端串流、最高 15fps、单图/文字/多视角输入、帧含彩色+深度；research preview；Viewfinder 封闭测试）<br><a href="https://www.worldlabs.ai/blog/atlas-realtime">worldlabs.ai/blog/atlas-realtime</a></div>
+    <div class="ref"><span class="tag wx">转述</span>36kr/智东西《李飞飞最新 AI 成果发布，把世界模型装进复古掌机，单张图实时跑出 15 帧》（2026-11-06；含 AMD 82 亿美元收购 World Labs、李飞飞将任 AMD 执行副总裁兼首席科学家）<br><a href="https://www.36kr.com/p/4057553085404038">36kr.com/p/4057553085404038</a></div>
+  </div>
+
+  <div class="card">
+    <h2>05｜Gemini Omni 1.2 Flash</h2>
+    <div class="ref"><span class="tag wx">转述</span>36kr/智东西《谷歌视频新模型双榜第一，力压 Grok、Seedance，价格再砍三成》（2026-11-06；T2V+I2V 双榜第一；-30%，720p $0.07/s；原生 15s；对话式多轮编辑）<br><a href="https://www.36kr.com/p/4057626189534338">36kr.com/p/4057626189534338</a></div>
+  </div>
+
+  <div class="card">
+    <h2>06｜Cursor Live Apps</h2>
+    <div class="ref"><span class="tag src">一手</span>Cursor 官方博客《Build Live Apps in Cursor》（2026-11-05；一句话→云端智能体搭建+Postgres+SSO+双重安全检查+链接分享）<br><a href="https://cursor.com/blog">cursor.com/blog</a></div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 第 006 期 · 2026-11-07</div>
+</div>
+</body>
+</html>
