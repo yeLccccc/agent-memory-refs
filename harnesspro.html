@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清华智谱开源 HarnessPro：让 Agent 自己出卷自己考 · 参考资料</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#24406B;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f5f9;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#24406B;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;} .ref .tag.img{background:#4a7c59;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>清华智谱开源 HarnessPro：让 Agent 自己出卷自己考 · 参考资料</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」RSI 深读 · 02。正文外链被微信剥除，可点击版全部在本页；事实口径截至 2026-11-07。</div>
+    <div class="note"><b>数据口径与可靠性说明：</b>① 本文全部实验数字为<b>论文自报</b>（arXiv 2610.26770，v1 2026-10-19 / v2 10-20，41 页，自标 under review，未经独立审计；主表 TB2/SWE-Pro 报 3 次运行均值±标准差、ProgramBench 2 次）。② 署名口径：作者 9 人，一作 Zhuoshi Pan（清华），Yukuo Cen 来自 Z.AI（智谱），唐杰（清华）末位——准确说法是「清华与 Z.AI 等团队」，非「智谱官方出品」。③ 中文圈热传的「进化成本狂降 53%」是误读：53% 是 SWE-Bench Pro 上 Medium 档<b>部署后每任务使用成本</b>相对 RHO 的降幅（$2.68→$1.26），不是进化过程的开销降幅；进化本身花的钱论文没有给统一口径。④ 与基线 RHO（Pan et al. 2026a）不是同一班底：RHO 作者为 Wenbo Pan、Chin-Yew Lin（MSRA）等人，HarnessPro 一作 Zhuoshi Pan 只是同姓；两文关系是「采用其数据切分协议与 DPP 选任务方法 + 设为最强基线」。⑤ 训练集只有 10 个任务（DPP 选），评估用 LLM 生成的固定合成测试，测试自身质量论文未系统量化。⑥ 与 Google Harness²（2610.14224，10-09）互不引用，属并发工作。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、一手资源（论文、代码、演示页）</h2>
+    <div class="ref"><span class="tag src">论文</span>HarnessPro: Recursive Harness Self-Improvement with Pareto Optimization for Performance-Cost Trade-offs（Zhuoshi Pan, ZhiYuan Feng, Yukuo Cen, Honglin Lin, Junru Lu, Zhongxia Chen, Shuo Yang, H. Vicky Zhao, Jie Tang；清华 + Z.AI + 上交 + 华威 + 快手，CC BY 4.0）<br><a href="https://arxiv.org/abs/2610.26770">arxiv.org/abs/2610.26770</a></div>
+    <div class="ref"><span class="tag src">仓库</span>pzs19/HarnessPro（MIT；Linux + Python 3.12/3.13 + uv + Docker Compose；发布物为三基准 × 三档共 9 套进化后 harness 产物：instructions + runtime 策略与 hooks）<br><a href="https://github.com/pzs19/HarnessPro">github.com/pzs19/HarnessPro</a></div>
+    <div class="ref"><span class="tag src">演示页</span>HarnessPro 项目主页（官方结果展示）<br><a href="https://pzs19.github.io/HarnessPro/">pzs19.github.io/HarnessPro</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、方法谱系（基线与直接引用的先行工作）</h2>
+    <div class="ref"><span class="tag paper">论文</span>RHO: Evolving Agents in the Dark — Retrospective Harness Optimization via Self-Preference（Wenbo Pan, Shujie Liu, Chin-Yew Lin 等，MSRA 系；最强基线，SWE-Bench Pro 59%→78%、成本 $1.88→$2.68）<br><a href="https://arxiv.org/abs/2606.05922">arxiv.org/abs/2606.05922</a></div>
+    <div class="ref"><span class="tag paper">论文</span>DPP（行列式点过程）选任务的方法来源：Kulesza &amp; Taskar, Determinantal Point Processes for Machine Learning（2012）<br><a href="https://arxiv.org/abs/1207.6083">arxiv.org/abs/1207.6083</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Dynamic Cheatsheet（测试时学习记忆基线，Suzgun et al.）<br><a href="https://arxiv.org/abs/2504.07952">arxiv.org/abs/2504.07952</a></div>
+    <div class="ref"><span class="tag paper">论文</span>ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory（记忆路线基线，Ouyang et al.，Google）<br><a href="https://arxiv.org/abs/2509.25140">arxiv.org/abs/2509.25140</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Sleep-time Compute: Beyond Inference Scaling at Test-time（离线「睡觉」计算基线，Lin et al.，Letta/UC Berkeley）<br><a href="https://arxiv.org/abs/2504.13171">arxiv.org/abs/2504.13171</a></div>
+    <div class="ref"><span class="tag paper">论文</span>RTK 工具输出压缩与 CoP（Cost-of-Pass，每成功任务成本）口径：经 HarnessPro 论文引用，未查到独立一手页，按论文正文与引文名检索</div>
+  </div>
+
+  <div class="card">
+    <h2>三、三个评测基准</h2>
+    <div class="ref"><span class="tag paper">基准</span>Terminal-Bench 2（终端任务基准；本文用 held-out 59 题）· SWE-Bench Pro（100 题）· ProgramBench（100 题）——切分协议沿用 RHO；官方页按基准名检索，本文未逐一给出未核验链接</div>
+    <div class="ref"><span class="tag src">仓库</span>Terminal-Bench（laude-institute，开源基准仓库）<br><a href="https://github.com/laude-institute/terminal-bench">github.com/laude-institute/terminal-bench</a></div>
+  </div>
+
+  <div class="card">
+    <h2>四、模型与执行器</h2>
+    <div class="ref"><span class="tag paper">论文</span>GLM-5: From Vibe Coding to Agentic Engineering（智谱；GLM-5.2 为本文双执行模型之一，配 Claude Code 2.1.231）<br><a href="https://arxiv.org/abs/2602.15763">arxiv.org/abs/2602.15763</a></div>
+    <div class="ref"><span class="tag src">仓库</span>Codex CLI（OpenAI 终端 coding agent 0.147.0，配 GPT-5.5）<br><a href="https://github.com/openai/codex">github.com/openai/codex</a></div>
+  </div>
+
+  <div class="card">
+    <h2>五、智谱 RSI 叙事的另一条线（公告面）</h2>
+    <div class="ref"><span class="tag src">官方</span>z.ai 博客《Toward RSI: How GLM Built Its Own Inference Infrastructure》（2026-09-17；Infra Agent，10 万+ 国产卡集群推理吞吐两周 3 倍，自报口径，官方自认「尚未完全自主」）<br><a href="https://z.ai/blog/glm-built-its-inference-infrastructure">z.ai/blog/glm-built-its-inference-infrastructure</a></div>
+    <div class="ref"><span class="tag warn">公告</span>港交所公告（2026-09-12/13）：配售 + 可转债净募约 393 亿港元，约 60% 投向下一代 GLM 与「完全自训练」体系（数据自产 / 环境自造 / 基础设施自我优化）；至本文截稿该维度公开论文级成果为零——港交所披露易（hkexnews.hk）按公告日期检索</div>
+  </div>
+
+  <div class="card">
+    <h2>六、本文图片与版权</h2>
+    <div class="ref"><span class="tag img">封面</span>NASA Hubble M83 螺旋星系（NASA GSFC_20171208_Archive_e001262，公版；旋臂=递归的视觉母题）<br><a href="https://images.nasa.gov/details/GSFC_20171208_Archive_e001262">images.nasa.gov/details/GSFC_20171208_Archive_e001262</a></div>
+    <div class="ref"><span class="tag img">正文图</span>三阶段递归全景图：仓库 harnesses/assets/harnesspro-overview.png（论文官方图，CC BY 4.0，版权归论文作者）</div>
+    <div class="ref"><span class="tag img">自制图</span>三基准性能-成本散点图（数据取自论文 Table 2）与预算 hooks 三段式图（口径取自论文 §5.3）为本号自制（PIL）</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · RSI 深读 02 · 口径截至 2026-11-07 · <a href="index.html" style="color:#a0aab4;">返回系列目录</a></div>
+</div>
+</body>
+</html>
