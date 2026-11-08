@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hinton：把神经网络熬成显学，又亲手给它踩刹车 · 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>Hinton：把神经网络熬成显学，又亲手给它踩刹车 · 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」《AI大牛列传》系列第三期。人物为在世公众人物，全部轶事与事实均经双源核验（官方页/论文页/访谈原文为一级源，百科与权威媒体互证）；正文外链被微信剥除，可点击版全部在本页，数据口径 2026-11-08。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 出生（1947-12-06 伦敦温布尔登）、剑桥 King's College 换系（1970 实验心理学 BA）、爱丁堡 AI 博士（1978）：诺奖官方 facts 页与多伦多大学主页双源；② 家系（George Boole / Mary Everest Boole / Charles Howard Hinton / 测绘局长 George Everest / 父 Howard Hinton 昆虫学家）：Britannica 传记页为源，Boole 一项另有诺奖官方播客印证；③ CMU 计算机系五年（约 1982-1987）与 Gatsby 单元（1998-2001）：多伦多大学主页与 Britannica 双源；④ DNNResearch 拍卖（2012-12 定主意、湖泰浩 Harrah's 房间竞价、四家入场、4400 万美元 2013-03-12 成交）：Wired 2021 长文单源详述，正文标「据 Wired」；⑤ 诺奖电话轶事（凌晨便宜旅馆/疑恶作剧/瑞典口音/MRI）：nobelprize.org 官方访谈一手；⑥ 捐款（约一半份额 35 万美元给 Water First）：Water First 新闻稿 + CBC 双源；⑦ 灭绝概率 10-20%（三十年内）：Reuters/Guardian 2024-12-27 报道；⑧ 2026 年 10-11 月动态（「外星生物」「AI 切尔诺贝利」、400+ 科学家公开信）：Guardian 2026-10-13 / 2026-11-03 与多家报道；⑨ LeCun 反方口径：其公开帖与多家报道；⑩ 图片：真人照 3 张来自搜索引擎待审通道（授权未确认，CREDITS.md 留档），自绘图 6 张为本刊原创。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、本人一手（官方页 / 论文 / 主页）</h2>
+    <div class="ref"><span class="tag src">诺奖</span>2024 诺贝尔物理学奖官方 facts 页（引文原文、Boltzmann machine 1983-1985）<br><a href="https://www.nobelprize.org/prizes/physics/2024/hinton/facts/">nobelprize.org/prizes/physics/2024/hinton/facts</a></div>
+    <div class="ref"><span class="tag src">诺奖</span>诺奖官方电话访谈（凌晨旅馆 / spoof / 「posse of impersonators」/ MRI）<br><a href="https://www.nobelprize.org/prizes/physics/2024/hinton/interview/">nobelprize.org/prizes/physics/2024/hinton/interview</a></div>
+    <div class="ref"><span class="tag src">主页</span>多伦多大学 Hinton 主页（履历时间线 / CMU 五年 / Gatsby / CIFAR 2004-2013 / Google 半职 VP & Engineering Fellow / 荣誉清单）<br><a href="https://www.cs.toronto.edu/~hinton/">cs.toronto.edu/~hinton</a></div>
+    <div class="ref"><span class="tag src">图灵</span>ACM 2018 图灵奖页（三人共享，引文原文）<br><a href="https://awards.acm.org/about/2018-turing">awards.acm.org/about/2018-turing</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Learning representations by back-propagating errors（Nature 1986；Rumelhart, Hinton, Williams）<br><a href="https://www.nature.com/articles/323533a0">nature.com/articles/323533a0</a></div>
+    <div class="ref"><span class="tag paper">论文</span>A learning algorithm for Boltzmann machines（Cognitive Science 1985；Ackley, Hinton, Sejnowski）<br><a href="https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog0901_7">Wiley（Cognitive Science）</a></div>
+    <div class="ref"><span class="tag paper">论文</span>A fast learning algorithm for deep belief nets（Neural Computation 2006；Hinton, Osindero, Teh）<br><a href="https://direct.mit.edu/neco/article/18/7/1527/7075">MIT Press</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Visualizing Data using t-SNE（JMLR 2008；van der Maaten, Hinton）<br><a href="https://www.jmlr.org/papers/v9/vandermaaten08a.html">jmlr.org</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Dropout（JMLR 2014；Srivastava, Hinton, Krizhevsky, Sutskever, Salakhutdinov）<br><a href="https://jmlr.org/papers/v15/srivastava14a.html">jmlr.org</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Distilling the Knowledge in a Neural Network（arXiv 2015；Hinton, Vinyals, Dean）<br><a href="https://arxiv.org/abs/1503.02531">arxiv.org/abs/1503.02531</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Deep learning 综述（Nature 2015；LeCun, Bengio, Hinton）<br><a href="https://www.nature.com/articles/nature14539">nature.com/articles/nature14539</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Dynamic routing between capsules（NIPS 2017；Sabour, Frosst, Hinton）<br><a href="https://papers.nips.cc/paper_files/paper/2017/hash/2cad8fa47bb2fc967408d74f8aef6311-Abstract.html">papers.nips.cc</a></div>
+    <div class="ref"><span class="tag paper">论文</span>The Forward-Forward Algorithm（arXiv 2022-12，单作者）<br><a href="https://arxiv.org/abs/2212.13345">arxiv.org/abs/2212.13345</a></div>
+    <div class="ref"><span class="tag paper">引用</span>Google Scholar 主页（总引用量口径复核）<br><a href="https://scholar.google.com/citations?user=JicYPdAAAAAJ">scholar.google.com</a> · 总引用破百万报道：<a href="https://hub.baai.ac.cn/view/51941">BAAI</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、生平与履历锚点（权威传记源）</h2>
+    <div class="ref"><span class="tag">传记</span>Britannica：Geoffrey Hinton（家系 / CMU 1982 / 1987 反军方资助迁多伦多 / Gatsby / Google 官职）<br><a href="https://www.britannica.com/biography/Geoffrey-Hinton">britannica.com/biography/Geoffrey-Hinton</a></div>
+    <div class="ref"><span class="tag">传记</span>TIME 100 AI（2023）：剑桥换系口径<br><a href="https://time.com/collections/time100-ai/6309026/geoffrey-hinton/">time.com</a></div>
+    <div class="ref"><span class="tag paper">拍卖</span>Wired：The Secret Auction That Set Off the Race for AI Supremacy（2021-03）<br><a href="https://www.wired.com/story/secret-auction-set-off-race-ai-supremacy/">wired.com</a></div>
+    <div class="ref"><span class="tag">机构</span>Vector Institute（2017 联创，至今任志愿首席科学顾问；2024-10 诺奖公告仍以该头衔）<br><a href="https://vectorinstitute.ai/news/">vectorinstitute.ai/news</a></div>
+    <div class="ref"><span class="tag">中文</span>维基百科「杰弗里·辛顿」（教育线第 1 源使用）<br><a href="https://zh.wikipedia.org/zh-hans/%E6%9D%B0%E5%BC%97%E9%87%8C%C2%B7%E8%BE%9B%E9%A1%BF">zh.wikipedia.org</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、吹哨时间线（2023-2026 报道源）</h2>
+    <div class="ref"><span class="tag warn">辞职</span>NYT：'The Godfather of AI' Quits Google and Warns of Danger（2023-05-01；「I console myself…」原文）<br><a href="https://www.nytimes.com/2023/05/01/technology/ai-google-chatbot-engineer-quits-hinton.html">nytimes.com</a> · 中文侧：<a href="https://www.jiqizhixin.com">机器之心 2023-05-02 报道</a></div>
+    <div class="ref"><span class="tag warn">声明</span>22 词灭绝风险公开信（2023-05-30，CAIS 存档）<br><a href="https://www.safe.ai/work/statement-on-ai-risk">safe.ai/work/statement-on-ai-risk</a></div>
+    <div class="ref"><span class="tag warn">升级</span>灭绝概率上调 10-20%（三十年内，2024-12-27）<br><a href="https://www.theguardian.com/technology/2024/dec/27/godfather-of-ai-shortens-odds-of-the-technology-wiping-out-humanity-over-next-30-years">Guardian</a> · <a href="https://www.reuters.com/technology/">Reuters 同题报道</a></div>
+    <div class="ref"><span class="tag warn">方案</span>日内瓦 AI for Good「母性本能」（2025-07 峰会，2025-08 报道）<br><a href="https://www.forbes.com/sites/pialauritzen/2025/08/14/geoffrey-hinton-says-ai-needs-maternal-instincts/">Forbes 2025-08-14</a></div>
+    <div class="ref"><span class="tag warn">外星生物</span>Guardian 专访：「We're creating alien beings. I'm willing to be selfish and choose humans」（2026-10-13）<br><a href="https://www.theguardian.com/us-news/2026/oct/13/geoffrey-hinton-trump-ai-tech">theguardian.com</a></div>
+    <div class="ref"><span class="tag warn">切尔诺贝利</span>Guardian：「it might turn out we were better off without AI」＋AI 切尔诺贝利警告（2026-11-03）<br><a href="https://www.theguardian.com/uk-news/2026/nov/03/ai-godfather-geoffrey-hinton-better-off-without-ai">theguardian.com</a> · <a href="https://futurism.com/artificial-intelligence/ai-godfather-chernobyl-blackout">Futurism</a></div>
+    <div class="ref"><span class="tag warn">公开信</span>400+ 科学家联署要求国际机构监督先进 AI 封控（2026-10 中旬，含 Hinton、Bengio）<br>报道源：Guardian / 多家科学媒体（2026-10）</div>
+    <div class="ref"><span class="tag warn">反方</span>LeCun 反 doomer 口径（「doomers 是非常能发声、非常有钱的一小撮」「灭绝风险零担忧」）<br><a href="https://www.facebook.com/yann.lecun/posts/10155864858112143">LeCun 公开帖</a> · 多家报道交叉</div>
+  </div>
+
+  <div class="card">
+    <h2>四、诺奖与捐款</h2>
+    <div class="ref"><span class="tag src">捐款</span>Water First 新闻稿：约一半奖金份额（35 万美元）捐原住民社区清洁水慈善（2024-11-04）<br><a href="https://waterfirst.ngo/press-release/nobel-winner-donates-half-of-prize-money-to-water-first">waterfirst.ngo</a></div>
+    <div class="ref"><span class="tag src">奖金</span>CBC/Canadian Press：其余奖金计划（神经多样性青年就业慈善 + AI 会议年度奖）<br><a href="https://www.thecanadianpressnews.ca/national/geoffrey-hinton-to-donate-some-of-nobel-winnings-to-create-new-annual-award/article_fd19430b-f98b-5dd0-9ed8-e6673810f0e8.html">thecanadianpressnews.ca</a></div>
+    <div class="ref"><span class="tag src">演讲</span>诺奖周访谈（2024-12-06）与颁奖晚宴演讲（2024-12-10，继续警告）<br><a href="https://www.nobelprize.org/prizes/physics/2024/hinton/interview/">nobelprize.org 访谈</a> · <a href="https://www.nobelprize.org/prizes/physics/2024/hinton/speech/">nobelprize.org 晚宴演讲</a></div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI大牛列传 003 · 2026-11-08</div>
+</div>
+</body>
+</html>
