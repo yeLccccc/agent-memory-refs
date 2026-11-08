@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 热点追踪 · 第 008 期（2026-11-09）· 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.hn{background:#ff6600;} .ref .tag.gh{background:#24292e;} .ref .tag.wx{background:#07c160;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
+    <h1>AI 热点追踪 · 第 008 期（2026-11-09）· 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 008 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-08 20:00（9/9 通道全通）。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 封号潮无 OpenAI 统一公告——「设备/支付卡限制 11-02 起」为知乎实测与多源转述，「与被关闭账号关联」为官方邮件原文（用户晒出），VPN 触发说官方未确认，误封比例无从核实；② 苹果图谱研究 10-28 发布、11-07 HN 发酵（749pts），图谱为本地明文存储、不出本机，「偷建/上传」类说法不准确；③ Apiiro 数字：1,122 个公开配置文件/约 2,539 密钥/1,994 仓库——泄露是用户提交配置所致，非 Claude Code 外发；④ AIF 重组时间（9 月）与全部创始领导离开均出自 Langford 一手博客；⑤ M3.1 Pro 为播客口径（训练中，无官方页面）；⑥ 4.9 元/千次为 36kr 报道口径。本期剔除：即梦短剧工作室（10-26 老货）、Claude Code 六道关卡（一手源 10-15 老货）、OpenAI 沙箱逃逸（7 月旧闻）、Gemini 改 PDF（10-29 官宣）。</div>
+  </div>
+
+  <div class="card">
+    <h2>01｜ChatGPT 大规模封号（主打）</h2>
+    <div class="ref"><span class="tag wx">多源</span>搜狐/IT之家《ChatGPT突现封号风波，200美元Pro用户也遭殃》（2026-11-07/08；官方邮件「与此前被关闭账号关联」）<br><a href="https://www.sohu.com/a/1098689425_122135404">sohu.com/a/1098689425_122135404</a></div>
+    <div class="ref"><span class="tag wx">实测</span>知乎《突发：OpenAI开始大规模封号！》（11-02 前后设备/支付卡限制，Device limit reached）<br><a href="https://zhuanlan.zhihu.com/p/2102464656681985322">zhuanlan.zhihu.com/p/2102464656681985322</a></div>
+    <div class="ref"><span class="tag wx">镜像</span>IT之家《曝 ChatGPT 突现封号风波，200 美元 Pro 用户也遭殃》<br><a href="https://www.ithome.com/0/102/3879.htm">ithome.com/0/102/3879.htm</a></div>
+  </div>
+
+  <div class="card">
+    <h2>02｜Mac 内置「家人分类器」</h2>
+    <div class="ref"><span class="tag src">一手</span>Eighth Rank《Anatomy of Apple's Personal Knowledge Graph》（2026-10-28；181 实体类/278 谓词；EntityTagging_Family XGBoost 144 特征；expired_stable_graph）<br><a href="https://8rank.ai/game/apple-intelligence-personal-knowledge-graph">8rank.ai/game/apple-intelligence-personal-knowledge-graph</a></div>
+    <div class="ref"><span class="tag gh">配套</span>开源自查工具 iKnow（本地仪表盘，只读本机图谱）<br><a href="https://github.com/8rank/iKnow">github.com/8rank/iKnow</a></div>
+    <div class="ref"><span class="tag hn">发酵</span>Hacker News 讨论帖（2026-11-07，749pts）<br><a href="https://news.ycombinator.com/">news.ycombinator.com（帖子未存直链）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>03｜Claude Code「不再询问」泄露门</h2>
+    <div class="ref"><span class="tag src">一手</span>Apiiro 研究（.claude/settings.local.json 明文密钥 → 公开仓库；1,122 文件/约 2,539 密钥/1,994 仓库）<br><a href="https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again">apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again</a></div>
+    <div class="ref"><span class="tag wx">转述</span>CybersecurityNews《Claude Code's "Yes, and Don't Ask Again"…》（HN 432pts）<br><a href="https://cybersecuritynews.com/claude-codes-yes-and-dont-ask-again">cybersecuritynews.com/claude-codes-yes-and-dont-ask-again</a></div>
+  </div>
+
+  <div class="card">
+    <h2>04｜微软研究院 AI Frontiers 散场</h2>
+    <div class="ref"><span class="tag src">一手</span>John Langford 个人博客《The end of Microsoft Research's AI Frontiers group》（2026-11-06；AIF ~50 人 9 月并入 MAI；创始领导全走；FBT 变体抵两倍大模型）<br><a href="https://hunch.net/?p=13764006">hunch.net/?p=13764006</a></div>
+    <div class="ref"><span class="tag hn">发酵</span>Hacker News 讨论帖（2026-11-07/08，467pts）<br><a href="https://news.ycombinator.com/">news.ycombinator.com（帖子未存直链）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>05｜MiniMax M3.1 Pro 训练冲刺</h2>
+    <div class="ref"><span class="tag src">一手</span>播客《十字路口》对话闫俊杰：M3、10X 计划、10T 模型（M3.1 Pro 全力训练；本月全部时间投训练；重点代码方向）<br><a href="https://podcasts.apple.com/ec/podcast/id1729552193?i=1000773616677">podcasts.apple.com（十字路口）</a></div>
+    <div class="ref"><span class="tag wx">中文</span>公众号 ShineWin《代码能力即正义!MiniMax死磕下一代旗舰》（2026-11-08）<br>（公众号正文，可站内搜）</div>
+  </div>
+
+  <div class="card">
+    <h2>06｜百度第三次改搜索框</h2>
+    <div class="ref"><span class="tag wx">转述</span>36kr《百度第三次改搜索框》（2026-11-08；搜索 AI API 4.9 元/千次低于 DeepSeek；2024 探索版→2025-07 智能框→2025-10 问AI→本次）<br><a href="https://www.36kr.com/p/4060419503921026">36kr.com/p/4060419503921026</a></div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 第 008 期 · 2026-11-09</div>
+</div>
+</body>
+</html>
