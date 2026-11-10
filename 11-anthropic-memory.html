@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>延伸阅读 · 深度解读系列（Agent Memory）十一：Anthropic 记忆组件</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:24px 16px 60px;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;line-height:1.5;margin:0 0 6px;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;}
+  h2{font-size:16px;margin:18px 0 10px;padding-left:10px;border-left:4px solid #1E3A5F;}
+  ul{list-style:none;margin:0;padding:0;}
+  li{padding:7px 0;border-bottom:1px dashed #eef1f4;font-size:14px;line-height:1.6;}
+  li:last-child{border-bottom:none;}
+  li .d{color:#7a8a99;font-size:12.5px;display:block;}
+  a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .note{font-size:12.5px;color:#8a7a4a;background:#fdf6e3;border-radius:8px;padding:10px 12px;line-height:1.7;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>延伸阅读 · 深度解读系列（Agent Memory）十一</h1>
+    <div class="sub">《Anthropic 拆 Agent 记忆：413 个文件为什么输给 9 个》 · 2026-11</div>
+    <div class="note">说明：正文中全部机制与数字（413/225 文件与 1 徽章、9 文件与 4 徽章、17 步建 6 删 9、13%→48%、54%→61%、87%/73%、41/57→57/57、MEMORY.md 前 200 行/25 KB、每题省约 20,000 token 等）均为 Anthropic 原文自报口径，本篇无源码可挖；sleep-time compute 论文数字（省约 5 倍测试时算力、单查询成本降 2.5 倍）为该论文摘要口径；CL-Bench 1.0 发布日期（2026-05-04）为基准官网口径；Nature 385533a0 经核实为 Frey &amp; Morris 1997《Synaptic tagging and long-term potentiation》（突触标记）。Karpathy gist 仅列原文引用链接，内容未核。以下链接可点击。</div>
+  </div>
+
+  <div class="card">
+    <h2>原文与 Anthropic 官方文档</h2>
+    <ul>
+      <li><a href="https://www.anthropic.com/research/components-of-agent-memory">The components of agent memory（本篇解读的原文，2026-11-06，Lance Martin 执笔）</a><span class="d">Engineering 团队 · Topics: Agents / Context engineering / Agent memory · 插图 Monika Tuchowska</span></li>
+      <li><a href="https://platform.claude.com/docs/en/managed-agents/dreams">Claude 平台文档 · Managed Agents: dreams</a><span class="d">dreaming 的平台文档口径（原文「called dreaming」一词链向此处）</span></li>
+      <li><a href="https://platform.claude.com/docs/en/managed-agents/overview">Claude 平台文档 · Managed Agents 总览</a><span class="d">CL-Bench 与 Pokémon 实验的运行底座；每题新会话 + 持久记忆目录</span></li>
+      <li><a href="https://platform.claude.com/docs/en/managed-agents/memory">Claude 平台文档 · Managed Agents: memory directory</a><span class="d">跨会话持久记忆目录（原文「memory directory」锚点）</span></li>
+      <li><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool">Claude 平台文档 · memory tool</a><span class="d">记忆笔记的文件读写接口（原文「write」锚点）</span></li>
+      <li><a href="https://platform.claude.com/docs/en/build-with-claude/compaction">Claude 平台文档 · compaction</a><span class="d">被记忆定义排除的近邻：会话内上下文压缩（原文「compaction」锚点）</span></li>
+      <li><a href="https://code.claude.com/docs/en/memory">Claude Code 文档 · auto memory（MEMORY.md）</a><span class="d">只载前 200 行 / 25 KB，头部当索引；长指令文件降低遵循度（原文引用）</span></li>
+      <li><a href="https://support.claude.com/en/articles/17631495-get-started-with-claude-duet">Claude Duet 起步指南</a><span class="d">「记忆围绕被帮助的人组织」一节的产品例</span></li>
+      <li><a href="https://platform.claude.com/cookbook/managed-agents-cma-dreaming-with-a-dynamic-workflow">官方 Cookbook · dreaming with a dynamic workflow</a><span class="d">原文文末「getting started with dreaming」链接</span></li>
+      <li><a href="https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/knowledge-wiki">官方快速起步 · knowledge-wiki</a><span class="d">原文文末「knowledge wikis」链接，GitHub anthropics/claude-quickstarts</span></li>
+      <li><a href="https://www.anthropic.com/research/in-context-learning-and-induction-heads">In-context Learning and Induction Heads（Anthropic 研究）</a><span class="d">被记忆定义排除的近邻：in-context learning 的机制研究（原文锚点）</span></li>
+      <li><a href="https://www.youtube.com/watch?v=CXhYDOvgpuU">Claude Plays Pokémon（YouTube）</a><span class="d">Pokémon Red 评估的公开视频；David Hershey 负责（原文致谢）</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>论文与神经科学引文</h2>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2504.13171">Sleep-time Compute: Beyond Inference Scaling at Test-time（arXiv:2504.13171，2025-04-17）</a><span class="d">Kevin Lin、Charlie Snell、Charles Packer、Sarah Wooders、Ion Stoica、Joseph E. Gonzalez 等（Letta + UC Berkeley）；同等精度省约 5 倍测试时算力、多查询摊销后单查询成本降 2.5 倍；代码 letta-ai/sleep-time-compute</span></li>
+      <li><a href="https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/">Google Research · The SLEEP framework</a><span class="d">原文「dreaming」一词的先行工作锚点（持续学习线）</span></li>
+      <li><a href="https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf">McClelland, McNaughton &amp; O'Reilly 1995 · Why there are complementary learning systems（CLS 论文 PDF）</a><span class="d">海马体即时捕获 / 新皮层离线固化的互补学习系统理论（原文「The hippocampus」锚点）</span></li>
+      <li><a href="https://www.nature.com/articles/385533a0">Frey &amp; Morris 1997 · Synaptic tagging and long-term potentiation（Nature 385, 533）</a><span class="d">「化学信号把一段经历标记为重要」的突触标记假说（原文「mark a memory」锚点；2026-11-10 核实标题/作者/年份）</span></li>
+      <li><a href="https://www.science.org/doi/10.1126/science.adk8261">Science · adk8261（原文「some experiences」锚点）</a><span class="d">部分经验被优先固化相关的近期研究</span></li>
+      <li><a href="https://www.nature.com/articles/s41467-018-06213-1">Nature Communications · s41467-018-06213-1（原文「rest」锚点）</a><span class="d">安静休息期的记忆固化研究</span></li>
+      <li><a href="https://www.nature.com/articles/s41593-019-0467-3">Nature Neuroscience · s41593-019-0467-3（原文「those experiences and integrate them」锚点）</a><span class="d">经验蒸馏与整合进皮层的相关研究</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>基准与工具</h2>
+    <ul>
+      <li><a href="https://continual-learning-bench.com/news/cl-bench-1-0/">Continual Learning Bench（CL-Bench）1.0 发布页</a><span class="d">The Continual Learning Bench Team · Release May 4th, 2026；测 Agent 用记忆完成长程任务的能力</span></li>
+      <li><a href="https://github.com/harveyai/harvey-labs">GitHub 仓库 harveyai/harvey-labs（Harvey LAB 基准）</a><span class="d">法律简报按评分标准打分；并购文档 24 题与合同任务所用基准</span></li>
+      <li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Karpathy 的 gist（原文「wiki」一词锚点）</a><span class="d">原文建 wiki 一节的引用；内容本刊未核，仅列原文链接</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="foot">深度解读系列（Agent Memory） · 第十一篇 · 2026-11-10<br><a href="index.html">← 返回系列目录</a></div>
+  </div>
+</div>
+</body>
+</html>
