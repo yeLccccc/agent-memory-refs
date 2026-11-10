@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 热点追踪 · 第 010 期（2026-11-11）· 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.hn{background:#ff6600;} .ref .tag.gh{background:#24292e;} .ref .tag.wx{background:#07c160;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
+    <h1>AI 热点追踪 · 第 010 期（2026-11-11）· 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 010 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-10 20:00（9/9 通道全通）。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① Fable/Mythos 5.2 全部数字为 Anthropic 官方口径（费马 30 小时/前纪录 11 天/token 三分之一/证明短 7 倍/Opus 5.5 同设定 26%；FrontierCode 2.0 49.1%、CVE Rediscovery 89.6%、RoboDojo 64.9%；$8/$40 较 5.1 降 20%）；中文媒体「全面碾压 Opus 5.5」为标题通胀，官方原文是「多数评测超过」；② TPU 规格为 blog.google 官方口径（8tx 延迟较 8t 降 2 倍；8i Max 双 die 翻倍）；③ Gemini 记忆清单为 Android Authority 报道、中文科技媒体 11-10 转引，谷歌官方暂无独立公告；④ Gemini 标注事件的关键证据是谷歌 10-16 对 2023 博客的静默修改与 Help 条目 16836988（见仓库引用）。本期剔除：Muse Ember（官方站两轮直连失败无法核验）、$15M 数学家验卷（单一中文转引源）、千问办公 2.0（官方页不可达）、黄仁勋/特朗普等八卦条目。</div>
+  </div>
+
+  <div class="card">
+    <h2>01｜Claude Fable 5.2 / Mythos 5.2（主打）</h2>
+    <div class="ref"><span class="tag src">一手</span>Anthropic《Claude Fable 5.2 and Mythos 5.2》（2026-11-09；Fable 全量/Mythos 限审核机构；费马 30h 形式化；8 天原型 OS；FrontierCode 2.0 49.1%；HLE 追平 Opus 5.5 成本 &lt;1/10；$8/$40；AWS/GCP/Azure）<br><a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">anthropic.com/claude-fable-and-mythos-5-2</a></div>
+    <div class="ref"><span class="tag wx">中文</span>IT之家《8 天从零搓出操作系统：Anthropic 最强 Claude Fable / Mythos 5.2 AI 模型登场》（2026-11-10；AAV 衣壳 28/34；三款电子设备；快 30%）<br><a href="https://www.ithome.com/0/102/4573.htm">ithome.com/0/102/4573.htm</a></div>
+    <div class="ref"><span class="tag wx">转述</span>36kr《最强Fable 5.2震撼发布！费马大定理30小时形式化》（标题通胀已按官方口径修正）<br><a href="https://www.36kr.com/p/4063107263599744">36kr.com/p/4063107263599744</a></div>
+  </div>
+
+  <div class="card">
+    <h2>02｜谷歌 TPU 8tx / 8i Max</h2>
+    <div class="ref"><span class="tag src">一手</span>Google Blog《Our newest TPUs: 8tx and 8i Max, built for the agentic era》（2026-11-09；一年四发；8tx 机密推理/延迟较 8t 降 2 倍；8i Max 双 die 封装；TPU Sync &gt;90%；TorchTPU 开源）<br><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/">blog.google/innovation-and-ai/…/tpu-8i-max-and-8tx</a></div>
+  </div>
+
+  <div class="card">
+    <h2>03｜OpenAI × ModRetro Codex 掌机</h2>
+    <div class="ref"><span class="tag wx">中文</span>36kr《Codex 游戏掌机突然开卖，网友却在催更 GPT-6.2》（2026-11-10；$200 套装/$50 卡带；.gb/.gbc；DevDay 首秀；Balatro 移植；不含中国大陆）<br><a href="https://www.36kr.com/p/4063341927748736">36kr.com/p/4063341927748736</a></div>
+  </div>
+
+  <div class="card">
+    <h2>04｜字节 Seedream 5.5</h2>
+    <div class="ref"><span class="tag wx">中文</span>36kr《字节新图像模型来了，一张图连改100轮不崩，精准指哪改哪，API降价》（2026-11-09 发布；RGBA 透明素材；2K 编辑单张约 0.28 元不到上代一半；豆包/即梦/火山方舟）<br><a href="https://www.36kr.com/p/4062649042736002">36kr.com/p/4062649042736002</a></div>
+  </div>
+
+  <div class="card">
+    <h2>05｜Gemini 个人内容送人工标注</h2>
+    <div class="ref"><span class="tag gh">一手</span>github.com/thisisme6598/gemini_files（实证仓库：谷歌 10-16 修改 2023 博客措辞；Help Answer 16836988；消费级 Gemini 四种检索状态；PII 脱敏不可靠提醒）<br><a href="https://github.com/thisisme6598/gemini_files/">github.com/thisisme6598/gemini_files</a></div>
+    <div class="ref"><span class="tag hn">发酵</span>Hacker News 讨论（628 pts，2026-11-10 当日 AI 类最高分之一）<br><a href="https://news.ycombinator.com/item?id=43949810">news.ycombinator.com（搜索 gemini_files）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>06｜亚马逊 Strands Decider</h2>
+    <div class="ref"><span class="tag src">一手</span>Strands Agents 官方博客《Amazon saves millions by replacing Sonnet 4.6 with Strands Decider》（2026-11-09；20 类工单分类；$0.0222→$0.0005/单（44×）；4215→897ms；token -70%；三路流量对照；45 秒回滚）<br><a href="https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/">strandsagents.com/blog/amazon-saves-millions-…</a></div>
+    <div class="ref"><span class="tag gh">开源</span>github.com/strands-labs/strands-decider（Apache 协议）<br><a href="https://github.com/strands-labs/strands-decider">github.com/strands-labs/strands-decider</a></div>
+  </div>
+
+  <div class="card">
+    <h2>07｜E-means（Meta FAIR）</h2>
+    <div class="ref"><span class="tag src">一手</span>项目页 e-means.github.io（EMA mini-batch 质心更新；Lloyd 25 epoch 损失 1.2–3 epoch 达成；GPU 较 Flash-KMeans 快 10–45×；Lloyd 为 α=1 特例；已入 Faiss）<br><a href="https://e-means.github.io/">e-means.github.io</a></div>
+    <div class="ref"><span class="tag src">论文</span>arXiv:2611.09501（Swann Bessa 等，Meta FAIR）<br><a href="https://arxiv.org/abs/2611.09501">arxiv.org/abs/2611.09501</a></div>
+    <div class="ref"><span class="tag gh">开源</span>Faiss 集成 faiss/contrib/e_means<br><a href="https://github.com/facebookresearch/faiss/tree/main/contrib/e_means">github.com/facebookresearch/faiss/contrib/e_means</a></div>
+  </div>
+
+  <div class="card">
+    <h2>08｜Gemini 记忆清单</h2>
+    <div class="ref"><span class="tag wx">转引</span>Android Authority 报道（中文科技媒体 2026-11-10 转引：Gemini「记忆清单/记忆摘要」滚动上线，记忆可视化+直接纠正；官方暂无独立公告，未见公开直链，如实标注）<br>来源：Android Authority（via 眨眼看科技/SmartHey 公众号转述）</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 第 010 期 · 2026-11-11</div>
+</div>
+</body>
+</html>
