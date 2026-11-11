@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李飞飞：ImageNet之母，又给AI造了个世界 · 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>李飞飞：ImageNet之母，又给AI造了个世界 · 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」《AI大牛列传》系列第四期。人物为在世公众人物，全部事实经双源核验；本期检索通道特殊（搜索引擎配额耗尽，改官方页/论文页直取 + 本仓纯 HTTP 爬虫补中文侧源），正文外链被微信剥除，可点击版全部在本页，数据口径 2026-11-11。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 教育与履历（Princeton 物理 1999 最优等 / Caltech 硕士 2001 博士 2005 / SAIL 主任 2013–2018 / 谷歌云 AI/ML 首席科学家 2017–2018 / HAI 联合院长 2019– / NAIRR 2021–2023 / 联合国顾问 2023– / 荣誉全单）：斯坦福官方档案页（profiles.stanford.edu）为官方一级源；② 1992 年 15 岁随家赴美、父母在文革中成年：Kirkus 书评（自传《The Worlds I See》）＋中文侧源互证；③ ImageNet 规模（21,841 同义集 / 平均每集 650 张 / 14,197,122 张 / ILSVRC 1000 类·1,281,167 张训练图 / 2010 年起办赛 / 50+ 机构）：ILSVRC 总结论文原文（ar5iv 全文镜像）两处互证；2006 立项、AMT 众包、「逆主流共识」、2012 断崖：IEEE Spectrum 两篇；④ Karpathy 师承（adviser was Fei-Fei Li）与 CS231n（150→330→750）：Karpathy 个人官网一手；⑤ 谷歌云时期（2016-11 发布会官宣、与学生李佳同去、2017-12 AI 中国中心、2018-09 离职）：南方人物周刊 / 环球科学 / 大数据文摘中文报道（索引级，正文标「据」）；⑥ World Labs 与 AMD（2024 创立与联创背景 / 2026-02 十亿美元融资名单 / 2026-09-28 并入 AMD、她任执行副总裁兼首席科学家 / Marble·Atlas·Frameboy 全部能力口径）：World Labs 官网博文＋a16z 投资公告＋IEEE Spectrum 访谈；⑦ 奖项块（女王工程奖 2025 / TIME 年度人物八位「AI 建筑师」之一 2025 等）：斯坦福官网履历单源口径；「National Medal of Science」一说与官方履历不符，未采用；⑧ 中文侧源均为搜狗索引级（微信文章正文因反爬未能直读，标题/摘要存档于本仓 ops/hotspot/raw/）；⑨ 图片：真人照 3 张来自搜索引擎待审通道（授权未确认，CREDITS.md 留档），自绘图 6 张为本刊原创。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、本人一手（官方页 / 公司公告 / 论文）</h2>
+    <div class="ref"><span class="tag src">档案</span>斯坦福大学官方档案页：Fei-Fei Li（教育 / 任职时间线 / 奖项全单 / ImageNet「三大驱动力之一」定性）<br><a href="https://profiles.stanford.edu/fei-fei-li/">profiles.stanford.edu/fei-fei-li</a></div>
+    <div class="ref"><span class="tag src">公司</span>World Labs 官网 About（联创四人 / 使命原文）<br><a href="https://www.worldlabs.ai/about">worldlabs.ai/about</a></div>
+    <div class="ref"><span class="tag src">公司</span>World Labs is Joining AMD（2026-09-28：确定性协议 / 年底交割 / 她任 AMD 执行副总裁兼首席科学家 / Johnson 与 Mildenhall 继续带队 / 开放生态承诺）<br><a href="https://worldlabs.ai/blog/amd-announcement">worldlabs.ai/blog/amd-announcement</a></div>
+    <div class="ref"><span class="tag src">公司</span>World Labs Announces New Funding（2026-02-18：10 亿美元，AMD / NVIDIA / Autodesk / Fidelity / Emerson Collective / Sea）<br><a href="https://worldlabs.ai/blog/funding-2026">worldlabs.ai/blog/funding-2026</a></div>
+    <div class="ref"><span class="tag src">产品</span>Marble: A Multimodal World Model（2025-11-12 全量开放：输入五种 / AI 原生编辑 / Composer / 高斯溅射与网格导出 / Chisel）<br><a href="https://worldlabs.ai/blog/marble-world-model">worldlabs.ai/blog/marble-world-model</a></div>
+    <div class="ref"><span class="tag src">产品</span>Announcing the World API（2026-01-21：异步生成 / 布局·深度·光照·空间结构 / 首批用例 Escape.ai·Isaac Sim·MuJoCo·RoboSuite·Interior AI·xFigura）<br><a href="https://worldlabs.ai/blog/announcing-the-world-api">worldlabs.ai/blog/announcing-the-world-api</a></div>
+    <div class="ref"><span class="tag src">研究</span>Atlas: A World Model for Spatial Intelligence（2026-09-01：全模态自回归扩散 transformer / 整流流扩散 / 相机原生控制 1–6 图·1 分钟 1440p / 单图脑补 / 子弹时间 / 点云与高斯溅射输出）<br><a href="https://worldlabs.ai/blog/atlas">worldlabs.ai/blog/atlas</a></div>
+    <div class="ref"><span class="tag src">研究</span>Frameboy: Atlas in Real-time（2026-11-05：云 GPU 串流 15fps / Viewfinder 内测 / 「bad idea」原句 / 成本口径）<br><a href="https://worldlabs.ai/blog/atlas-realtime">worldlabs.ai/blog/atlas-realtime</a></div>
+    <div class="ref"><span class="tag src">一手</span>Karpathy 个人官网（adviser was Fei-Fei Li / 博士 2011–2015 / CS231n 设计主讲 150→330→750 / OpenAI·Tesla 履历）<br><a href="https://karpathy.ai/">karpathy.ai</a></div>
+    <div class="ref"><span class="tag paper">论文</span>ImageNet Large Scale Visual Recognition Challenge（IJCV 2015 / arXiv:1409.0575；Russakovsky 一作，Karpathy、Li Fei-Fei 等 12 人）——「21,841 synsets」「14,197,122 annotated images (as of August 2014)」「1000 类·约 120 万训练图」「2010 年起办赛·50+ 机构」原文<br><a href="https://ar5iv.labs.arxiv.org/html/1409.0575">ar5iv.labs.arxiv.org/html/1409.0575</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、投资与行业（权威报道）</h2>
+    <div class="ref"><span class="tag">投资</span>a16z：Investing in World Labs（2024-09-13，Martin Casado & Sarah Wang；Johnson 出自其门下·风格迁移 / Mildenhall 创造 NeRF / Lassner 的 Pulsar 早于高斯溅射；「生成可交互 3D 世界的基础模型」论点；李飞飞=三维数据问题「世界最顶尖专家之一」）<br><a href="https://a16z.com/announcement/investing-in-world-labs/">a16z.com/announcement/investing-in-world-labs</a></div>
+    <div class="ref"><span class="tag">访谈</span>IEEE Spectrum：AI Godmother Fei-Fei Li Has a Vision for Computer Vision（2024-12-12；「The world is 3D. We don't live in a flat world.」「Language is fundamentally a communication tool…」「吃与被吃」/ 公共部门用不起的算力 / 有生之年论 / NeurIPS 2024 主旨「From Seeing to Doing」/ HAI 推 NAIRR 五年）<br><a href="https://spectrum.ieee.org/fei-fei-li-world-labs">spectrum.ieee.org/fei-fei-li-world-labs</a></div>
+    <div class="ref"><span class="tag paper">历史</span>IEEE Spectrum：AlexNet Source Code Is Now Open Source（2025-03-21；ImageNet 2006 立项·逆主流共识·2009 建成·覆盖英文全部名词·AMT 众包·2010 开赛；AlexNet=Krizhevsky 训练·Ilya 提议·Hinton 掌门·两张显卡·父母家卧室；2010–2012 只有边际改善）<br><a href="https://spectrum.ieee.org/alexnet-source-code">spectrum.ieee.org/alexnet-source-code</a></div>
+    <div class="ref"><span class="tag">传记</span>Kirkus Reviews：《The Worlds I See》书评（1992 年 15 岁赴美 / 父母文革中成年 / Princeton / Caltech / 谷歌云 / SAIL）<br><a href="https://www.kirkusreviews.com/book-reviews/fei-fei-li/the-worlds-i-see/">kirkusreviews.com</a></div>
+    <div class="ref"><span class="tag">索引</span>World Labs 博客总索引（SceniX 收购 2026-07-21 / 她个人 Substack《To Seek a Newer World》2026-09-28 与《From Words to Worlds》2025-11-10 / TED 2024 演讲链接）<br><a href="https://www.worldlabs.ai/blog">worldlabs.ai/blog</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、中文侧源（搜狗索引级，存档 ops/hotspot/raw/sogou-20261111-1911-李飞飞.json）</h2>
+    <div class="ref"><span class="tag warn">索引</span>工厂与华尔街 CapNote：《李飞飞把世界模型塞进掌机：单图实时15帧，摇杆一推世界就长出来》（2026-11-06；AMD 任职与 Frameboy 成本口径中文印证）</div>
+    <div class="ref"><span class="tag warn">索引</span>南方人物周刊：《李飞飞 华人女科学家抗争胜利》（2018-06-06；「2016 年 11 月与学生李佳一同加盟谷歌」）</div>
+    <div class="ref"><span class="tag warn">索引</span>环球科学：《李飞飞宣布谷歌AI中国中心成立》（2017-12-13）</div>
+    <div class="ref"><span class="tag warn">索引</span>大数据文摘：《恭喜你，李飞飞老师！》（2018-09-11，谷歌云官宣离职回斯坦福）；《李飞飞：从不会英语的清洁工到斯坦福教授再到加盟谷歌》（2016-11-21，11 月 15 日发布会官宣加盟）</div>
+    <div class="ref"><span class="tag warn">索引</span>科研圈（译介 WIRED，Streshinsky & Hempel）：《「李飞飞是人工智能领域的良心」｜李开复专访》（2018-10-17）</div>
+    <div class="ref"><span class="tag warn">索引</span>雷峰网：《李飞飞最新访谈：我每天都在对AI的担忧中醒来》（2019-04-30）；智东西：《李飞飞领衔！16 位跨学科大牛谈AI的下个十年》（2020-12-31，「与环境交互是下一颗AI北极星」）</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI大牛列传 004 · 2026-11-11</div>
+</div>
+</body>
+</html>
