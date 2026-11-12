@@ -28,7 +28,7 @@
     <div class="back"><a href="../index.html">← 返回总目录</a> · <a href="index.html">栏目目录</a></div>
     <h1>AI 热点追踪 · 第 012 期（2026-11-13）· 延伸阅读</h1>
     <div class="sub">公众号「拉普拉斯大魔王」日更栏目《AI 热点追踪》第 012 期。正文外链被微信剥除，可点击版全部在本页；采集时间 2026-11-12 20:00（6/9 通道——DailyHotApi 掉线、sogou 部分限流，降级说明见期目录 collect.log）。</div>
-    <div class="note"><b>口径与可靠性说明：</b>① Gemini Decisions API 发布于 11-11（blog.google；当晚 Google 段网络出口阻断，事实经官方页 URL + AI Studio 文档标题 + HN 454 分讨论树 + 公众号 5 篇交叉核验）；「输出不收费」=不按输出 token 计费；「一次问 1000 题」为公众号批量上限口径，正文表述为「成百上千道」；② 玛雅条为「再发现」：作者自查确认遗址已在 Estrada-Belli 等 2025 年论文中测绘，价值在 INAH 无登记与三天代理工作流；③ AWS Emulator 与 qwen-code 的 star 数为 GitHub API 2026-11-12 实时核验；④ Claude Code 2.1.321 数字全部来自官方 changelog（11-09）。本期剔除：Tim Peters 悼闻（非 AI 六类）、黄仁勋罢免报道（人事八卦）、GPT-6.2 跳票传闻（单源）、红楼梦 AI 剧肖像权（非六类）、DSH 手机连接（一手 11-04 出 7 天闸门）等 11 条。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① Gemini Decisions API 发布于 11-11（blog.google；本机出口阻断，定价 $0.10/百万输入、输出 $0、单次 1000 题、256K 共享输入、150–250ms 延迟均经官方页全文核验〔WebFetch 服务端出口〕）；② 玛雅条为「再发现」：作者自查确认遗址已在 Estrada-Belli 等 2025 年论文中测绘，价值在 INAH 无登记与三天代理工作流；③ AWS Emulator 与 qwen-code 的 star 数为 GitHub API 2026-11-12 实时核验（3,741 / 29,563）；④ Claude Code 2.1.321 数字全部来自官方 changelog（11-09）；⑤ 文心 5.5 Flash Preview 参数与开源承诺来自 ernie.baidu.com 一手发布页，benchmark 图为官方自评口径（* 号为自评分数）；⑥ 元宝搜索 so.qq.com 为一手实测，界面新闻细节转引；⑦ DeepL Aure 官方新闻稿直链在案（站点限流未能直读，细节经 HN 收录与媒体转引交叉）；⑧ Stripe×OpenRouter：收购 8 月官宣见 OpenRouter 官方博客，10 月 token 数据（790 万亿、+37%、智能体 76% vs 一年前 8%）为 OpenRouter 披露的转引口径。本期剔除：Tim Peters 悼闻（非 AI 六类）、黄仁勋罢免报道（人事八卦）、GPT-6.2 跳票传闻（单源）、红楼梦 AI 剧肖像权（非六类）、DSH 手机连接（一手 11-04 出 7 天闸门）等 11 条；Gemini CarPlay（无第二可核源）未采用。</div>
   </div>
 
   <div class="card">
@@ -62,7 +62,31 @@
 
   <div class="card">
     <h2>06｜qwen-code 冲上 Trending</h2>
-    <div class="ref"><span class="tag gh">一手</span>github.com/QwenLM/qwen-code（TypeScript；Apache-2.0；29,547 stars @2026-11-12 API 核验；最新 release 11-10）<br><a href="https://github.com/QwenLM/qwen-code">github.com/QwenLM/qwen-code</a></div>
+    <div class="ref"><span class="tag gh">一手</span>github.com/QwenLM/qwen-code（TypeScript；Apache-2.0；29,563 stars、3,382 forks @2026-11-12 API 核验；仓库 2025-06 创建；最新 release 11-10）<br><a href="https://github.com/QwenLM/qwen-code">github.com/QwenLM/qwen-code</a></div>
+    <div class="ref"><span class="tag src">转引</span>Qwen Code 1.0 预览版细节（整合 Qoder、三平台原生安装包、会话恢复）经媒体转引<br><a href="https://github.com/QwenLM/qwen-code/releases">github.com/QwenLM/qwen-code/releases</a></div>
+  </div>
+
+  <div class="card">
+    <h2>07｜文心 5.5 Flash 预览版（v2 新增）</h2>
+    <div class="ref"><span class="tag src">一手</span>ernie.baidu.com《ERNIE 5.5 Flash Preview》（2026-11-11；280B/14B 激活；1M 上下文；千帆 API + OpenRouter；权重将按 Apache 2.0 开源）<br><a href="https://ernie.baidu.com/release/ernie-5-5-flash-preview/">ernie.baidu.com/release/ernie-5-5-flash-preview</a></div>
+    <div class="ref"><span class="tag src">前作</span>ERNIE 5.5 Flash Base（11-05 开源权重；HN 187 分）<br><a href="https://ernie.baidu.com/release/ernie-5-5-flash-base/">ernie.baidu.com/release/ernie-5-5-flash-base</a></div>
+  </div>
+
+  <div class="card">
+    <h2>08｜腾讯元宝搜索上线（v2 新增）</h2>
+    <div class="ref"><span class="tag src">一手</span>so.qq.com 元宝搜索（实测可访问；「腾讯旗下新一代AI搜索」）<br><a href="https://so.qq.com">so.qq.com</a></div>
+    <div class="ref"><span class="tag wx">转引</span>界面新闻：元宝搜索基于元宝大模型组织答案，检索范围含公众号/视频号/学术文献，广告与答案分开展示<br><a href="https://www.jiemian.com">www.jiemian.com（站内搜索「元宝搜索」）</a></div>
+  </div>
+
+  <div class="card">
+    <h2>09｜DeepL Aure 语音翻译模型（v2 新增）</h2>
+    <div class="ref"><span class="tag src">一手</span>DeepL 新闻稿《DeepL unveils Aure》（2026-11-11/12；语气/停顿/重音跟随；首批 8 语种；接入 DeepL Voice 三场景；HN 收录在案）<br><a href="https://www.deepl.com/en/press-release/aure-voice-ai-model">deepl.com/en/press-release/aure-voice-ai-model</a></div>
+  </div>
+
+  <div class="card">
+    <h2>10｜Stripe 完成 OpenRouter 收购（v2 新增）</h2>
+    <div class="ref"><span class="tag src">一手</span>OpenRouter 官方博客《OpenRouter is Joining Stripe》（2026-08-19 官宣；接口与路线图沿用）<br><a href="https://openrouter.ai/blog/announcements/openrouter-is-joining-stripe/">openrouter.ai/blog/announcements/openrouter-is-joining-stripe</a></div>
+    <div class="ref"><span class="tag src">转引</span>10 月平台数据（790 万亿 token、环比 +37%、智能体类密钥占 76%、一年前 8%）为 OpenRouter 披露、媒体转引口径</div>
   </div>
 
   <div class="foot">拉普拉斯大魔王 · AI 热点追踪 · 第 012 期 · 2026-11-13</div>
