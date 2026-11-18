@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>何恺明：一条残差捷径，让神经网络深不见底 · 延伸阅读</title>
+<title>何恺明：语言有GPT，他给图像也造了一个 · 延伸阅读</title>
 <style>
   body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
   .wrap{max-width:760px;margin:0 auto;}
@@ -26,9 +26,9 @@
 <div class="wrap">
   <div class="card">
     <div class="back"><a href="index.html">← 返回目录</a></div>
-    <h1>何恺明：一条残差捷径，让神经网络深不见底 · 延伸阅读</h1>
-    <div class="sub">公众号「拉普拉斯大魔王」《AI大牛列传》系列第五期。人物为在世公众人物，全部事实经双源核验；本期检索与 004 期同受配额限制（WebSearch 2026-11-22 重置），官方页/论文页直取 + 本仓纯 HTTP 爬虫补中文侧源；正文外链被微信剥除，可点击版全部在本页，数据口径 2026-11-18。</div>
-    <div class="note"><b>口径与可靠性说明：</b>① 履职：MIT EECS 副教授、Douglas Ross (1954) 讲席（EECS 目录）+ 2025-06 终身教职（EECS/CSAIL 双新闻）；「2023-07 加入 MIT」智东西/学术头条/CVer 三源同日；MSRA/FAIR 起止年份以中文人物报道与论文时间线互证（据）；② <b>Google DeepMind 杰出科学家</b>：MIT CSAIL GeoPT 新闻稿原句（verbatim 复核），正文标「据 MIT CSAIL 口径」；③ WebSearch 返回的「2018 年加入 MIT」概述与上述三源矛盾，判定不可信并弃用（无链接的模型概述不作来源）；④ 论文事实（残差框架 F(x)+x、152 层、113/153/196 亿 FLOPs、3.57%、4.94% vs 6.66%、5fps、COCO 三赛道、7 项任务、75% 掩码、3×、87.8%、GeoPT 130 万样本/2×/60%/1 亿网格点）全部出自 arXiv 摘要与 ar5iv 全文原句；⑤ 奖项：ILSVRC/COCO 2015 冠军（arXiv 一手）；CVPR 2009/2016 最佳论文与 ICCV 2017 双奖据中文索引；未来科学大奖 2023（新智元/智东西/计算机视觉联盟三源）；AI2000 榜单（智东西/大数据文摘/PaperRSS）；⑥ 引用量 598,757/86 篇：Semantic Scholar Author API 一手；50 万（2023-11）与 ResNet 18 万（2023-08）为中文索引据；⑦ 早年（1984 生/状元/2007 本科/2011 博士/导师汤晓鸥/孙剑离世）：中文人物报道口径（索引级），正文一律「据」；⑧ 中文侧源均为搜狗索引级（五轮存档 ops/hotspot/raw/sogou-20261118-*.json）；⑨ 图片：真人照 3 张搜索引擎待审通道（授权未确认，CREDITS.md 留档；本期远程目检接口受限，以宽高比+肤色占比程序化预筛 + 尺寸链复核），自绘图 6 张本刊原创。</div>
+    <h1>何恺明：语言有GPT，他给图像也造了一个 · 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」《AI大牛列传》系列第五期（v2 修订：补生图研究线与研究经历密度）。人物为在世公众人物，全部事实经双源核验；本期检索与 004 期同受配额限制（WebSearch 2026-11-22 重置），官方页/论文页直取 + 本仓纯 HTTP 爬虫补中文侧源；正文外链被微信剥除，可点击版全部在本页，数据口径 2026-11-18。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 履职：MIT EECS 副教授、Douglas Ross (1954) 讲席（EECS 目录）+ 2025-06 终身教职（EECS/CSAIL 双新闻）；「2023-07 加入 MIT」智东西/学术头条/CVer 三源同日；MSRA/FAIR 起止年份以中文人物报道与论文时间线互证（据）；② <b>Google DeepMind 杰出科学家</b>：MIT CSAIL GeoPT 新闻稿原句（verbatim 复核），正文标「据 MIT CSAIL 口径」；③ WebSearch 返回的「2018 年加入 MIT」概述与上述三源矛盾，判定不可信并弃用（无链接的模型概述不作来源）；④ 论文事实（残差框架 F(x)+x、152 层、113/153/196 亿 FLOPs、3.57%、4.94% vs 6.66%、5fps、COCO 三赛道、7 项任务、75% 掩码、3×、87.8%、GeoPT 130 万样本/2×/60%/1 亿网格点）全部出自 arXiv 摘要与 ar5iv 全文原句；⑤ 奖项：ILSVRC/COCO 2015 冠军（arXiv 一手）；CVPR 2009/2016 最佳论文与 ICCV 2017 双奖据中文索引；未来科学大奖 2023（新智元/智东西/计算机视觉联盟三源）；AI2000 榜单（智东西/大数据文摘/PaperRSS）；⑥ 引用量 598,757/86 篇：Semantic Scholar Author API 一手；50 万（2023-11）与 ResNet 18 万（2023-08）为中文索引据；⑦ 早年（1984 生/状元/2007 本科/2011 博士/导师汤晓鸥/孙剑离世）：中文人物报道口径（索引级），正文一律「据」；⑧ 中文侧源均为搜狗索引级（五轮存档 ops/hotspot/raw/sogou-20261118-*.json）；⑨ 图片：真人照 3 张搜索引擎待审通道（授权未确认，CREDITS.md 留档；本期远程目检接口受限，以宽高比+肤色占比程序化预筛 + 尺寸链复核），自绘图 7 张本刊原创；⑩ <b>v2 新增生图研究线</b>（RCG→MAR→Fluid→MeanFlow 一族→生成器即学习者）与研究工具线（SPP-net/ResNeXt/Non-local/GroupNorm/SimSiam/DyT/Faster R-CNN）全部取自 arXiv 摘要与作者列举 API 一手，中文侧两轮搜狗 0 命中（存档同上），故此部分无「据」口径项、无中文互证；⑪ v1 正文中「2025-07 CSAIL 图像编辑新方法」子句（CSAIL 人物页年表题名级）已由论文级生图线取代，不再单列。</div>
   </div>
 
   <div class="card">
@@ -43,6 +43,24 @@
     <div class="ref"><span class="tag paper">论文</span>Momentum Contrast for Unsupervised Visual Representation Learning（arXiv:1911.05722，2019-11-13；字典查表 / 队列+动量编码器 / 7 项任务超监督 / 「差距已大幅抹平」）<br><a href="https://arxiv.org/abs/1911.05722">arxiv.org/abs/1911.05722</a></div>
     <div class="ref"><span class="tag paper">论文</span>Masked Autoencoders Are Scalable Vision Learners（arXiv:2111.06377，2021-11-11；75% 掩码「nontrivial and meaningful」/ 非对称编解码 / 3×+ / ViT-H 87.8%）<br><a href="https://arxiv.org/abs/2111.06377">arxiv.org/abs/2111.06377</a></div>
     <div class="ref"><span class="tag paper">引用</span>Semantic Scholar Author API：Kaiming He——86 篇 / 598,757 次引用（2026-11-18 查询）<br><a href="https://api.semanticscholar.org/graph/v1/author/search?query=Kaiming+He&fields=name,affiliations,homepage,paperCount,citationCount">api.semanticscholar.org</a></div>
+  </div>
+
+  <div class="card">
+    <h2>一·五、生图研究线（v2 新增，arXiv 一手）</h2>
+    <div class="ref"><span class="tag paper">论文</span>Return of Unconditional Generation: A Self-supervised Representation Generation Method（arXiv:2312.03701，2023-12-06；NeurIPS 2024 Oral；RCG 框架；无条件生成 ImageNet 256² FID 2.15，较此前最优 5.91 相对改进 64%；Li/Katabi/He）<br><a href="https://arxiv.org/abs/2312.03701">arxiv.org/abs/2312.03701</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Autoregressive Image Generation without Vector Quantization（arXiv:2406.11838，2024-06-17；NeurIPS 2024 Spotlight；离散空间「便于表达类别分布」但非必需；每 token 分布由小扩散过程（Diffusion Loss）建模；MAR；Li/Tian/Li/Deng/He）<br><a href="https://arxiv.org/abs/2406.11838">arxiv.org/abs/2406.11838</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Mean Flows for One-step Generative Modeling（arXiv:2505.13447，2025-05-19；平均速度恒等式；从零训练、无蒸馏、无课程学习；1-NFE ImageNet 256² FID 3.43；Geng/Deng/Bai/Kolter/He）<br><a href="https://arxiv.org/abs/2505.13447">arxiv.org/abs/2505.13447</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Image Generators are Generalist Vision Learners（arXiv:2604.20329，2026-04-22；Vision Banana=Nano Banana Pro 指令微调；感知任务输出为 RGB 图；生成式预训练「major paradigm shift」）＋视频版 Video Generation Models are General-Purpose Vision Learners（arXiv:2607.09024，2026-07-10）<br><a href="https://arxiv.org/abs/2604.20329">arxiv.org/abs/2604.20329</a> · <a href="https://arxiv.org/abs/2607.09024">arxiv.org/abs/2607.09024</a></div>
+    <div class="ref"><span class="tag paper">族谱</span>生图线其余节点（题名/日期级，arXiv 作者列举 API）：Fluid（2410.13863，2024-10，连续 token 自回归文生图扩规模）；Improved Mean Flows（2512.02012）；Pixel Mean Flows（2601.22158，2026-01，一步·免 latent）；Back to Basics: Let Denoising Generative Models Denoise（2511.13720）<br><a href="https://export.arxiv.org/api/query?search_query=au:%22Kaiming+He%22">export.arxiv.org 作者列举</a></div>
+  </div>
+
+  <div class="card">
+    <h2>一·八、研究工具线（v2 新增，arXiv 一手）</h2>
+    <div class="ref"><span class="tag paper">论文</span>SPP-net: Spatial Pyramid Pooling（arXiv:1406.4729，2014-06-18，TPAMI 2015；拆「固定尺寸输入」人工约束；检测较 R-CNN 快 24–102 倍；He 一作）<br><a href="https://arxiv.org/abs/1406.4729">arxiv.org/abs/1406.4729</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Faster R-CNN（arXiv:1506.01497，2015-06-04；作者 Ren/He/Girshick/Sun——与 ResNet 署名只差一人）<br><a href="https://arxiv.org/abs/1506.01497">arxiv.org/abs/1506.01497</a></div>
+    <div class="ref"><span class="tag paper">论文</span>ResNeXt: Aggregated Residual Transformations（arXiv:1611.05431，2016-11-16，CVPR 2017；cardinality 新维度；ILSVRC 2016 亚军主力）＋ Non-local Neural Networks（arXiv:1711.07971，2017-11-21，CVPR 2018；每位置对全部位置加权和）＋ Group Normalization（arXiv:1803.08494，2018-03-22；与 batch 大小无关）<br><a href="https://arxiv.org/abs/1611.05431">1611.05431</a> · <a href="https://arxiv.org/abs/1711.07971">1711.07971</a> · <a href="https://arxiv.org/abs/1803.08494">1803.08494</a></div>
+    <div class="ref"><span class="tag paper">论文</span>SimSiam: Exploring Simple Siamese Representation Learning（arXiv:2011.10566，2020-11-20；负样本对/大队列/动量均可省；stop-gradient 防塌缩）<br><a href="https://arxiv.org/abs/2011.10566">arxiv.org/abs/2011.10566</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Transformers without Normalization（arXiv:2503.10622，2025-03-13，CVPR 2025；DyT(x)=tanh(αx) 替归一化层；Zhu/Chen/He/LeCun/Liu）＋ TetSphere Splatting（2405.20283，2024-05）＋ Denoising Hamiltonian Network（2503.07596，2025-03，物理推理；与 Matusik 组）<br><a href="https://arxiv.org/abs/2503.10622">arxiv.org/abs/2503.10622</a> · <a href="https://arxiv.org/abs/2405.20283">2405.20283</a> · <a href="https://arxiv.org/abs/2503.07596">2503.07596</a></div>
   </div>
 
   <div class="card">
