@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>何恺明：一条残差捷径，让神经网络深不见底 · 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>何恺明：一条残差捷径，让神经网络深不见底 · 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」《AI大牛列传》系列第五期。人物为在世公众人物，全部事实经双源核验；本期检索与 004 期同受配额限制（WebSearch 2026-11-22 重置），官方页/论文页直取 + 本仓纯 HTTP 爬虫补中文侧源；正文外链被微信剥除，可点击版全部在本页，数据口径 2026-11-18。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 履职：MIT EECS 副教授、Douglas Ross (1954) 讲席（EECS 目录）+ 2025-06 终身教职（EECS/CSAIL 双新闻）；「2023-07 加入 MIT」智东西/学术头条/CVer 三源同日；MSRA/FAIR 起止年份以中文人物报道与论文时间线互证（据）；② <b>Google DeepMind 杰出科学家</b>：MIT CSAIL GeoPT 新闻稿原句（verbatim 复核），正文标「据 MIT CSAIL 口径」；③ WebSearch 返回的「2018 年加入 MIT」概述与上述三源矛盾，判定不可信并弃用（无链接的模型概述不作来源）；④ 论文事实（残差框架 F(x)+x、152 层、113/153/196 亿 FLOPs、3.57%、4.94% vs 6.66%、5fps、COCO 三赛道、7 项任务、75% 掩码、3×、87.8%、GeoPT 130 万样本/2×/60%/1 亿网格点）全部出自 arXiv 摘要与 ar5iv 全文原句；⑤ 奖项：ILSVRC/COCO 2015 冠军（arXiv 一手）；CVPR 2009/2016 最佳论文与 ICCV 2017 双奖据中文索引；未来科学大奖 2023（新智元/智东西/计算机视觉联盟三源）；AI2000 榜单（智东西/大数据文摘/PaperRSS）；⑥ 引用量 598,757/86 篇：Semantic Scholar Author API 一手；50 万（2023-11）与 ResNet 18 万（2023-08）为中文索引据；⑦ 早年（1984 生/状元/2007 本科/2011 博士/导师汤晓鸥/孙剑离世）：中文人物报道口径（索引级），正文一律「据」；⑧ 中文侧源均为搜狗索引级（五轮存档 ops/hotspot/raw/sogou-20261118-*.json）；⑨ 图片：真人照 3 张搜索引擎待审通道（授权未确认，CREDITS.md 留档；本期远程目检接口受限，以宽高比+肤色占比程序化预筛 + 尺寸链复核），自绘图 6 张本刊原创。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、官方一手（MIT / 论文 / API）</h2>
+    <div class="ref"><span class="tag src">目录</span>MIT EECS：Kaiming He（副教授 / Douglas Ross 讲席 / AI+D / 2025-06 tenure 新闻）<br><a href="https://www.eecs.mit.edu/people/kaiming-he/">eecs.mit.edu/people/kaiming-he</a></div>
+    <div class="ref"><span class="tag src">人物</span>MIT CSAIL：Kaiming He（新闻年表：GeoPT 2026-08 / AI2050 2025-12 / 图像编辑新方法 2025-07 / tenure 2025-06 / 2025-02 专题；具身智能 CoR）<br><a href="https://www.csail.mit.edu/person/kaiming-he">csail.mit.edu/person/kaiming-he</a></div>
+    <div class="ref"><span class="tag src">新闻</span>MIT CSAIL：With a feel for physics, AI models simulate a wider range of real-world scenarios（GeoPT 2026-08；何恺明三重头衔原句：PI / EECS 副教授 / Google DeepMind 杰出科学家）<br><a href="https://www.csail.mit.edu/news/feel-physics-ai-models-simulate-wider-range-real-world-scenarios">csail.mit.edu/news</a></div>
+    <div class="ref"><span class="tag src">专题</span>MIT CSAIL：Creating a common language（2025-02-07；四条 verbatim 引语：「通用语言」「墙在降低」「科学和 AI 正在会合」「十年预测」）<br><a href="https://www.csail.mit.edu/news/creating-common-language">csail.mit.edu/news/creating-common-language</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Deep Residual Learning for Image Recognition（arXiv:1512.03385，2015-12-10；摘要 + ar5iv 全文引句：Unexpectedly 退化非过拟合 / F(x)+x / shortcut connections / 152 层 113 亿 FLOPs vs VGG-16/19 的 153/196 亿 / 3.57% / 五冠 / CIFAR 千层）<br><a href="https://arxiv.org/abs/1512.03385">arxiv.org/abs/1512.03385</a> · <a href="https://ar5iv.labs.arxiv.org/html/1512.03385">ar5iv 全文</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Delving Deep into Rectifiers（arXiv:1502.01852，2015-02-06；PReLU「近乎零额外成本」/ 初始化「极深整流模型直接从头训练」/ 4.94% vs GoogLeNet 6.66% 相对改进 26% / 首超 5.1% 人类水平）<br><a href="https://arxiv.org/abs/1502.01852">arxiv.org/abs/1502.01852</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Mask R-CNN（arXiv:1703.06870，2017-03-20；「概念上简单、灵活、通用」/ 5fps / COCO 三赛道第一胜 COCO 2016 冠军单模型 / Detectron 开源）<br><a href="https://arxiv.org/abs/1703.06870">arxiv.org/abs/1703.06870</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Momentum Contrast for Unsupervised Visual Representation Learning（arXiv:1911.05722，2019-11-13；字典查表 / 队列+动量编码器 / 7 项任务超监督 / 「差距已大幅抹平」）<br><a href="https://arxiv.org/abs/1911.05722">arxiv.org/abs/1911.05722</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Masked Autoencoders Are Scalable Vision Learners（arXiv:2111.06377，2021-11-11；75% 掩码「nontrivial and meaningful」/ 非对称编解码 / 3×+ / ViT-H 87.8%）<br><a href="https://arxiv.org/abs/2111.06377">arxiv.org/abs/2111.06377</a></div>
+    <div class="ref"><span class="tag paper">引用</span>Semantic Scholar Author API：Kaiming He——86 篇 / 598,757 次引用（2026-11-18 查询）<br><a href="https://api.semanticscholar.org/graph/v1/author/search?query=Kaiming+He&fields=name,affiliations,homepage,paperCount,citationCount">api.semanticscholar.org</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、中文侧源（搜狗索引级，五轮存档 ops/hotspot/raw/）</h2>
+    <div class="ref"><span class="tag warn">索引</span>早年线：AI有道 2019《从高考状元到 CV 领域年轻翘楚》；CVer 2019《…靠「去雾算法」成为「CVPR最佳论文」首位华人得主》；肖乖乖的碎碎念 2024《清华状元的人工智能征程》；Tech数字星球 2019《「AI天才」何恺明》</div>
+    <div class="ref"><span class="tag warn">索引</span>奖项线：专知/机械鸡 2017-10《何恺明博士包揽最佳论文和最佳学生论文奖》；新智元 2023-08-16《90后首次现身！何恺明、孙剑团队斩获未来科学大奖，ResNet被引18万》＋智东西同日＋计算机视觉联盟 08-17；智东西 2022-01-25《何恺明第一！…最具影响力学者榜单》＋大数据文摘同日十年盘点＋PaperRSS 2020 入选报道</div>
+    <div class="ref"><span class="tag warn">索引</span>MIT 线：计算机视觉联盟/爆炸吧知识 2023-03《被曝回归学界》；智东西/学术头条/CVer 2023-07-31 入职三连发；磐创AI/图灵人工智能 2023-03《MIT 最新演讲：聚焦 AI for science》《现场挤爆了》；CVer/机器学习算法与Python实战 2024-03《在MIT的第一堂课》；深度学习与NLP 2024-02 招生帖</div>
+    <div class="ref"><span class="tag warn">索引</span>引用与近况：极市平台 2023-11-25《学术引用量突破50万！》；雕爷说 2026-03-02《何恺明团队新作GeoPT 模型自学真实物理规律》（GeoPT 中文互证）；洞见新经济 2026-11-06《从微软亚研到MIT：他不预测AI的终点，却一次次改变AI前进的道路》；极市平台 2020-12《那些年何恺明在顶会上的分享》；机器之心 2018-11《真的需要减少ImageNet预训练吗？》</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI大牛列传 005 · 2026-11-18</div>
+</div>
+</body>
+</html>
