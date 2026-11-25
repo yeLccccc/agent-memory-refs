@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeCun：卷积神经网络之父，说大模型是死胡同 · 延伸阅读</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2b3a4a;margin:0;padding:32px 16px 60px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .card{background:#fff;border-radius:12px;padding:24px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(20,40,60,.06);}
+  h1{font-size:20px;margin:0 0 8px;}
+  h2{font-size:15px;margin:22px 0 6px;color:#1f6f5f;}
+  .sub{color:#7a8a99;font-size:13px;margin-bottom:14px;line-height:1.7;}
+  .note{background:#f2f7f5;border-left:3px solid #b08d27;border-radius:6px;padding:12px 14px;font-size:12.5px;color:#5a6a7a;line-height:1.8;margin-bottom:6px;}
+  .ref{padding:9px 0;border-bottom:1px dashed #eef1f4;font-size:13.5px;line-height:1.6;}
+  .ref:last-child{border-bottom:none;}
+  .ref a{color:#1a5cb0;text-decoration:none;word-break:break-all;}
+  .ref a:hover{text-decoration:underline;}
+  .ref .tag{display:inline-block;font-size:11px;color:#fff;background:#7a8a99;border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:1px;}
+  .ref .tag.src{background:#1f6f5f;} .ref .tag.warn{background:#b0392d;} .ref .tag.paper{background:#2e86ab;}
+  .foot{color:#a0aab4;font-size:12px;text-align:center;margin-top:20px;}
+  .back{font-size:12.5px;margin-bottom:12px;} .back a{color:#1a5cb0;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="back"><a href="index.html">← 返回目录</a></div>
+    <h1>LeCun：卷积神经网络之父，说大模型是死胡同 · 延伸阅读</h1>
+    <div class="sub">公众号「拉普拉斯大魔王」《AI大牛列传》系列第六期。人物为在世公众人物，全部事实经双源核验；WebSearch 配额已恢复，本期回到双语常规检索通道；正文外链被微信剥除，可点击版全部在本页，数据口径 2026-11-25。</div>
+    <div class="note"><b>口径与可靠性说明：</b>① 履职线：离开 Meta（2025-11-19 Reuters）与 AMI Labs 全景（Built In 2026-03-12：巴黎总部/10.3 亿美元种子/35 亿 pre-money/五家共同领投/LeBrun CEO/Nabla 医疗首发）双源核验；此前「寻求 50 亿+估值」为 2025-11 融资传闻口径，已过时弃用；② <b>离职争议（在世人物红线）</b>：Llama 4 跑分「被修饰」、Zuckerberg 反应、对 Alexandr Wang 评价等，均为 LeCun 一方在 2026-01 约三小时专访中的说法，以财联社/InfoQ/知乎三源中文编译一致为据（原专访未直取）；截至这些报道，Meta 方未见正式回应记录——正文照此标注；③ 论文与模型事实（1989 邮编 CNN、LeNet-5、I-JEPA、V-JEPA 2 的 100 万小时/77.3/62 小时/零样本 Franka 等）出自 arXiv 摘要一手；LeNet-5 被引 9 万+为 Google Scholar 快照口径（据）；④ 引用总口径 634 篇/261,422/h-157：Semantic Scholar Author API 一手；⑤ 蛋糕金句：NIPS 2016 报告，Zador 2019 论文逐字引用；⑥ 「词元接龙器」「家猫」「盲人摸象」「三大挑战」为中文访谈/播客口径（题名级，据）；⑦ 出生/教育（1960/ESIEE 1983/巴黎六大 1987）据公开传记快照（yann.lecun.com 本网络不可达）；⑧ MNIST 成型史据 arXiv 1905.10498 考证；PyTorch 出身 FAIR（2016）据 Meta Research/工程博客；⑨ 中文名「杨立昆」为中文圈通用（中文维基词条名），不作「自取中文名」表述；⑩ 舍弃项：LeCun 2023 加盟 xAI 顾问（查无实据）、Nobel 2024 落选反应（无双源）——均不写。</div>
+  </div>
+
+  <div class="card">
+    <h2>一、官方一手（机构 / 通讯社 / API）</h2>
+    <div class="ref"><span class="tag src">奖项</span>ACM 2018 图灵奖官方页（引语 verbatim：conceptual and engineering breakthroughs…）＋2019-03-27 公告<br><a href="https://awards.acm.org/about/2018-turing">awards.acm.org/about/2018-turing</a> · <a href="https://www.acm.org/articles/bulletins/2019/march/turing-award-2019">acm.org 公告</a></div>
+    <div class="ref"><span class="tag src">通讯</span>Reuters 2025-11-19：Yann LeCun to leave Meta, launch AI startup focused on Advanced Machine Intelligence<br><a href="https://www.reuters.com/technology/yann-lecun-leave-meta-launch-ai-startup-focused-advanced-machine-intelligence-2025-11-19">reuters.com</a></div>
+    <div class="ref"><span class="tag src">机构</span>Built In（2026-03-12 更新）：AMI Labs 全景——时间线/融资/团队/路线/伙伴<br><a href="https://builtin.com/articles/ami-labs-yann-lecun">builtin.com/articles/ami-labs-yann-lecun</a></div>
+    <div class="ref"><span class="tag src">机构</span>Futurum Group：AMI raises $1B seed round（史上最大种子轮之一）；FutureSearch：至 2026-11 中旬无公开产品<br><a href="https://futurumgroup.com/insights/yann-lecuns-ami-raises-1bn-seed-round-is-the-world-model-era-finally-here">futurumgroup.com</a> · <a href="https://futuresearch.ai/app/p/a/ami-labs-first-product-date">futuresearch.ai</a></div>
+    <div class="ref"><span class="tag paper">引用</span>Semantic Scholar Author API：Yann LeCun——634 篇 / 261,422 引用 / h-index 157（2026-11-25 查询）<br><a href="https://api.semanticscholar.org/graph/v1/author/search?query=Yann+LeCun&fields=name,affiliations,homepage,paperCount,citationCount,hIndex">api.semanticscholar.org</a></div>
+  </div>
+
+  <div class="card">
+    <h2>二、论文与模型（arXiv / S2 一手）</h2>
+    <div class="ref"><span class="tag paper">论文</span>I-JEPA: Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture（arXiv:2301.08243，2023-01-19，ICCV 2023；表征空间预测目标块；ViT-H/14、16×A100、&lt;72h）<br><a href="https://arxiv.org/abs/2301.08243">arxiv.org/abs/2301.08243</a></div>
+    <div class="ref"><span class="tag paper">论文</span>V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning（arXiv:2506.09985，2025-06-11；100 万+小时视频；SSv2 77.3/Epic-Kitchens 动作预期/PerceptionTest 84.0；V-JEPA 2-AC &lt;62h Droid 后训零样本 Franka 抓放；48 页 31 人）<br><a href="https://arxiv.org/abs/2506.09985">arxiv.org/abs/2506.09985</a></div>
+    <div class="ref"><span class="tag paper">论文</span>Critiques of World Models（arXiv:2507.05169，2025-07-07；Xing/Deng/Hou/Hu；世界模型=思维实验沙盒——反方口径）<br><a href="https://arxiv.org/abs/2507.05169">arxiv.org/abs/2507.05169</a></div>
+    <div class="ref"><span class="tag paper">论文</span>A Path Towards Autonomous Machine Intelligence（2022 立场论文，JEPA 蓝图；S2 cited 1,431 一手）；Deep Learning for AI 图灵讲座（CACM 2021，三人合著，被引 1,200+，快照口径）</div>
+    <div class="ref"><span class="tag paper">论文</span>Backpropagation Applied to Handwritten Zip Code Recognition（Neural Computation，1989）；Gradient-Based Learning Applied to Document Recognition（Proc. IEEE，1998，LeNet-5 + 图变换网络；「每天数百万张支票」为论文口径；被引 9 万+据 Google Scholar 快照）</div>
+    <div class="ref"><span class="tag paper">数据</span>MNIST 成型史：Cold Case: the Lost MNIST Digits（arXiv:1905.10498——训练集/测试集人群对调重混的考证）；DjVu：AT&T 时期 LeCun/Bottou/Haffner/Howard<br><a href="https://arxiv.org/html/1905.10498v2">arxiv.org/html/1905.10498v2</a></div>
+    <div class="ref"><span class="tag paper">工具</span>PyTorch 出身 FAIR（2016 发布，联合创造者 Soumith Chintala；2022 移交 Linux 基金会；2024-12 口径采用率约 63%）<br><a href="https://engineering.fb.com/2018/12/05/ai-research/fair-fifth-anniversary">engineering.fb.com（FAIR at 5）</a></div>
+    <div class="ref"><span class="tag paper">金句</span>蛋糕三层论（NIPS 2016 报告）：Zador, A critique of pure learning（Curr Opin Neurobiol 2019，PMC）逐字引用<br><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6704116">pmc.ncbi.nlm.nih.gov</a></div>
+  </div>
+
+  <div class="card">
+    <h2>三、中文侧源（编译/访谈/索引级）</h2>
+    <div class="ref"><span class="tag warn">编译</span>离职专访（2026-01，约三小时）：财联社《LeCun离开Meta后大爆猛料》＋InfoQ《LeCun手撕Meta》＋知乎专栏——三源一致；「You certainly don&apos;t tell a researcher like me what to do」据此<br><a href="https://www.cls.cn/detail/2246986">cls.cn</a> · <a href="https://www.infoq.cn/article/SCwBiIPjcEvZsljIwzye">infoq.cn</a></div>
+    <div class="ref"><span class="tag warn">访谈</span>三大挑战（2022-02）；「盲人摸象」（2024-12）；「词元接龙器」播客解读（2026-05）——题名级口径</div>
+    <div class="ref"><span class="tag warn">专访</span>知乎 2021-08《独家专访「CNN之父」Yann LeCun》（1982 大四 HLM 构想；403 未直取，题名级据）<br><a href="https://zhuanlan.zhihu.com/p/397978083">zhuanlan.zhihu.com</a></div>
+    <div class="ref"><span class="tag warn">报道</span>Yahoo Finance 2026-06：LeCun 评 xAI「failure」（创始团队流失、难敌 OpenAI/Anthropic）<br><a href="https://finance.yahoo.com/technology/ai/articles/ai-pioneer-yann-lecun-calls-160628622.html">finance.yahoo.com</a></div>
+    <div class="ref"><span class="tag warn">检索</span>本期搜狗一轮「LeCun 离开 Meta」48h 窗口 0 条（旧闻窗口外，存档 research/wx_search1.log）</div>
+  </div>
+
+  <div class="foot">拉普拉斯大魔王 · AI大牛列传 006 · 2026-11-25</div>
+</div>
+</body>
+</html>
